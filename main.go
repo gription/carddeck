@@ -8,15 +8,28 @@ import (
 
 // TODO: Maintain central deck by ref rather than constantly passing value?
 // REVIEW: Any need to shuffledDeck if all 'deals/draws' use RNG?
+// TODO: Break out universal deck management into separate files (isolate from game logic: deckManagement.go, fiveCardDraw.go, sevenCardStud.go ?)
+// TODO: Intro queries for game type, player count, player name, etc..
+// TODO: Store player prefs & history to file
 
 const (
 	playerCount    int = 4
 	cardsPerPlayer int = 5
 )
 
+type player struct {
+	idx       int
+	num       int // Friendly reference
+	name      string
+	wins      int
+	losses    int
+	handScore int
+	handDesc  string
+}
+
 type card struct {
-	idx        int    // 0.. for indexed manipulation
-	deckSeq    int    // 40				// Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)
+	idx        int    // 0..            // for indexed manipulation
+	deckSeq    int    // 40				// Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)  // TODO: DEPRECATE [idx instead]
 	suitedName string // "Ace of Spades"
 	noSuitName string // "Ace" 			// Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
 	suitPlural string // "Spades"  		// Clubs, Diamonds, Hearts, Spades, Jokers
@@ -83,20 +96,45 @@ func logDeck(deck []card, format string, yorn bool) int {
 	return 0
 }
 
-func logCard(currentCard card) {
-	fmt.Print("logCard: ", currentCard.suitedName, " - ", currentCard.rankPip, currentCard.suitPip, " [Suit ", currentCard.suitRank, "/4] - Ranked: ",
-		currentCard.rankInSuit, " amongst ", currentCard.suitPlural, ", and Card# ", currentCard.deckSeq, " in (Aces high) Ordered-Deck sequence.\n")
+func logCard(currentCard card, yorn bool) {
+	if yorn {
+		fmt.Print("logCard: ", currentCard.suitedName, " - ", currentCard.rankPip, currentCard.suitPip, " [Suit ", currentCard.suitRank, "/4] - Ranked: ",
+			currentCard.rankInSuit, " amongst ", currentCard.suitPlural, ", and Card# ", currentCard.deckSeq, " in (Aces high) Ordered-Deck sequence.\n")
+	}
+}
+
+func makePlayer(playerNum int) player {
+	p := player{
+		idx:       playerNum,
+		num:       playerNum + 1,
+		name:      "Anonymous",
+		wins:      0,
+		losses:    0,
+		handScore: 0,
+		handDesc:  "Hand score & description pending evaluation?",
+	}
+	names := []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
+	p.name = names[playerNum]
+	return p
+}
+
+func establishPlayers(playerCount int) []player {
+	allPlayers := []player{}
+	for i := 0; i < playerCount; i++ { // for each player i
+		allPlayers = append(allPlayers, makePlayer(i))
+	}
+	return allPlayers[:]
 }
 
 func makeCard(newCardNum int) card { //? *card
 	c := card{deckSeq: newCardNum}
+	c.idx = newCardNum - 1
 	suitedNames := [53]string{"fillerSuitedName_0",
 		"Two of Clubs", "Three of Clubs", "Four of Clubs", "Five of Clubs", "Six of Clubs", "Seven of Clubs", "Eight of Clubs", "Nine of Clubs", "Ten of Clubs", "Jack of Clubs", "Queen of Clubs", "King of Clubs", "Ace of Clubs",
 		"Two of Hearts", "Three of Hearts", "Four of Hearts", "Five of Hearts", "Six of Hearts", "Seven of Hearts", "Eight of Hearts", "Nine of Hearts", "Ten of Hearts", "Jack of Hearts", "Queen of Hearts", "King of Hearts", "Ace of Hearts",
 		"Two of Diamonds", "Three of Diamonds", "Four of Diamonds", "Five of Diamonds", "Six of Diamonds", "Seven of Diamonds", "Eight of Diamonds", "Nine of Diamonds", "Ten of Diamonds", "Jack of Diamonds", "Queen of Diamonds", "King of Diamonds", "Ace of Diamonds",
 		"Two of Spades", "Three of Spades", "Four of Spades", "Five of Spades", "Six of Spades", "Seven of Spades", "Eight of Spades", "Nine of Spades", "Ten of Spades", "Jack of Spades", "Queen of Spades", "King of Spades", "Ace of Spades",
 	}
-	c.idx = newCardNum - 1
 	c.suitedName = suitedNames[newCardNum]
 	c.noSuitName = strings.Fields(c.suitedName)[0]
 	c.suitPlural = strings.Fields(c.suitedName)[2]
@@ -153,7 +191,7 @@ func deal(theDeck []card, numberOfCards int) ([]card, []card) {
 	var currentCard card
 	for i := 1; i <= numberOfCards; i++ {
 		theDeck, currentCard = pickACard(theDeck)
-		logCard(currentCard)
+		logCard(currentCard, false)
 		cardsDealt = append(cardsDealt, currentCard)
 	}
 	return theDeck, cardsDealt[:]
@@ -163,15 +201,37 @@ func main() {
 	fmt.Printf("\n -=& Let the games begin.. *=-\n")
 	theDeck := createDeck()
 
-	// define players &  Deal x cards to x players
-	var playerHand []card
-	for i := 1; i <= playerCount; i++ {
-
-		//* TODO: Implement multiple playerHands
-
-		theDeck, playerHand = deal(theDeck, cardsPerPlayer)
-		fmt.Print("main Dealt to Player: ", i, ".. ", len(playerHand), " Cards.", "\n\n")
+	// Define playerHands[0-->playerCount-1] &  Deal #cardsPerPlayer to #playerCount players
+	var aHand []card
+	var cardShark []player = establishPlayers(playerCount)
+	playerHands := make([][]card, playerCount)
+	for i := 1; i <= playerCount; i++ { // for each player i
+		theDeck, aHand = deal(theDeck, cardsPerPlayer)  // deal * cards into aHand
+		playerHands[i-1] = make([]card, cardsPerPlayer) // init player# for cards * x
+		for j := 0; j < cardsPerPlayer; j++ {           // for each card_j
+			playerHands[i-1][j] = aHand[j] // put card {aHand[#j]} into playerHand#(i-1) slot j
+		}
 	}
+
+	// Print out dealt hands for verification
+	for i := 0; i < playerCount; i++ {
+		fmt.Printf("Player %d's Hand (%d Cards): ", i+1, len(aHand))
+		fmt.Println("Player Details: ", cardShark[i])
+		for j := 0; j < len(playerHands[i]); j++ {
+			fmt.Print(playerHands[i][j].suitedName, ", ")
+		}
+		fmt.Println()
+	}
+
+	// Refactor & consolidate funcs that won't be called again.  Also - cap names for pub/share?
+	// Cleanup display of state - start considering presentation?
+	// Research stat tables to teach Denise & Eddie how to play...
+	//* send player# and correlated hand# off to be sorted, scored, and strategy determined[fold,draw#,bet,bluff,raise,etc] @ sortAndScoreHand(playerHands[i])
 
 	logDeck(theDeck, "full", true)
 }
+
+// func sortAndScoreHand(hand []card) (sortedHand [][]card, score int, desc string) {
+
+// 	return sortedHand, score, desc
+// }
