@@ -17,6 +17,11 @@ const (
 	cardsPerPlayer int = 5
 )
 
+// type state struct {
+// thePlayer player
+// theHand   []card
+// }
+
 type player struct {
 	idx       int
 	num       int // Friendly reference
@@ -48,7 +53,7 @@ type card struct {
 // REVIEW: Add individual cards, uc's, and friendly names to defineGlyphs {IF unicode display of cards provides ANY(?) value to end product.}
 // REVIEW: Potentially incorporate image files. ie: ..\assets\images\club.png - need comparable size rank pip images, or large Font {embed font w/suit glyphs & sufficient points [1/72nd"]}
 func defineGlyphs() map[string]string { //. Retrieve glyphs by name, and unicode by glyph
-	glyphRef := map[string]string{ //TODO: Need to return looked-up value, not table
+	glyphRef := map[string]string{ // Maps are reference types, so they are always passed by reference. You don't need a pointer.
 		"Club":        "♣",
 		"Diamond":     "♦",
 		"Heart":       "♥",
@@ -63,21 +68,9 @@ func defineGlyphs() map[string]string { //. Retrieve glyphs by name, and unicode
 	return glyphRef
 }
 
-func getSuitRank() map[string]int { // TODO: Collapse into makeCard
-	rankBySuit := map[string]int{
-		"Club":    1,
-		"Diamond": 2,
-		"Heart":   3,
-		"Spade":   4,
-	}
-	return rankBySuit
-}
-
 func logDeck(deck []card, format string, yorn bool) int {
 	if yorn {
-		fmt.Printf("\n -=* Printing the current deck *=-")
-		// fmt.Println(deck[i])
-		fmt.Println("Cards in deck:", len(deck))
+		fmt.Println("\n -=*", len(deck), "Cards remain in deck:")
 		for i := 0; i < len(deck); i++ {
 			if format == "full" {
 				c := deck[i]
@@ -143,7 +136,8 @@ func makeCard(newCardNum int) card { //? *card
 	c.rankPip = rankPips[newCardNum]
 	c.suitPip = defineGlyphs()[c.suitSingle]
 	c.suitPipUC = defineGlyphs()[c.suitPip]
-	c.suitRank = getSuitRank()[c.suitSingle]
+	rankBySuit := map[string]int{"Club": 1, "Diamond": 2, "Heart": 3, "Spade": 4, "Joker": 5}
+	c.suitRank = rankBySuit[c.suitSingle]
 	rankInSuit := newCardNum
 	for rankInSuit > 13 {
 		rankInSuit = rankInSuit - 13
@@ -211,6 +205,18 @@ func main() {
 		for j := 0; j < cardsPerPlayer; j++ {           // for each card_j
 			playerHands[i-1][j] = aHand[j] // put card {aHand[#j]} into playerHand#(i-1) slot j
 		}
+		//******************************
+		//* Join player with hand into playerState
+		//? must create playerState PER PLAYER
+		playerState := []interface{}{cardShark[i-1], playerHands[i-1]}
+		fmt.Println("Player:", playerState[0])
+		fmt.Println("Hand:", playerState[1])
+		fmt.Print("--------\n")
+		// fmt.Println("Player:", thisPlayerState[0].([]player))
+		// fmt.Println("Hand:", thisPlayerState[1].([][]card))
+		//. interface{} - allows us to store elements of different types in slice
+		//******************************
+
 	}
 
 	// Print out dealt hands for verification
@@ -227,11 +233,52 @@ func main() {
 	// Cleanup display of state - start considering presentation?
 	// Research stat tables to teach Denise & Eddie how to play...
 	//* send player# and correlated hand# off to be sorted, scored, and strategy determined[fold,draw#,bet,bluff,raise,etc] @ sortAndScoreHand(playerHands[i])
+	// thisPlayerState := []interface{}{cardShark, playerHands}
+	// //` fmt.Println("\n\n-------- thisPlayerState: ", thisPlayerState)
+	// fmt.Print("\n\n--------\n\n")
+	// //` panic: interface conversion: interface {} is []main.player, not main.player
+	// fmt.Println("Player:", thisPlayerState[0].([]player))
+	// //` panic: interface conversion: interface {} is [][]main.card, not []main.card
+	// fmt.Print("\n\n--------\n\n")
+	// //` fmt.Println("Hand:", thisPlayerState[1].([]card))
+	// fmt.Println("Hand:", thisPlayerState[1].([][]card))
+	// fmt.Print("\n\n--------\n\n")
+
+	// fmt.Println("Hand:", thisPlayerState[0])
+
+	//&
+	// var playerState state
+	// for i :=0; i < playerCount; i++ {
+	// 	playerState[i] = establishPlayerState(cardShark[i], playerHands[i])
+
+	// 	// sortAndScoreHand()
+
+	// }
 
 	logDeck(theDeck, "full", true)
 }
 
+// func establishPlayerState (cardShark player, playerHands []card) state{
+// 	// thisPlayerState := []state{}
+// 	// thisPlayerState = append(thisPlayerState, cardShark)
+
+//    thisPlayerState := []interface{}{cardShark, playerHands}
+
+// 	return
+// }
+
+//    thisPlayerState := []interface{}{cardShark, playerHands}
+
+//     // Access elements of the slice
+//     fmt.Println("Player:", thisPlayerState[0].(Player).Name)
+//     fmt.Println("Hand:", thisPlayerState[1].([]Card))
+
 // func sortAndScoreHand(hand []card) (sortedHand [][]card, score int, desc string) {
 
 // 	return sortedHand, score, desc
+// }
+
+// type state struct {
+// 	thePlayer   player
+// 	theHand 	[]card
 // }

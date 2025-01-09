@@ -1,0 +1,39 @@
+#========================================
+#=      http://editorconfig.org
+#========================================
+
+#, Later assignments take precedence over earlier - allowings defaults with specific overrides.
+#, unset = remove the effect of that property, even if it has been set before. (Use editor default).
+
+#. root: Set to true to stop .editorconfig files search on current file. (Special property that should be specified at the top of the file outside of any sections.)
+root = true
+
+[*]
+#. charset: set to latin1, utf-8, utf-8-bom, utf-16be or utf-16le to control the character set.
+charset = utf-8
+#. insert_final_newline: set to true to ensure file ends with a newline when saving and false to ensure it doesn't.
+insert_final_newline = true
+#. trim_trailing_whitespace: set to true to remove any whitespace characters preceding newline characters and false to ensure it doesn't.
+trim_trailing_whitespace = true
+#. indent_style: set to tab or space to use hard tabs or soft tabs respectively.
+indent_style = space
+#. indent_size: a whole number defining the number of columns used for each indentation level and the width of soft tabs (when supported). When set to tab, the value of tab_width (if specified) will be used.
+#. tab_width: a whole number defining the number of columns used to represent a tab character. This defaults to the value of indent_size and doesn't usually need to be specified.
+indent_size = 4
+#. end_of_line: set to lf, cr, or crlf to control how line breaks are represented.  [Unix/osX/POSIX= lf(\n) - Wdws/DOS crlf (\r\n) - MacOS/C64= cr (\r)]
+#  NOTE: if you want to use native line endings between different operating systems it is better not to set this option and leave that task to the VCS!
+end_of_line = crlf
+
+[*.{md}]
+trim_trailing_whitespace = false
+eclint_indent_style = unset
+
+[*.{less, yml}]
+indent_size = 2
+
+[*.js]
+indent_size = 2
+
+#` Kept for usage capability example:
+# [{Makefile,go.mod,go.sum,*.go,.gitmodules}]
+# indent_style = space

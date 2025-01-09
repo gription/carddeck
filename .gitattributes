@@ -1,0 +1,538 @@
+# ========================================
+#&           .gitattributes
+# ========================================
+#, Defining attributes per path
+#= https://git-scm.com/docs/gitattributes
+
+#. OPT: To prevent OS-specific file in repository: these attributes can be stored in the .git/info/attributes file. Test w/:
+#~  git check-attr -a *
+
+#, -=* Why? *=-
+#` Specify line endings: Enforce LF or CRLF line endings for specific file types in your repository. This can be useful when collaborating across different OS. *.txt eol=lf (all txt files will use LF line endings)
+#` Marking files as binary: Git will treat files as binary and won’t attempt to merge or diff them. *.jpg binary (JPG files will be treated as binary)
+#` Marking files as export-ignore: Exclude files from archives (like ZIP or TAR files) created with git archive.
+#`    README.md export-ignore (README.md will be excluded from archives)
+#` Defining a diff driver: Define custom diff drivers for different file types, which can be useful for non-text files.
+#` ~   *.docx diff=word (Use Word diff for DOCX files)
+#` Setting the merge driver: Define how files are merged.
+#` ~   *.yml merge=yaml (Use YAML merge strategy for YAML files)
+#` Setting language in GitHub linguist: Control syntax highlighting and repository language statistics on GitHub.
+#` Ignore whitespace changes: Ignore changes to whitespace in diff calculations. *.md -whitespace (Ignores whitespace changes in Markdown files)
+#. Marking a file as locked: Prevents users from pushing changes where multiple people have edited the same file in the same commit. *.lock lock (Lock files can't be edited simultaneously)
+#. Enabling/Disabling filters: Apply or ignore certain filters, such as smudge/clean filters. *.txt filter=off (Disables filters for txt files)
+#. Defining file priority: Define which file Git should prioritize if there's a conflict. *.txt priority=100 (Prioritizes txt files in the event of a conflict)
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Specify line endings: Enforce LF or CRLF line endings for specific file types in your repository.
+#& This can be useful when collaborating across different OS. *.txt eol=lf (all txt files will use LF line endings)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+#% Normalizing End-Of-Line (EOL)
+# ie:  *nix = lf  -=|=-  Wdws = crlf
+#. Enforce on a clean but mixed repo with:
+#~ git add --renormalize
+
+#. Show files that will be normalized
+#~ git status
+#. If any files that should not be normalized show up in git status, add the following before 'git add -u'
+#| manual.pdf	-text
+#. Conversely, text files that Git does not detect can have normalization enabled manually.
+#| weirdchars.txt	text
+
+#*  Auto detect EOL & Normalize
+#. Handle line endings automatically for files detected as 'text' and leave all files detected as 'binary' untouched.
+#. Ensure that text files from any contributor have their line endings normalized to OS's line ending
+#. This will handle all files NOT found below it.
+#   text    These files should be normalized (i.e. convert LF to CRLF).
+#   binary  These files are binary and should be left untouched. - Note: binary is a macro for -text -diff.
+*   text=auto
+
+# [core]
+	# autocrlf=true
+#. Git verifies if the conversion is reversible for the current setting of core.autocrlf.
+#. For "true", Git rejects irreversible conversions; for "warn", Git only prints a warning but accepts an irreversible conversion.
+#. The safety triggers to prevent such a conversion done to the files in the work tree, but there are a few exceptions.
+    # core.safecrlf=true
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Setting the merge driver: Define how files are merged.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#~   *.yml merge=yaml (Use YAML merge strategy for YAML files)
+
+#*.sln       merge=binary
+#*.csproj    merge=binary
+#*.vbproj    merge=binary
+#*.vcxproj   merge=binary
+#*.vcproj    merge=binary
+#*.dbproj    merge=binary
+#*.fsproj    merge=binary
+#*.lsproj    merge=binary
+#*.wixproj   merge=binary
+#*.modelproj merge=binary
+#*.sqlproj   merge=binary
+#*.wwaproj   merge=binary
+
+#*.xproj     merge=binary
+#*.props     merge=binary
+#*.filters   merge=binary
+#*.vcxitems  merge=binary
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Ignore whitespace changes: Ignore changes to whitespace in diff calculations. *.md -whitespace (Ignores whitespace changes in Markdown files)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+*.md -whitespace
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Marking files as export-ignore: Exclude files from archives (like ZIP or TAR files) created with git archive.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#~    README.md export-ignore (README.md will be excluded from archives)
+
+.gitattributes  export-ignore
+.gitignore      export-ignore
+.gitkeep        export-ignore
+*.pyc    binary export-ignore
+*.pyo    binary export-ignore
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Setting language in GitHub linguist: Control syntax highlighting and repository language statistics on GitHub.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+*.gitattributes linguist-language=gitattributes
+*.gitattributes linguist-detectable=true
+*.gitattributes linguist-documentation=false
+*.md            linguist-detectable=true
+*.sql           linguist-detectable=true
+*.sql           linguist-language=sql
+
+#. Fixes syntax highlighting on GitHub to allow comments
+tsconfig.json       linguist-language=JSON-with-Comments
+.devcontainer.json  linguist-language=JSON-with-Comments
+devcontainer.json   linguist-language=JSON-with-Comments
+.vscode/*.json      linguist-language=JSON-with-Comments
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Defining a diff driver: Define custom diff drivers for different file types, which can be useful for non-text files.
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+*.html   text diff=html
+*.css    text diff=css
+*.pl     text diff=perl
+*.pm     text diff=perl
+
+*.pxd    text diff=python
+*.py     text diff=python
+*.py3    text diff=python
+*.pyw    text diff=python
+*.pyx    text diff=python
+*.pyz    text diff=python
+*.pyi    text diff=python
+
+*.md     text diff=markdown
+
+*.css             text diff=css
+*.htm             text diff=html
+*.html            text diff=html
+*.php             text diff=php
+*.py              text diff=python
+*.rb              text diff=ruby
+*.scss            text diff=css
+*.xhtml           text diff=html
+*.markdown        text diff=markdown
+*.md              text diff=markdown
+*.mdwn            text diff=markdown
+*.mdown           text diff=markdown
+*.mkd             text diff=markdown
+*.mkdn            text diff=markdown
+
+*.bibtex   text diff=bibtex
+*.md       text diff=markdown
+*.mdx      text diff=markdown
+*.tex      text diff=tex
+
+*.c     text diff=cpp
+*.cc    text diff=cpp
+*.cxx   text diff=cpp
+*.cpp   text diff=cpp
+*.cpi   text diff=cpp
+*.c++   text diff=cpp
+*.hpp   text diff=cpp
+*.h     text diff=cpp
+*.h++   text diff=cpp
+*.hh    text diff=cpp
+
+*.fs       text diff=fsharp
+*.fsx      text diff=fsharp
+
+*.css           text diff=css
+*.htm           text diff=html
+*.html          text diff=html
+
+*.java          text diff=java
+*.kt            text diff=kotlin
+*.groovy        text diff=java
+*.scala         text diff=java
+*.gradle        text diff=java
+*.gradle.kts    text diff=kotlin
+
+*.css           text diff=css
+*.scss          text diff=css
+*.htm           text diff=html
+*.html          text diff=html
+
+*.doc      diff=astextplain
+*.DOC      diff=astextplain
+*.docx     diff=astextplain
+*.DOCX     diff=astextplain
+*.dot      diff=astextplain
+*.DOT      diff=astextplain
+*.pdf      diff=astextplain
+*.PDF      diff=astextplain
+*.rtf      diff=astextplain
+*.RTF      diff=astextplain
+*.epub     diff=astextplain
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& Marking files as binary: Git will treat files as binary and won’t attempt to merge or diff them. *.jpg binary (JPG files will be treated as binary)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+#% Graphics
+# SVG treated as text by default.
+*.svg      text
+# If you want to treat it as binary, use the following line instead.
+# *.svg    binary
+
+*.ai              binary
+*.bmp             binary
+*.eps             binary
+*.gif             binary
+*.gifv            binary
+*.ico             binary
+*.jng             binary
+*.jp2             binary
+*.jpg             binary
+*.jpeg            binary
+*.jpx             binary
+*.jxr             binary
+*.pdf             binary
+*.png             binary
+*.psb             binary
+*.psd             binary
+*.svgz            binary
+*.tif             binary
+*.tiff            binary
+*.wbmp            binary
+*.webp            binary
+
+# Audio
+*.kar             binary
+*.m4a             binary
+*.mid             binary
+*.midi            binary
+*.mp3             binary
+*.ogg             binary
+*.ra              binary
+
+# Video
+*.3gpp            binary
+*.3gp             binary
+*.as              binary
+*.asf             binary
+*.asx             binary
+*.avi             binary
+*.fla             binary
+*.flv             binary
+*.m4v             binary
+*.mng             binary
+*.mov             binary
+*.mp4             binary
+*.mpeg            binary
+*.mpg             binary
+*.ogv             binary
+*.swc             binary
+*.swf             binary
+*.webm            binary
+
+# Fonts
+*.ttf             binary
+*.eot             binary
+*.otf             binary
+*.woff            binary
+*.woff2           binary
+
+# Archives
+*.7z              binary
+*.bz              binary
+*.bz2             binary
+*.bzip2           binary
+*.gz              binary
+*.lz              binary
+*.lzma            binary
+*.rar             binary
+*.tar             binary
+*.taz             binary
+*.tbz             binary
+*.tbz2            binary
+*.tgz             binary
+*.tlz             binary
+*.txz             binary
+*.xz              binary
+*.Z               binary
+*.zip             binary
+*.zst             binary
+
+# Compiled Object files
+*.slo   binary
+*.lo    binary
+*.o     binary
+*.obj   binary
+
+# Precompiled Headers
+*.gch   binary
+*.pch   binary
+
+# Compiled Dynamic libraries
+*.so    binary
+*.dylib binary
+*.dll   binary
+
+# Compiled Static libraries
+*.lai   binary
+*.la    binary
+*.a     binary
+*.lib   binary
+
+# Executables
+*.exe   binary
+*.out   binary
+*.app   binary
+
+*.class         binary
+*.ear           binary
+*.jar           binary
+*.war           binary
+*.jks           binary
+
+# PYTHON: Note: .db, .p, and .pkl files are associated with the python modules ``pickle``, ``dbm.*``, ``shelve``, ``marshal``, ``anydbm``, & ``bsddb`` (among others).
+*.db     binary
+*.p      binary
+*.pkl    binary
+*.pickle binary
+*.pyd    binary
+
+# Prevents massive diffs caused by vendored, minified files
+**/.yarn/releases/**   binary
+**/.yarn/plugins/**    binary
+
+# Prevents massive diffs from built files
+dist/*            binary
+
+#& Text files where line endings should be preserved
+# -text == NOT text
+*.patch    -text
+
+
+# =<>===============================<><>================================<><>================================<><>===============================<>=
+# ||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||
+# ||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||
+# ||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||
+# =<>===============================<><>================================<><>================================<><>===============================<>=
+
+#% Specify EOL per file ext:
+# *.vcproj	text eol=crlf   # Tune .vcproj files for Wdws
+# *.sh		text eol=lf     # Tune .sh files for *nix
+# *.jpg		-text           # jpeg's are not 'text' files (don't normalize)
+# Mac Snob much?: Treat all Go files in this repo as binary, with no git magic updating line endings. Windows users contributing to Go will need to use a modern version of git and editors capable of LF line endings.
+# *.go -text diff=golang
+
+#. ALT: Recursively match a zos-working-tree-encoding to files in subdirectories
+# path/to/directory1/** zos-working-tree-encoding=ibm-1047
+# path/to/directory2/** zos-working-tree-encoding=iso8859-1
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#% These files are *NIX specific and should retain Linefeeds for EOL (or Convert crlf => lf)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+# Force bash scripts to always use LF line endings so that if a repo is accessed in Unix via a file share from Windows, the scripts will work.
+*.bash     text eol=lf
+*.fish     text eol=lf
+*.ksh      text eol=lf
+*.sh       text eol=lf
+*.zsh      text eol=lf
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#% These files are Windows specific and should retain Carriage Returns And Linefeeds for EOL (or Convert lf => crlf)
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+#& Scripts
+# Force batch scripts to always use CRLF line endings so that if a repo is accessed in Windows via a file share from Linux, the scripts will work.
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.{ics,[iI][cC][sS]} text eol=crlf
+*.cmd                text eol=crlf
+*.bat                text eol=crlf
+
+*.ps1             text eol=crlf
+*.ps1x            text eol=crlf
+*.psm1            text eol=crlf
+*.psd1            text eol=crlf
+*.ps1xml          text eol=crlf
+*.pssc            text eol=crlf
+*.psrc            text eol=crlf
+*.cdxml           text eol=crlf
+
+#. RC files (like .babelrc or .eslintrc)
+*.*rc             text
+*.rc              text
+
+#. Ignore files (like .npmignore or .gitignore)
+*.*ignore         text
+
+#& IDE
+*.filters         text eol=crlf
+*.sln             text eol=crlf
+*.props           text eol=crlf
+*.vcxproj         text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.vcxitems        text eol=crlf
+*.csproj          text eol=crlf
+*.vbproj          text eol=crlf
+*.vcxproj         text eol=crlf
+*.vcproj          text eol=crlf
+*.dbproj          text eol=crlf
+*.fsproj          text eol=crlf
+*.lsproj          text eol=crlf
+*.wixproj         text eol=crlf
+*.modelproj       text eol=crlf
+*.sqlproj         text eol=crlf
+*.wwaproj         text eol=crlf
+*.xproj           text eol=crlf
+#. Including templates
+*.sln.tmpl        text eol=crlf
+*.props.tmpl      text eol=crlf
+*.vcxproj.tmpl    text eol=crlf
+
+#& Source code
+*.js              text
+*.mjs             text
+*.cjs             text
+*.jsp             text
+*.jspf            text
+*.jspx            text
+*.jsx             text
+*.lua             text
+*.coffee          text
+*.pl              text
+*.sass            text
+*.scm             text
+*.sql             text
+*.styl            text
+*.ts              text
+*.tsx             text
+*.inc             text
+*.less            text
+*.dart            text
+*.gradle          text
+*.html            text
+*.java            text
+*.py              text
+#. Jupyter notebook
+*.ipynb  text
+
+#. Docker
+Dockerfile        text
+
+#& Documentation
+*.ipynb           text
+*.md              text
+*.mdtxt           text
+*.mdtext          text
+*.txt             text
+AUTHORS           text
+CHANGELOG         text
+CHANGES           text
+CONTRIBUTING      text
+COPYING           text
+copyright         text
+*COPYRIGHT*       text
+INSTALL           text
+license           text
+LICENSE           text
+NEWS              text
+readme            text
+*README*          text
+TODO              text
+
+#& Templates
+*.dot             text
+*.ejs             text
+*.erb             text
+*.haml            text
+*.handlebars      text
+*.hbs             text
+*.hbt             text
+*.jade            text
+*.latte           text
+*.mustache        text
+*.njk             text
+*.phtml           text
+*.svelte          text
+*.tmpl            text
+*.tpl             text
+*.twig            text
+*.vue             text
+
+#& Configs
+*.cnf             text
+*.conf            text
+*.config          text
+.editorconfig     text
+.env              text
+.gitattributes    text
+.gitconfig        text
+.htaccess         text
+package.json      text
+.prettierrc       text
+*.toml            text
+*.yaml            text
+*.yml             text
+browserslist      text
+Makefile          text
+makefile          text
+
+#& Serialisation
+*.ini             text
+*.json            text
+*.toml            text
+*.xml             text
+*.yaml            text
+*.yml             text
+
+#. LOCKS
+package-lock.json text -diff
+pnpm-lock.yaml    text -diff
+yarn.lock         text -diff
+*.lock            text -diff
+
+#. Heroku
+Procfile          text
+
+
+#& Documents
+*.adoc            text
+*.textile         text
+*.mustache        text
+*.csv             text
+*.tab             text
+*.tsv             text
+*.txt             text
+*.sql             text
+
+#& misc
+*.ls              text
+*.map             text -diff
+*.od              text
+*.onlydata        text
+*.df              text
+*.properties      text
+*.tld             text
+*.tag             text
+*.tagx            text
