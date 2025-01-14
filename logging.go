@@ -7,14 +7,14 @@ import "fmt"
 func logCard(c card, yorn bool) {
 	if yorn {
 		fmt.Print(
-			"logCard: #",
-			c.idx, " - ",
-			c.suitedName, " - ",
-			c.rankPip, c.suitPip, " [Suit ",
-			c.suitRank, "/4] - Ranked: ",
-			c.rankInSuit, " amongst ",
-			c.suitPlural, ", and Card# ",
-			c.idx, " in (Aces high) Ordered-Deck sequence.\n",
+			" 🃏", //                                                         //.  Glyph
+			// " logCard: #", c.idx, //                                             //.  logCard: #24
+			" - ", c.rankPip, c.suitPip, //                                         //. - Q♥
+			" - ", c.suitedName, //                                                 //. - Queen of Hearts
+			// " - [Suit: ", c.suitRank, "/4]", //                                  //. - [Suit: 3/4]
+			// " - Ranked: ", c.rankInSuit, " amongst ", c.suitPlural, //           //. - Ranked: 11 amongst Hearts
+			// " - and Card#: ", c.idx, " in (Aces high) Ordered-Deck sequence.\n", //. - and Card#: 24 in (Aces high) Ordered-Deck sequence.
+			"\n",
 		)
 	}
 }
