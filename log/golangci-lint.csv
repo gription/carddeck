@@ -1,0 +1,30 @@
+constants.go:21:1  decorder          multiple "var" declarations are not allowed; use parentheses instead
+constants.go:34:1  decorder          type must not be placed after const (desired order: type,const,var,func)
+constants.go:51:1  decorder          type must not be placed after const (desired order: type,const,var,func)
+constants.go:51:1  decorder          multiple "type" declarations are not allowed; use parentheses instead
+cards.go:11:8      exhaustruct       main.card is missing fields suitedName, noSuitName, suitPlural, suitSingle, rankPip, suitPip, suitPipUC, suitRank, rankInSuit
+main.go:12:8       exhaustruct       main.player is missing fields name, hand, handScore, handDesc, wins, losses
+constants.go:11:2  gochecknoglobals  names is a global variable
+constants.go:12:2  gochecknoglobals  rankBySuit is a global variable
+constants.go:13:2  gochecknoglobals  suitedNames is a global variable
+constants.go:21:5  gochecknoglobals  glyphRef is a global variable
+cards.go:39:23     gosec             G404: Use of weak random number generator (math/rand or math/rand/v2 instead of crypto/rand)
+logging.go:25:3    intrange          for loop can be changed to use an integer range (Go 1.22+)
+main.go:11:2       intrange          for loop can be changed to use an integer range (Go 1.22+)
+cards.go:35:2      nlreturn          return with no blank line before
+cards.go:41:2      nlreturn          return with no blank line before
+cards.go:48:2      nlreturn          return with no blank line before
+cards.go:57:2      nlreturn          return with no blank line before
+logging.go:40:2    nlreturn          return with no blank line before
+cards.go:1:1       revive            package-comments: should have a package comment
+cards.go:31:3      revive            modifies-parameter: parameter 'theDeck' seems to be modified
+cards.go:40:2      revive            modifies-parameter: parameter 'theDeck' seems to be modified
+cards.go:45:10     revive            var-declaration: should omit type int from declaration of var idx; it will be inferred from the right-hand side
+cards.go:47:2      revive            modifies-parameter: parameter 'theDeck' seems to be modified
+cards.go:45:10     stylecheck        ST1023: should omit type int from declaration; it will be inferred from the right-hand side
+constants.go:11:2  unused            var `names` is unused
+constants.go:53:2  unused            field `name` is unused
+constants.go:55:2  unused            field `handScore` is unused
+constants.go:56:2  unused            field `handDesc` is unused
+constants.go:57:2  unused            field `wins` is unused
+constants.go:58:2  unused            field `losses` is unused

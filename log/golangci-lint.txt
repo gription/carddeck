@@ -1,0 +1,90 @@
+[1mconstants.go:21[22m:1: [31mmultiple "var" declarations are not allowed; use parentheses instead[0m (decorder)
+var glyphRef = map[string]string{ // Maps are reference types, so they are always passed by reference. You don't need a pointer.
+[33m^[0m
+[1mconstants.go:34[22m:1: [31mtype must not be placed after const (desired order: type,const,var,func)[0m (decorder)
+type card struct {
+[33m^[0m
+[1mconstants.go:51[22m:1: [31mtype must not be placed after const (desired order: type,const,var,func)[0m (decorder)
+type player struct {
+[33m^[0m
+[1mconstants.go:51[22m:1: [31mmultiple "type" declarations are not allowed; use parentheses instead[0m (decorder)
+type player struct {
+[33m^[0m
+[1mcards.go:11[22m:8: [31mmain.card is missing fields suitedName, noSuitName, suitPlural, suitSingle, rankPip, suitPip, suitPipUC, suitRank, rankInSuit[0m (exhaustruct)
+		c := card{idx: i}
+		     [33m^[0m
+[1mmain.go:12[22m:8: [31mmain.player is missing fields name, hand, handScore, handDesc, wins, losses[0m (exhaustruct)
+		p := player{idx: i}
+		     [33m^[0m
+[1mconstants.go:11[22m:2: [31mnames is a global variable[0m (gochecknoglobals)
+	names       = []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
+	[33m^[0m
+[1mconstants.go:12[22m:2: [31mrankBySuit is a global variable[0m (gochecknoglobals)
+	rankBySuit  = map[string]int{"Club": 1, "Diamond": 2, "Heart": 3, "Spade": 4, "Joker": 5}
+	[33m^[0m
+[1mconstants.go:13[22m:2: [31msuitedNames is a global variable[0m (gochecknoglobals)
+	suitedNames = [52]string{
+	[33m^[0m
+[1mconstants.go:21[22m:5: [31mglyphRef is a global variable[0m (gochecknoglobals)
+var glyphRef = map[string]string{ // Maps are reference types, so they are always passed by reference. You don't need a pointer.
+    [33m^[0m
+[1mcards.go:39[22m:23: [31mG404: Use of weak random number generator (math/rand or math/rand/v2 instead of crypto/rand)[0m (gosec)
+	cardDrawn := theDeck[rand.IntN(len(theDeck))]
+	                     [33m^[0m
+[1mlogging.go:25[22m:3: [31mfor loop can be changed to use an integer range (Go 1.22+)[0m (intrange)
+		for i := 0; i < len(deck); i++ {
+		[33m^[0m
+[1mmain.go:11[22m:2: [31mfor loop can be changed to use an integer range (Go 1.22+)[0m (intrange)
+	for i := 0; i < numberOfPlayers; i++ {
+	[33m^[0m
+[1mcards.go:35[22m:2: [31mreturn with no blank line before[0m (nlreturn)
+	return theDeck, cardsDealt[:]
+	[33m^[0m
+[1mcards.go:41[22m:2: [31mreturn with no blank line before[0m (nlreturn)
+	return theDeck, cardDrawn
+	[33m^[0m
+[1mcards.go:48[22m:2: [31mreturn with no blank line before[0m (nlreturn)
+	return theDeck
+	[33m^[0m
+[1mcards.go:57[22m:2: [31mreturn with no blank line before[0m (nlreturn)
+	return -1 // no card found
+	[33m^[0m
+[1mlogging.go:40[22m:2: [31mreturn with no blank line before[0m (nlreturn)
+	return 0
+	[33m^[0m
+[1mcards.go:1[22m:1: [31mpackage-comments: should have a package comment[0m (revive)
+package main
+[33m^[0m
+[1mcards.go:31[22m:3: [31mmodifies-parameter: parameter 'theDeck' seems to be modified[0m (revive)
+		theDeck, currentCard = pickACard(theDeck)
+		[33m^[0m
+[1mcards.go:40[22m:2: [31mmodifies-parameter: parameter 'theDeck' seems to be modified[0m (revive)
+	theDeck = removeCard(theDeck, cardDrawn)
+	[33m^[0m
+[1mcards.go:45[22m:10: [31mvar-declaration: should omit type int from declaration of var idx; it will be inferred from the right-hand side[0m (revive)
+	var idx int = findCardIndex(theDeck, cardToRemove)
+	        [33m^[0m
+[1mcards.go:47[22m:2: [31mmodifies-parameter: parameter 'theDeck' seems to be modified[0m (revive)
+	theDeck = theDeck[:len(theDeck)-1]     // then lop it off - fast
+	[33m^[0m
+[1mcards.go:45[22m:10: [31mST1023: should omit type int from declaration; it will be inferred from the right-hand side[0m (stylecheck)
+	var idx int = findCardIndex(theDeck, cardToRemove)
+	        [33m^[0m
+[1mconstants.go:11[22m:2: [31mvar `names` is unused[0m (unused)
+	names       = []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
+	[33m^[0m
+[1mconstants.go:53[22m:2: [31mfield `name` is unused[0m (unused)
+	name      string
+	[33m^[0m
+[1mconstants.go:55[22m:2: [31mfield `handScore` is unused[0m (unused)
+	handScore int
+	[33m^[0m
+[1mconstants.go:56[22m:2: [31mfield `handDesc` is unused[0m (unused)
+	handDesc  string
+	[33m^[0m
+[1mconstants.go:57[22m:2: [31mfield `wins` is unused[0m (unused)
+	wins      int
+	[33m^[0m
+[1mconstants.go:58[22m:2: [31mfield `losses` is unused[0m (unused)
+	losses    int
+	[33m^[0m
