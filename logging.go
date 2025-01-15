@@ -21,13 +21,14 @@ func logCard(c card, yorn bool) {
 
 func logDeck(deck []card, format string, yorn bool) int {
 	if yorn {
-		fmt.Println("\n -=*", len(deck), "Cards remain in deck:")
-		for i := 0; i < len(deck); i++ {
+		for i := range deck {
 			if format == "full" {
 				c := deck[i]
+
 				if i%6 == 0 {
 					fmt.Print("\n")
 				}
+
 				if len(c.suitedName) > 15 {
 					fmt.Print(c.idx, "\t", c.suitedName, "\t")
 				} else {
@@ -35,7 +36,15 @@ func logDeck(deck []card, format string, yorn bool) int {
 				}
 			}
 		}
+
+		fmt.Println("\n --==<", len(deck), "Cards remain in deck. >==--")
 	}
-	fmt.Print("\n")
+
 	return 0
+}
+
+func logPlayers(players []player) {
+	for i := range numberOfPlayers {
+		fmt.Print(players[i].name, ": ", descHand(players[i].hand), "\n")
+	}
 }

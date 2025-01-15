@@ -7,8 +7,20 @@ import (
 
 func createDeck() []card {
 	accumDeck := []card{}
+
 	for i := 1; i <= 52; i++ {
-		c := card{idx: i}
+		c := card{
+			idx:        i,
+			suitedName: "",
+			noSuitName: "",
+			suitPlural: "",
+			suitSingle: "",
+			rankInSuit: 0,
+			rankPip:    "",
+			suitPip:    "",
+			suitPipUC:  "",
+			suitRank:   0,
+		}
 		c.suitedName = suitedNames[c.idx-1]
 		c.noSuitName = strings.Fields(c.suitedName)[0]
 		c.suitPlural = strings.Fields(c.suitedName)[2]
@@ -25,27 +37,35 @@ func createDeck() []card {
 }
 
 func deal(theDeck []card, numberOfCards int) ([]card, []card) {
+	modifiedDeck := theDeck
+
 	var cardsDealt []card
+
 	var currentCard card
+
 	for i := 1; i <= numberOfCards; i++ {
-		theDeck, currentCard = pickACard(theDeck)
-		logCard(currentCard, true)
+		modifiedDeck, currentCard = pickACard(modifiedDeck)
+		logCard(currentCard, false)
 		cardsDealt = append(cardsDealt, currentCard)
 	}
-	return theDeck, cardsDealt[:]
+
+	return modifiedDeck, cardsDealt[:]
 }
 
 func pickACard(theDeck []card) ([]card, card) {
 	cardDrawn := theDeck[rand.IntN(len(theDeck))]
-	theDeck = removeCard(theDeck, cardDrawn)
-	return theDeck, cardDrawn
+	modifiedDeck := removeCard(theDeck, cardDrawn)
+
+	return modifiedDeck, cardDrawn
 }
 
 func removeCard(theDeck []card, cardToRemove card) []card {
-	var idx int = findCardIndex(theDeck, cardToRemove)
-	theDeck[idx] = theDeck[len(theDeck)-1] // move to back line
-	theDeck = theDeck[:len(theDeck)-1]     // then lop it off - fast
-	return theDeck
+	idx := findCardIndex(theDeck, cardToRemove)
+
+	theDeck[idx] = theDeck[len(theDeck)-1]   // move to back line
+	modifiedDeck := theDeck[:len(theDeck)-1] // then lop it off - fast
+
+	return modifiedDeck
 }
 
 func findCardIndex(theDeck []card, cardInQuestion card) int {
@@ -54,5 +74,6 @@ func findCardIndex(theDeck []card, cardInQuestion card) int {
 			return idx
 		}
 	}
+
 	return -1 // no card found
 }
