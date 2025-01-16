@@ -1,9 +1,23 @@
 package main
 
 import (
-	"math/rand/v2"
+	"crypto/rand"
+	"math/big"
 	"strings"
 )
+
+func getRandCardNum(shoeSize int) int {
+	shoeSize64 := int64(shoeSize) // max 51
+
+	randBigInt, err := rand.Int(rand.Reader, big.NewInt(shoeSize64))
+	if err != nil {
+		panic(err)
+	}
+
+	randInt := int(randBigInt.Int64()) // int <- Int64 <- *big.Int
+
+	return randInt
+}
 
 func createDeck() []card {
 	accumDeck := []card{}
@@ -53,7 +67,7 @@ func deal(theDeck []card, numberOfCards int) ([]card, []card) {
 }
 
 func pickACard(theDeck []card) ([]card, card) {
-	cardDrawn := theDeck[rand.IntN(len(theDeck))]
+	cardDrawn := theDeck[getRandCardNum(len(theDeck))]
 	modifiedDeck := removeCard(theDeck, cardDrawn)
 
 	return modifiedDeck, cardDrawn
@@ -76,4 +90,17 @@ func findCardIndex(theDeck []card, cardInQuestion card) int {
 	}
 
 	return -1 // no card found
+}
+
+func descHand(playerHand []card) string {
+	var handDesc string
+
+	for i := range playerHand {
+		thumbNext := playerHand[i].suitedName
+		handDesc = handDesc + thumbNext + ", "
+	}
+
+	handDesc = strings.TrimSuffix(handDesc, ", ")
+
+	return handDesc
 }
