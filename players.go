@@ -1,8 +1,10 @@
 package main
 
-//? player numbers from 0 or 1 ?
+//? should player numbers from 0 or 1 ?
 
 func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) ([]card, []player) {
+	playerNames := []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
+
 	players := []player{} //? players := []player{}  diff?  either works -  BUT?
 	//                            //? var players []player      Happier wif pre-alloc from top choice?
 	shoe := theDeck

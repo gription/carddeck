@@ -220,6 +220,7 @@ linters:
     - recvcheck                     #| recvcheck: Checks for receiver type consistency.
     - spancheck                     #| spancheck: Checks for mistakes with OpenTelemetry/Census spans.
     - usetesting                    #| usetesting: Reports uses of functions with replacement inside the testing package. [auto-fix]
+    - gochecknoglobals              #| gochecknoglobals: Check that no global variables exist.
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #
@@ -241,7 +242,6 @@ linters:
 # . revive -  unhandled-error
 
 #% -- Protentially Temporary
-        - gochecknoglobals              #| gochecknoglobals: Check that no global variables exist.
         - godox                         #| godox: Tool for detection of FIXME, TODO and other comment keywords. [fast]
         - gocritic                      #| gocritic: Provides diagnostics that check for bugs, performance and style issues. [auto-fix]  --  Dislikes 'commentedOutCode' ?
 
@@ -480,8 +480,8 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#cyclomatic
       - name: cyclomatic
         severity: warning
-        disabled: false           #* Changed
-        arguments: [10]          # 10 - was 3
+        disabled: false           #* Changed - What's genuinely best?  War on complexity vs good judgment?
+        arguments: [20]          # was 3         Only as complicated as it has to be..
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#datarace
       - name: datarace
         severity: warning
