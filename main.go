@@ -37,16 +37,6 @@ func sortAndScore(aHand []card) ([]card, int) {
 
 	setScore := checkForSets(aHand)
 
-	//, setScore
-	//| 0 = High Card   V   K
-	//| 1 = Pair        V   K
-	//| 2 = Two Pair    V   K   Integrate 2nd_Pair_Val into Kicker string
-	//| 3 = Trips       V   K
-	//| 4 = Quads       V   K
-	//| 5 = Full House  V   V
-	//. V = rankInSuit
-	//. K = String of 'Kickers' (Incorporate suits for the rarest split or just chop pot?)
-
 	// & log hand
 	for i := range aHand {
 		fmt.Println(i, aHand[i].suitedName, "- Rank:", aHand[i].rankInSuit)
@@ -54,21 +44,40 @@ func sortAndScore(aHand []card) ([]card, int) {
 
 	fmt.Print("Final setScore:", setScore, "\n\n")
 
-	//* Now test for seqScore (straight, flush, straight-flush, royal-flush)
-	//, seqScore
-	//| 0 = Nothing
-	//| 1 = Straight
-	//| 2 = Flush
-	//| 3 = Straight Flush
-	//| 4 = Royal Flush
-
-	//* implement seqScore & setScore logic for handScore
-	//* Refactor to refine scores (set/pair PipValues & Kickers)
-	//* figure out 'kickers' to address ties..
+	seqScore := checkForSeqs(aHand)
+	fmt.Println("seqScore: :", seqScore)
+	//* NEXT: implement seqScore + setScore logic for = handScore
+	//* NEXT: Refactor to refine scores (set/pair PipValues & Kickers)
+	//* NEXT: figure out 'kickers' to address ties..
+	//? yrst assert certain hands?
 	return aHand, score
 }
 
+func checkForSeqs(aHand []card) int {
+	//, seqScore
+	//| 0 = Nothing         V   K
+	//| 1 = Straight        V   K
+	//| 2 = Flush           V   K
+	//| 3 = Straight Flush  V   K
+	//| 4 = Royal Flush     V   K
+	//. V = rankInSuit of highest card in sequence/hand
+	//. K = String of 'Kickers'
+	//* Now test for seqScore (straight, flush, straight-flush, royal-flush)
+	seqScore := len(aHand)
+
+	return seqScore
+}
+
 func checkForSets(aHand []card) int {
+	//, setScore
+	//| 0 = High Card   V   K
+	//| 1 = Pair        V   K
+	//| 2 = Two Pair    V   K   Integrate 2nd_Pair_Val into Kicker string
+	//| 3 = Trips       V   K
+	//| 4 = Quads       V   K
+	//| 5 = Full House  V   V
+	//. V = int - rankInSuit of top set/pair
+	//. K = String of 'Kickers'
 	setScore := 1 // has at least a Pair
 	pairCount := 0
 
@@ -81,7 +90,7 @@ func checkForSets(aHand []card) int {
 		return 0 // not even a pair
 	}
 
-	// sort setTally in descending order
+	// sort setTally map into 'keys' slice by descending order
 	keys := make([]int, 0, len(setTally))
 
 	for key := range setTally {
@@ -118,3 +127,8 @@ func checkForSets(aHand []card) int {
 
 	return setScore // defaults to just the pair..
 }
+
+// TODO: splitKickers
+// func splitKickers(aHand []card, num int) ([]card, []card) { // divide 'num' of 'focus' cards from leftover 'kicker' cards
+//     return focus, kickers
+// }

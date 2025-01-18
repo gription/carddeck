@@ -3,6 +3,8 @@
 ---
 ### ***Go v1.23.3*** on/for Windows 11 ~ Jan 2025
 
+Golang virtual card deck, and the tools most frequently required to manipulate it in a tabletop card game.
+
 My first project in Go - just an *exploration* - this started as a playing card deck manipulation module but is drifting towards a text-based poker game.
 This is entirely about the (programming) journey over any potential destination, and no efforts are extended towards consistency, human grokability, functionality, or suitability for purpose.
 Assume that just reading any of my code will wreck your computer, your health, your relationships, your finances, your mental acuity, and your spirituality.
