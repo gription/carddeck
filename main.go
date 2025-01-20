@@ -30,10 +30,10 @@ func main() {
 	// players[0].hand, players[0].handScore = gimmeRoyalFlush()
 
 	// players[0].hand, players[0].handScore = gimmeHighCard()
-	players[0].hand, players[0].handScore = gimmeOnePair()
+	// players[0].hand, players[0].handScore = gimmeOnePair()
 	// players[0].hand, players[0].handScore = gimmeTwoPair()
 	// players[0].hand, players[0].handScore = gimmeTrips()
-	// players[0].hand, players[0].handScore = gimmeQuads()
+	players[0].hand, players[0].handScore = gimmeQuads()
 	// players[0].hand, players[0].handScore = gimmeFullHouse()
 	// players[0].hand, players[0].handScore = gimmeTrash()
 	logPlayers(players)

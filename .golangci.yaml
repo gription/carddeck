@@ -200,7 +200,6 @@ linters:
     - makezero                      #| makezero: Finds slice declarations with non-zero initial length.  --  Slice declarations with non-zero initial length. Not my case.
     - musttag                       #| musttag: Enforce field tags in (un)marshaled structs.  --  Enforce tags in un/marshaled structs. Cool but not my case.
     - nlreturn                      #| nlreturn: Nlreturn checks for a new line before return and branch statements to increase code clarity. [fast, auto-fix]  --  Forces newlines in some places. -  wsl linter what implements the same checks?
-    - nonamedreturns                #| nonamedreturns: Reports all named returns.  --  Reports all named returns, not that bad.
     - nosprintfhostport             #| nosprintfhostport: Checks for misuse of Sprintf to construct a host with port in a URL. [fast]  --  Finds misuse of Sprintf with host:port in a URL. Cool but rare.
     - paralleltest                  #| paralleltest: Detects missing usage of t.Parallel() method in your Go test.  --  I don't use t.Parallel() that much.
     - testpackage                   #| testpackage: Linter that makes you use a separate _test package. [fast]  --  Often non-`_test` package is ok.
@@ -241,9 +240,10 @@ linters:
 # . revive -  empty-lines
 # . revive -  unhandled-error
 
-#% -- Protentially Temporary
+#% -- Potentially Temporary
         - godox                         #| godox: Tool for detection of FIXME, TODO and other comment keywords. [fast]
         - gocritic                      #| gocritic: Provides diagnostics that check for bugs, performance and style issues. [auto-fix]  --  Dislikes 'commentedOutCode' ?
+        - nonamedreturns                #| nonamedreturns: Reports all named returns.  --  Reports all named returns, not that bad. = https://github.com/firefart/nonamedreturns - @odds w/ revive's "confusing-naming"
 
 #% -- Probably permanent
         - nestif                        #| nestif: Reports deeply nested if statements. [fast]  --  Deeply(?) nested if statements, subjective.
@@ -459,8 +459,8 @@ linters-settings:
         arguments: [ "nolint" ]   # added
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#confusing-naming
       - name: confusing-naming
-        severity: warning
-        disabled: false
+        severity: warning           #? Under consideration
+        disabled: false             #? Right now 'nonamedreturns' is disabled to allow this?
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#confusing-results
       - name: confusing-results
         severity: warning

@@ -2,7 +2,7 @@ package main
 
 type (
 	card struct {
-		idx        int    // 0..            // Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)  // TODO: DEPRECATE [idx instead]
+		idx        int    // 0..            // Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)
 		suitedName string // "Ace of Spades"
 		noSuitName string // "Ace" 			// Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
 		suitPlural string // "Spades"  		// Clubs, Diamonds, Hearts, Spades, Jokers

@@ -5,6 +5,26 @@ import (
 	"sort"
 )
 
+//, seqScore [Sequence Score - Where 5 cards are 'active' & 'kicker' is the highest of those five]
+//| 0 = Nothing         V   K
+//| 1 = Straight        V   K
+//| 2 = Flush           V   K
+//| 3 = Straight Flush  V   K
+//| 4 = Royal Flush     V   K
+//. V = Hand Indicator
+//. K = rankInSuit of highest card in sequence/hand
+//, setScore [Set Score - If no Sequences apply tally the sets, and track what's left as the 'kicker' - 2-Pair = Anomaly]
+//| 0 = High Card   V   K
+//| 1 = Pair        V   K
+//| 2 = Two Pair    V   K   ? Integrate 2nd_Pair_Val into Kicker string ?
+//| 3 = Trips       V   K
+//| 4 = Quads       V   K
+//| 5 = Full House  V   V
+//. V =  int - Hand Indicator
+//. K =  slice of 'Kickers' (inactive but tiebreakers)
+//* TBD = rankInSuit of top set/pair (+2ND PAIR) {Probably make V slice or struct w/ 2+ values (+1 for 2nd pair}
+//? maybe add kickers to player struct .. maybe even 2nd pair?
+
 func sortAndScore(aHand []card) ([]card, int) {
 	// var sortedHand []card
 	score := 1
@@ -14,13 +34,15 @@ func sortAndScore(aHand []card) ([]card, int) {
 		return aHand[i].rankInSuit > aHand[j].rankInSuit
 	})
 
-	seqScore, highCard := checkForSeqs(aHand) // seqScore: 0=Nothing, 1=Straight, 2=Flush, 3=Straight-Flush, 4=Royal-Flush
-	fmt.Println("Final seqScore:", seqScore, "highCard:", highCard)
+	// seqScore: 0=Nothing, 1=Straight, 2=Flush, 3=Straight-Flush, 4=Royal-Flush
+	seqScore, highCard := checkForSeqs(aHand)
+	fmt.Println("Final seqScore:", seqScore, ": highCard:", highCard)
 	fmt.Println("------------------------------")
 
 	if seqScore == 0 {
-		setScore, kicker := checkForSets(aHand) // setScore: 0=High Card, 1=Pair, 2=Two Pair, 3=Trips, 4=Quads, 5=Full House [kicker = slice of 'extra' []card ]
-		fmt.Println("Final setScore:", setScore, "kicker:", kicker)
+		// setScore: 0=High Card, 1=Pair, 2=Two Pair, 3=Trips, 4=Quads, 5=Full House [kicker = slice of 'extra' []cards]
+		setScore, kicker := checkForSets(aHand)
+		fmt.Println("Final setScore:", setScore, ": kicker:", kicker)
 		fmt.Println("====================================================")
 	}
 	// & log hand
@@ -28,16 +50,15 @@ func sortAndScore(aHand []card) ([]card, int) {
 	// 	fmt.Println(i, aHand[i].suitedName, "- Rank:", aHand[i].rankInSuit)
 	// }
 
-	//* NEXT: implement seqScore + setScore logic for = handScore
-	//* NEXT: Refactor to refine scores (set/pair PipValues & Kickers to address ties..)
+	//* NEXT: Refactor to refine scores - seqScore + setScore logic for = score
 	return aHand, score
 }
 
-func checkForSeqs(aHand []card) (int, int) {
-	seqScore := 0 // defaults to no sequences
+func checkForSeqs(aHand []card) (seqScore int, highCard int) {
+	// seqScore := 0 // defaults to no sequences
 	isStraight := true
 	isFlush := false
-	highCard := 0
+	// highCard := 0
 	straightAssessment := make(map[int]int)
 
 	var priorCard int
@@ -90,44 +111,37 @@ func checkForSeqs(aHand []card) (int, int) {
 	return seqScore, highCard
 }
 
-// ** kickers: must take applied cards out of aHand, sort the remains by rankInHand if >1 and return sorted 'minihand'
-// * intent: build string of 'kickers' then call splitKickers with aHand and kickers string - extracting cards from aHand per kickers values & returning minihand of kicker cards
 func checkForSets(aHand []card) (int, []card) {
 	setScore := 1 // defaults to just the pair..
 	pairCount := 0
 
-	var kickers string
-
-	setTally := make(map[int]int)
-	for _, card := range aHand { // compile k/v pairs reflecting rankInSuit/qty map[7:2 11:1 13:2]
-		setTally[card.rankInSuit]++
+	setMap := make(map[int]int)
+	for _, card := range aHand { // compile k/v pairs reflecting rankInSuit/qty
+		setMap[card.rankInSuit]++ // ie: map[7:2 11:1 13:2] = 2 Pairs (Aces & Eights + Queen Kicker)
 	}
 
-	if (len(setTally)) == (len(aHand)) {
-		kickerCards := splitKickers(aHand, kickers)
+	handCfg := copyHashMapII(setMap)       // copy reqd as splitKickers
+	kickers := splitKickers(aHand, setMap) // was dropping non-kickers from setMap {scope?}
 
-		return 0, kickerCards //* not even a pair
+	if (len(handCfg)) == (len(aHand)) {
+		return 0, aHand // not even a pair
 	}
 
-	for rankInSuit := range setTally {
-		if setTally[rankInSuit] > 1 {
+	for rankInSuit := range handCfg {
+		if handCfg[rankInSuit] > 1 {
 			pairCount++ // tally pairs
 		}
 	}
 
-	for _, qty := range setTally {
+	for _, qty := range handCfg {
 		if qty == 4 {
-			kickerCards := splitKickers(aHand, kickers)
-
-			return 4, kickerCards //* quads
+			return 4, kickers // quads
 		}
 
 		if qty == 3 {
-			for _, qty := range setTally {
+			for _, qty := range handCfg {
 				if qty == 2 {
-					kickerCards := splitKickers(aHand, kickers)
-
-					return 5, kickerCards //* full house
+					return 5, kickers // full house
 				}
 
 				setScore = 3 // trips
@@ -139,41 +153,35 @@ func checkForSets(aHand []card) (int, []card) {
 		setScore = 2 // two pair
 	}
 
-	kickerCards := splitKickers(aHand, kickers)
-
-	return setScore, kickerCards //* defaults to just the pair..
+	return setScore, kickers // defaults to just the pair..
 }
 
-// TODO: splitKickers
-func splitKickers(aHand []card, kickers string) []card { // divide 'num' of 'focus' cards from leftover 'kicker' cards
-	var kickerCards []card
+func splitKickers(aHand []card, setMap map[int]int) []card {
+	kickers := []card{} // {} = pre-allocate?
 
-	for i := range aHand {
-		for j := range kickers {
-			if j == aHand[i].rankInSuit { //?rankPip
-				kickerCards = append(kickerCards, aHand[i])
+	for key, val := range setMap {
+		if val != 1 { // delete all but singular cards
+			delete(setMap, key)
+		}
+	}
+
+	for _, card := range aHand { // convert setMap back to cards
+		for rank := range setMap {
+			if rank == card.rankInSuit {
+				kickers = append(kickers, card)
 			}
 		}
 	}
-	// .cards: func removeCard(theDeck []card, cardToRemove card) []card {  ...	return modifiedDeck }
 
-	return kickerCards
+	return kickers
 }
 
-//, seqScore
-//| 0 = Nothing         V   K
-//| 1 = Straight        V   K
-//| 2 = Flush           V   K
-//| 3 = Straight Flush  V   K
-//| 4 = Royal Flush     V   K
-//. V = rankInSuit of highest card in sequence/hand
-//. K = String of 'Kickers'
-//, setScore
-//| 0 = High Card   V   K
-//| 1 = Pair        V   K
-//| 2 = Two Pair    V   K   Integrate 2nd_Pair_Val into Kicker string
-//| 3 = Trips       V   K
-//| 4 = Quads       V   K
-//| 5 = Full House  V   V
-//. V = int - rankInSuit of top set/pair
-//. K = String of 'Kickers'
+func copyHashMapII(originalMap map[int]int) map[int]int {
+	newMap := make(map[int]int)
+
+	for key, value := range originalMap {
+		newMap[key] = value
+	}
+
+	return newMap
+}
