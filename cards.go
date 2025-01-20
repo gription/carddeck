@@ -16,13 +16,13 @@ func createDeck() []card {
 			"Two of Spades", "Three of Spades", "Four of Spades", "Five of Spades", "Six of Spades", "Seven of Spades", "Eight of Spades", "Nine of Spades", "Ten of Spades", "Jack of Spades", "Queen of Spades", "King of Spades", "Ace of Spades",
 		}
 		glyphRef = map[string]string{ // Maps are reference types, so they are always passed by reference. You don't need a pointer.
-			"Club":        "♣",
+			"Club":        "♣", // Coerce Heart Red  &#x2665;&#xFE0F; - Coerce Black &#x2665;&#xFE0E;
 			"Diamond":     "♦",
 			"Heart":       "♥",
 			"Spade":       "♠️",
 			"♣":           "U+2663",
 			"♦":           "U+2666",
-			"♥":           "U+2665", // Coerce Heart Red  &#x2665;&#xFE0F; - Coerce Black &#x2665;&#xFE0E;
+			"♥":           "U+2665",
 			"♠":           "U+2660",
 			"BLACK JOKER": "U+1F0CF",
 			"🃏":           "U+1F0CF",
@@ -123,8 +123,8 @@ func descHand(playerHand []card) string {
 	var handDesc string
 
 	for i := range playerHand {
-		thumbNext := playerHand[i].suitedName
-		handDesc = handDesc + thumbNext + ", "
+		nextCard := playerHand[i].suitedName
+		handDesc = handDesc + nextCard + ", "
 	}
 
 	handDesc = strings.TrimSuffix(handDesc, ", ")

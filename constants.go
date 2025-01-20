@@ -29,7 +29,7 @@ type (
 )
 
 const (
-	numberOfPlayers int = 4
+	numberOfPlayers int = 1
 	cardsPerPlayer  int = 5
 	rankPips            = "W23456789TJQKA" // W=Wild(Joker)
 	suitPips            = "♣♦♥♠"
