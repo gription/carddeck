@@ -6,55 +6,63 @@ import (
 	"strconv"
 )
 
+//%                             compiledScore
 //, seqScore [Sequence Score - Where 5 cards are 'active' & 'kicker' is the highest of those five]
-//| 0 = Nothing         V   K
-//| 1 = Straight        V   K
-//| 2 = Flush           V   K
-//| 3 = Straight Flush  V   K
-//| 4 = Royal Flush     V   K
+//| 0 = Nothing         0   K       x
+//| 1 = Straight        1   K       4
+//| 2 = Flush           2   K       5
+//| 3 = Straight Flush  3   K       8
+//| 4 = Royal Flush     4   K       9
 //. V = Hand Indicator
 //. K = rankInSuit of highest card in sequence/hand
 //, setScore [Set Score - If no Sequences apply tally the sets, and track what's left as the 'kicker' - 2-Pair = Anomaly]
-//| 0 = High Card   V   K
-//| 1 = Pair        V   K
-//| 2 = Two Pair    V   K   ? Integrate 2nd_Pair_Val into Kicker string ?
-//| 3 = Trips       V   K
-//| 4 = Quads       V   K
-//| 5 = Full House  V   V
+//| 0 = High Card   0   K           0
+//| 1 = Pair        1   K           1
+//| 2 = Two Pair    2   K           2
+//| 3 = Trips       3   K           3
+//| 4 = Quads       4   K           7
+//| 5 = Full House  5   V           6
 //. V =  int - Hand Indicator
 //. K =  slice of 'Kickers' (inactive but tiebreakers)
 //? maybe add kickers to player struct .. maybe even 2nd pair?
 
-func sortAndScore(aHand []card) ([]card, int) {
-	score := 1
-
-	// sort cards descending by rankInSuit {slice of structs}
-	sort.Slice(aHand, func(i, j int) bool {
+func sortAndScore(aHand []card) ([]card, int, []card, string) {
+	sort.Slice(aHand, func(i, j int) bool { // sort cards descending by rankInSuit {slice of structs}
 		return aHand[i].rankInSuit > aHand[j].rankInSuit
 	})
 
 	seqScore, highCard := checkForSeqs(aHand)
-	seqScoreDesc := getSeqScoreDesc(seqScore)
-	fmt.Println("SeqScore: [", seqScore, "]", seqScoreDesc, ": High:", cardStrToCardPip(strconv.Itoa(highCard)))
+	// seqScoreDesc := getScoreDesc(seqScore)
 
-	if seqScore == 0 {
-		setScore, kicker, setPips := checkForSets(aHand)
-		setScoreDesc := getSetScoreDesc(setScore)
-		fmt.Println("SetScore:", setScoreDesc, "Of:", setPips, "- Kicker: [", len(kicker), "]", descHand(kicker))
+	highSeqPips := cardStrToCardPip(strconv.Itoa(highCard))
+
+	// fmt.Println("seqScore:", seqScore, "------------ SeqScore: [", seqScore, "]", seqScoreDesc, ": High:", highSeqPips)
+
+	setScore, kickers, setPips := checkForSets(aHand)
+	// setScoreDesc := getScoreDesc(setScore)
+	// fmt.Println("setScore:", setScore, "------------------ SetScore:", setScoreDesc, "Of:", setPips, "- kickers: [", len(kickers), "]", descHand(kickers))
+
+	handScore := seqScore
+	tieBreakPipStr := highSeqPips
+
+	if handScore == 0 { // if not a sequence, reset score & relevant pips (kickers unchanged)
+		handScore = setScore
+		tieBreakPipStr = setPips
 	}
+
+	fmt.Println("--==< handScore:", handScore, getScoreDesc(handScore), "( Ext:", tieBreakPipStr, ") - Kickers: [", len(kickers), "]", descHand(kickers))
 
 	// & log hand
-	for i := range aHand {
-		fmt.Println(i, aHand[i].suitedName, "- Rank:", aHand[i].rankInSuit)
-	}
-	//* PENDING: Refactor to compile/refine scores - seqScore + setScore logic for = score
-	return aHand, score
+	// for i := range aHand {
+	// 	fmt.Println(i, aHand[i].suitedName, "- Rank:", aHand[i].rankInSuit)
+	// }
+	return aHand, handScore, kickers, tieBreakPipStr
 }
 
 func checkForSeqs(aHand []card) (seqScore int, highCard int) {
 	isStraight := true
 	isFlush := true
-	seqScore = 2
+	seqScore = 5 // default = flush
 
 	rankInSuitMap := make(map[int]int)
 
@@ -87,14 +95,14 @@ func checkForSeqs(aHand []card) (seqScore int, highCard int) {
 		}
 	}
 
-	if isStraight {
-		seqScore = 1
+	if isStraight { // straight
+		seqScore = 4
 
-		if isFlush {
-			seqScore = 3
+		if isFlush { // straight-flush
+			seqScore = 8
 
-			if highCard == 13 {
-				seqScore = 4
+			if highCard == 13 { // royal-flush
+				seqScore = 9
 			}
 		}
 	}
@@ -129,13 +137,13 @@ func checkForSets(aHand []card) (int, []card, string) {
 
 	for _, qty := range fullSetMap {
 		if qty == 4 {
-			return 4, kickers, setPips // quads
+			return 7, kickers, setPips // quads
 		}
 
 		if qty == 3 {
 			for _, qty := range fullSetMap {
 				if qty == 2 {
-					return 5, kickers, setPips // full house
+					return 6, kickers, setPips // full house
 				}
 
 				setScore = 3 // trips

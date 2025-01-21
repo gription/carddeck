@@ -554,8 +554,8 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#function-result-limit
       - name: function-result-limit
         severity: warning
-        disabled: false             #* Changed
-        arguments: [3]  # 2
+        disabled: false             #* Changed - I understand this limit, but I am weak..
+        arguments: [5]  # 2
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#get-return
       - name: get-return
         severity: warning

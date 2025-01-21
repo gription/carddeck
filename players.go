@@ -15,12 +15,14 @@ func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) (
 		shoe, aHand = deal(shoe, cardsPerPlayer)
 
 		p := player{
-			idx:       i,
-			name:      playerNames[i],
-			hand:      aHand,
-			handScore: 0,
-			wins:      0,
-			losses:    0,
+			idx:            i,
+			name:           playerNames[i],
+			hand:           aHand,
+			kickers:        aHand,
+			handScore:      0,
+			tieBreakPipStr: "",
+			wins:           0,
+			losses:         0,
 		}
 		players = append(players, p)
 	}

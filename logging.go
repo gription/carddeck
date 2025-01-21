@@ -43,9 +43,3 @@ func logDeck(deck []card, format string, yorn bool) int {
 
 	return 0
 }
-
-func logPlayers(players []player) {
-	for i := range numberOfPlayers {
-		fmt.Print(players[i].name, ": ", descHand(players[i].hand), "\n")
-	}
-}

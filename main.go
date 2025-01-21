@@ -14,29 +14,30 @@ func main() {
 	theDeck, players := establishPlayers(theDeck, numberOfPlayers, cardsPerPlayer)
 	logDeck(theDeck, "full", true)
 
-	//. lucky card
+	//. lucky card (how to address a player card)
 	// fmt.Print("One lucky card for the dealer:")
 	// logCard(players[0].hand[1], true)
 
 	// . Sort, Score & Reveal the players' cards..
 	for i := range players {
-		players[i].hand, players[i].handScore = sortAndScore(players[i].hand)
+		fmt.Print(players[i].name, ": ", descHand(players[i].hand), "\n")
+		players[i].hand, players[i].handScore, players[i].kickers, players[0].tieBreakPipStr = sortAndScore(players[i].hand)
 
-		fmt.Println("====================================================")
+		fmt.Println("----------------------------------------------------")
 	}
 
 	//* DEAL FROM THE BOTTOM... (insensitive to deck contents)
-	players[0].hand, players[0].handScore = gimmeFlush()
-	players[0].hand, players[0].handScore = gimmeStraight()
-	players[0].hand, players[0].handScore = gimmeStraightFlush()
-	players[0].hand, players[0].handScore = gimmeRoyalFlush()
-
-	players[0].hand, players[0].handScore = gimmeHighCard()
-	players[0].hand, players[0].handScore = gimmeOnePair()
-	players[0].hand, players[0].handScore = gimmeTwoPair()
-	players[0].hand, players[0].handScore = gimmeTrips()
-	players[0].hand, players[0].handScore = gimmeQuads()
-	players[0].hand, players[0].handScore = gimmeFullHouse()
-	players[0].hand, players[0].handScore = gimmeTrash()
-	logPlayers(players)
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeFlush()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeStraight()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeStraightFlush()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeRoyalFlush()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeHighCard()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeOnePair()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeTwoPair()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeTrips()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeQuads()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeFullHouse()
+	// players[0].hand, players[0].handScore, players[0].kickers, players[0].tieBreakPipStr = gimmeTrash()
+	// logPlayers(players[0])
+	fmt.Println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 }

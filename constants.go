@@ -19,12 +19,14 @@ type (
 	}
 
 	player struct {
-		idx       int
-		name      string
-		hand      []card
-		handScore int
-		wins      int
-		losses    int
+		idx            int
+		name           string
+		hand           []card
+		kickers        []card
+		tieBreakPipStr string
+		handScore      int
+		wins           int
+		losses         int
 	}
 )
 

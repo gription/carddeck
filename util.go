@@ -68,41 +68,31 @@ func cardStrToCardPip(cardStr string) string { // TODO: Use rankPips more elegan
 	return newCardStr
 }
 
-func getSeqScoreDesc(scoreInt int) string {
-	var scoreDesc string
-
-	if scoreInt == 0 {
-		scoreDesc = "See-SetScore"
-	}
-
-	if scoreInt == 1 {
-		scoreDesc = "Straight"
-	}
-
-	if scoreInt == 2 {
-		scoreDesc = "Flush"
-	}
-
-	if scoreInt == 3 {
-		scoreDesc = "Straight-Flush"
-	}
-
-	if scoreInt == 4 {
-		scoreDesc = "Royal-Flush"
-	}
-
-	return scoreDesc
-}
-
-func getSetScoreDesc(scoreInt int) string {
+func getScoreDesc(scoreInt int) string {
 	var scoreDesc string
 
 	if scoreInt == 0 {
 		scoreDesc = "High-Card"
 	}
 
+	if scoreInt == 4 {
+		scoreDesc = "Straight"
+	}
+
+	if scoreInt == 5 {
+		scoreDesc = "Flush"
+	}
+
+	if scoreInt == 8 {
+		scoreDesc = "Straight-Flush"
+	}
+
+	if scoreInt == 9 {
+		scoreDesc = "Royal-Flush"
+	}
+
 	if scoreInt == 1 {
-		scoreDesc = "Pair"
+		scoreDesc = "One-Pair"
 	}
 
 	if scoreInt == 2 {
@@ -113,11 +103,11 @@ func getSetScoreDesc(scoreInt int) string {
 		scoreDesc = "Trips"
 	}
 
-	if scoreInt == 4 {
+	if scoreInt == 7 {
 		scoreDesc = "Quads"
 	}
 
-	if scoreInt == 5 {
+	if scoreInt == 6 {
 		scoreDesc = "Full-House"
 	}
 

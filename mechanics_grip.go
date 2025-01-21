@@ -61,8 +61,8 @@ var grip = []card{
 	{52, "Ace of Spades", "Ace", "Spades", "Spade", "A", "♠️", "U+2660", 4, 13},
 }
 
-func gimmeFlush() ([]card, int) { // AQ762 - all Diamonds
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Flush >==----------------------------------------------")
+func gimmeFlush() ([]card, int, []card, string) { // AQ762 - all Diamonds
+	fmt.Println("--==< FORCE TO P0: Flush >==----------------------------------------------------")
 
 	cardsDealt := []card{
 		{27, "Two of Diamonds", "Two", "Diamonds", "Diamond", "2", "♦", "U+2666", 2, 1},
@@ -75,8 +75,8 @@ func gimmeFlush() ([]card, int) { // AQ762 - all Diamonds
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeStraight() ([]card, int) { // 65432
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Straight >==----------------------------------------------")
+func gimmeStraight() ([]card, int, []card, string) { // 65432
+	fmt.Println("--==< FORCE TO P0: Straight >==-------------------------------------------------")
 
 	cardsDealt := []card{
 		{3, "Four of Clubs", "Four", "Clubs", "Club", "4", "♣", "U+2663", 1, 3},
@@ -89,8 +89,8 @@ func gimmeStraight() ([]card, int) { // 65432
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeStraightFlush() ([]card, int) { // 98765 - all Hearts
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Straight Flush >==----------------------------------------------")
+func gimmeStraightFlush() ([]card, int, []card, string) { // 98765 - all Hearts
+	fmt.Println("--==< FORCE TO P0: Straight-Flush >==-------------------------------------------")
 
 	cardsDealt := []card{
 		{20, "Eight of Hearts", "Eight", "Hearts", "Heart", "8", "♥", "U+2665", 3, 7},
@@ -103,8 +103,8 @@ func gimmeStraightFlush() ([]card, int) { // 98765 - all Hearts
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeRoyalFlush() ([]card, int) { // AKQJT - all Clubs
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Royal Flush >==----------------------------------------------")
+func gimmeRoyalFlush() ([]card, int, []card, string) { // AKQJT - all Clubs
+	fmt.Println("--==< FORCE TO P0: Royal-Flush >==----------------------------------------------")
 
 	cardsDealt := []card{
 		{9, "Ten of Clubs", "Ten", "Clubs", "Club", "T", "♣", "U+2663", 1, 9},
@@ -117,8 +117,8 @@ func gimmeRoyalFlush() ([]card, int) { // AKQJT - all Clubs
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeHighCard() ([]card, int) { // AKT63
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: High Card (Ace High) >==----------------------------------------------")
+func gimmeHighCard() ([]card, int, []card, string) { // AKT63
+	fmt.Println("--==< FORCE TO P0: Ace High >==-------------------------------------------------")
 
 	cardsDealt := []card{
 		{52, "Ace of Spades", "Ace", "Spades", "Spade", "A", "♠️", "U+2660", 4, 13},
@@ -131,8 +131,8 @@ func gimmeHighCard() ([]card, int) { // AKT63
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeOnePair() ([]card, int) { // JJT97
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: One Pair >==----------------------------------------------")
+func gimmeOnePair() ([]card, int, []card, string) { // JJT97
+	fmt.Println("--==< FORCE TO P0: One-Pair >==-------------------------------------------------")
 
 	cardsDealt := []card{
 		{23, "Jack of Hearts", "Jack", "Hearts", "Heart", "J", "♥", "U+2665", 3, 10},
@@ -145,8 +145,8 @@ func gimmeOnePair() ([]card, int) { // JJT97
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeTwoPair() ([]card, int) { // AA88Q
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Two Pair >==----------------------------------------------")
+func gimmeTwoPair() ([]card, int, []card, string) { // AA88Q
+	fmt.Println("--==< FORCE TO P0: Two-Pair >==-------------------------------------------------")
 
 	cardsDealt := []card{
 		{26, "Ace of Hearts", "Ace", "Hearts", "Heart", "A", "♥", "U+2665", 3, 13},
@@ -159,8 +159,8 @@ func gimmeTwoPair() ([]card, int) { // AA88Q
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeTrips() ([]card, int) { // 333K5
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Trips >==----------------------------------------------")
+func gimmeTrips() ([]card, int, []card, string) { // 333K5
+	fmt.Println("--==< FORCE TO P0: Trips >==----------------------------------------------------")
 
 	cardsDealt := []card{
 		{41, "Three of Spades", "Three", "Spades", "Spade", "3", "♠️", "U+2660", 4, 2},
@@ -173,8 +173,8 @@ func gimmeTrips() ([]card, int) { // 333K5
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeQuads() ([]card, int) { // 4444T
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Quads >==----------------------------------------------")
+func gimmeQuads() ([]card, int, []card, string) { // 4444T
+	fmt.Println("--==< FORCE TO P0: Quads >==----------------------------------------------------")
 
 	cardsDealt := []card{
 		{16, "Four of Hearts", "Four", "Hearts", "Heart", "4", "♥", "U+2665", 3, 3},
@@ -187,8 +187,8 @@ func gimmeQuads() ([]card, int) { // 4444T
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeFullHouse() ([]card, int) { // AA888
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Full House >==----------------------------------------------")
+func gimmeFullHouse() ([]card, int, []card, string) { // AA888
+	fmt.Println("--==< FORCE TO P0: Full-House >==-----------------------------------------------")
 
 	cardsDealt := []card{
 		{13, "Ace of Clubs", "Ace", "Clubs", "Club", "A", "♣", "U+2663", 1, 13},
@@ -201,8 +201,8 @@ func gimmeFullHouse() ([]card, int) { // AA888
 	return sortAndScore(cardsDealt)
 }
 
-func gimmeTrash() ([]card, int) { // can't win 75432
-	fmt.Println("--==< FROM THE BOTTOM: Dealing Player 0: Trash >==----------------------------------------------")
+func gimmeTrash() ([]card, int, []card, string) { // can't win 75432
+	fmt.Println("--==< FORCE TO P0: Trash >==----------------------------------------------------")
 
 	cardsDealt := []card{
 		{19, "Seven of Hearts", "Seven", "Hearts", "Heart", "7", "♥", "U+2665", 3, 6},
