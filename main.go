@@ -18,23 +18,25 @@ func main() {
 	// fmt.Print("One lucky card for the dealer:")
 	// logCard(players[0].hand[1], true)
 
-	//. Deal the cards..
-	// for i := range players {
-	// 	players[i].hand, players[i].handScore = sortAndScore(players[i].hand)
-	// }
+	// . Sort, Score & Reveal the players' cards..
+	for i := range players {
+		players[i].hand, players[i].handScore = sortAndScore(players[i].hand)
 
-	//* DEAL FROM THE BOTTOM...
-	// players[0].hand, players[0].handScore = gimmeFlush()
-	// players[0].hand, players[0].handScore = gimmeStraight()
-	// players[0].hand, players[0].handScore = gimmeStraightFlush()
-	// players[0].hand, players[0].handScore = gimmeRoyalFlush()
+		fmt.Println("====================================================")
+	}
 
-	// players[0].hand, players[0].handScore = gimmeHighCard()
-	// players[0].hand, players[0].handScore = gimmeOnePair()
-	// players[0].hand, players[0].handScore = gimmeTwoPair()
-	// players[0].hand, players[0].handScore = gimmeTrips()
+	//* DEAL FROM THE BOTTOM... (insensitive to deck contents)
+	players[0].hand, players[0].handScore = gimmeFlush()
+	players[0].hand, players[0].handScore = gimmeStraight()
+	players[0].hand, players[0].handScore = gimmeStraightFlush()
+	players[0].hand, players[0].handScore = gimmeRoyalFlush()
+
+	players[0].hand, players[0].handScore = gimmeHighCard()
+	players[0].hand, players[0].handScore = gimmeOnePair()
+	players[0].hand, players[0].handScore = gimmeTwoPair()
+	players[0].hand, players[0].handScore = gimmeTrips()
 	players[0].hand, players[0].handScore = gimmeQuads()
-	// players[0].hand, players[0].handScore = gimmeFullHouse()
-	// players[0].hand, players[0].handScore = gimmeTrash()
+	players[0].hand, players[0].handScore = gimmeFullHouse()
+	players[0].hand, players[0].handScore = gimmeTrash()
 	logPlayers(players)
 }

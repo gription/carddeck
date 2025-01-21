@@ -38,6 +38,7 @@ func logDeck(deck []card, format string, yorn bool) int {
 		}
 
 		fmt.Println("\n --==<", len(deck), "Cards remain in deck. >==--")
+		fmt.Println("====================================================")
 	}
 
 	return 0

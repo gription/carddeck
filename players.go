@@ -5,7 +5,7 @@ package main
 func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) ([]card, []player) {
 	playerNames := []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
 
-	players := []player{} //? players := []player{}  diff?  either works -  BUT?
+	players := []player{} //? players := []player{}  diff?  either works -  BUT?  *** pre-allocate ??
 	//                            //? var players []player      Happier wif pre-alloc from top choice?
 	shoe := theDeck
 
