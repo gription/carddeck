@@ -3,8 +3,13 @@
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #= https://golangci-lint.run/usage/configuration/
-#= Src#1: https://olegk.dev/go-linters-configuration-the-right-version
 #= Full Local Reference: .golangci.reference.yml
+
+#% Samples/Examples
+#, Oleg Kovalov's Blog - Go linters configuration, the right version.
+#= https://olegk.dev/go-linters-configuration-the-right-version
+# , cristaloleg Gist- An opinionated golangci-lint config (right version™)
+#= https://gist.github.com/cristaloleg/dc29ca0ef2fb554de28d94c3c6f6dc88
 
 #| - run
 #| - linters - enable/disable
@@ -12,21 +17,10 @@
 #| - output
 #| - issues
 
-# @ CONCLUSION
-# ***************************************************************************
-# ***************************************************************************
-# *
-# *   EVAL: MISSING = WSL
-# *     CUDDLING complaints
-# *     block should not end with a whitespace (or comment)
-# *
-# ***************************************************************************
-# ***************************************************************************
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #* Config search paths from app: |> golangci-lint -v path config
 #~ Upstream + $home = [ ./ C:\\dev\\go\\src\\carddeck C:\\dev\\go\\src C:\\dev\\go C:\\dev C:\\ C:\\Users\\andy ]
 #* Linters List from app: |> golangci-lint help linters
-
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #
 #&          RUN - Options for analysis running.
@@ -120,106 +114,116 @@ linters:
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #% OOB -- 'Enabled by Default' Linters:
+    - typecheck                     #. Cannot be disabled - Not a linter (no analysis) it's just a way to identify, parse, and display compiling errors (produced by the types.Checker) and some linter errors.
     - errcheck                      #, errcheck: Errcheck is a program for checking for unchecked errors in Go code. These unchecked errors can be critical bugs in some cases.  --  Forces to not skip error check. - check that all errors are handled
     - gosimple                      #, gosimple: Linter for Go source code that specializes in simplifying code. [auto-fix]  --  check if code can be simplified e.g. !condition instead of condition == false
     - govet                         #, govet: Vet examines Go source code and reports suspicious constructs. It is roughly the same as 'go vet' and uses its passes. [auto-fix]  --  check incorrect printf format-argument calls - invoked by the goland internally?
     - ineffassign                   #, ineffassign: Detects when assignments to existing variables are not used. [fast]  --  check unused assignments to existing vars - Detects when assignments to existing variables are not used
     - staticcheck                   #, staticcheck: It's a set of rules from staticcheck. It's not the same thing as the staticcheck binary. The author of staticcheck doesn't support or approve the use of staticcheck as a library inside golangci-lint. [auto-fix]  --  I have found that it's not the same as staticcheck binary :\
     - unused                        #, unused: Checks Go code for unused constants, variables, functions and types.  --  check unused constants, functions, types, vars and struct fields - Must have. Finds unused declarations.
+
+#, Explicitly identified as 'fast'
 #% Substantial Linters
-    - revive                        #| revive: Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint. [auto-fix]  --  Drop-in replacement of `golint`. - HUGE CONFIG BENEATH linters-settings
-    - tagalign                      #| tagalign: Check that struct tags are well aligned. [fast, auto-fix] - and ordered - see linters-settings  -- check struct tag alignment and order
+    - gci                           #| gci: Checks if code and import statements are formatted, it makes import statements always deterministic. [fast, auto-fix]  --  Imports order.
     - gofmt                         #| gofmt: Checks if the code is formatted according to 'gofmt' command. [fast, auto-fix]
     - gofumpt                       #| gofumpt: Checks if code and import statements are formatted, with additional rules. [fast, auto-fix]  --  check against the coding standard rules of https://github.com/mvdan/gofumpt (an extension of gofmt) - kudos to Daniel Marti
     - goimports                     #| goimports: Checks if the code and import statements are formatted according to the 'goimports' command. [fast, auto-fix]
-    - gci                           #| gci: Checks if code and import statements are formatted, it makes import statements always deterministic. [fast, auto-fix]  --  Imports order.
+    - revive                        #| revive: Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint. [auto-fix] - HUGE CONFIG BENEATH linters-settings
+    - tagalign                      #| tagalign: Check that struct tags are well aligned. [fast, auto-fix] - and ordered - see linters-settings  -- check struct tag alignment and order
 #% Linters
-    - gochecknoinits                #| gochecknoinits: Checks that no init functions are present in Go code. [fast]  --  Globals and init() are no ok, because this linter use on golangci lint.
-    - tenv                          #| tenv: Tenv is analyzer that detects using os.Setenv instead of t.Setenv since Go1.17.  --  Test-related checks. - good.
-    - testableexamples              #| testableexamples: Linter checks if examples are testable (have an expected output). [fast]  --  Test-related checks. - good.
-    - testifylint                   #| testifylint: Checks usage of github.com/stretchr/testify. [auto-fix]  --  Test-related checks. - good.
-    - thelper                       #| thelper: Thelper detects tests helpers which is not start with t.Helper() method.  --  Test-related checks. - good.
-    - tparallel                     #| tparallel: Tparallel detects inappropriate usage of t.Parallel() method in your Go test codes.  --  Test-related checks. - good.
-    - asasalint                     #| asasalint: Check for pass []any as any in variadic func(...any).  --  Check for pass []any as any in variadic func(...any).
     - asciicheck                    #| asciicheck: Checks that all code identifiers does not have non-ASCII symbols in the name. [fast]  --  check for non-ascii chars in identifiers (vars, functions, types, ...)  -  Symbol `∆` instead of `delta` looks cool but no thanks.
     - bidichk                       #| bidichk: Checks for dangerous unicode character sequences. [fast]  --  Checks for dangerous unicode character sequences. - Super rare but why not to be a bit paranoid?
-    - bodyclose                     #| bodyclose: Checks whether HTTP response body is closed successfully.  --  Checks whether HTTP response body is closed successfully.  - check for unclosed bodies of http requests (does not work in very complex scenarios)
-    - contextcheck                  #| contextcheck: Check whether the function uses a non-inherited context.  --  Check whether the function uses a non-inherited context.
     - copyloopvar                   #| copyloopvar: Copyloopvar is a linter detects places where loop variables are copied. [fast]  --  after go 1.22 don't need copy var at for range.
+    - decorder                      #| decorder: Check declaration order and count of types, constants, variables and functions. [fast]  --  Check declaration order of types, consts, vars and funcs. - order of declarations
+    - depguard                      #| depguard: Go linter that checks if package imports are in a list of acceptable packages. [fast]  --  Checks if package imports are in a list of acceptable packages.
+    - dogsled                       #| dogsled: Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()). [fast]  --  Checks assignments with too many blank identifiers. Very rare.
     - dupl                          #| dupl: Tool for code clone detection. [fast]  --  Tool for code clone detection. - check for duplicates with at least 100 chars (can be changed via config)
     - dupword                       #| dupword: Checks for duplicate words in the source code. [fast, auto-fix]  --  Find duplicate words, rare.
-    - durationcheck                 #| durationcheck: Check for two durations multiplied together.  --  Check for two durations multiplied together. - check for 2 durations which are multiplied by accident
-    - errname                       #| errname: Checks that sentinel errors are prefixed with the `Err` and error types are suffixed with the `Error`.  --  Checks `Err-` prefix for var and `-Error` suffix for error type.
-    - errorlint                     #| errorlint: Errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13. [auto-fix]  --  Suggests to use `%w` for error-wrapping.
+    - forcetypeassert               #| forcetypeassert: Finds forced type assertions. [fast]  --  Finds forced type assertions, very good for juniors.
+    - gocheckcompilerdirectives     #| gocheckcompilerdirectives: Checks that go compiler directive comments (//go:) are valid. [fast]  --  Checks that compiler directive comments (//go:) are valid. Rare.
+    - gochecknoinits                #| gochecknoinits: Checks that no init functions are present in Go code. [fast]  --  Globals and init() are no ok, because this linter use on golangci lint.
+    - goconst                       #| goconst: Finds repeated strings that could be replaced by a constant. [fast]  --  check for multiple used strings with could be replaced by a const
+    - goheader                      #| goheader: Checks if file header matches to pattern. [fast, auto-fix]  --  I don't use file headers.
     - gomoddirectives               #| gomoddirectives: Manage the use of 'replace', 'retract', and 'excludes' directives in go.mod. [fast]  --  Allow or ban replace directives in go.mod or force explanation for retract directives.
-    - gosec                         #| gosec: Inspects source code for security problems.  --  Powerful security-oriented linter. But requires some time to configure it properly, see https://github.com/securego/gosec#available-rules
-    - intrange                      #| intrange: Intrange is a linter to find places where for loops could make use of an integer range. [auto-fix]  --  a linter to find places where for loops could make use of an integer range. [auto-fix] - range over int, work after go 1.22
+    - gomodguard                    #| gomodguard: Allow and block list linter for direct Go module dependencies. This is different from depguard where there are different block types for example version constraints and module recommendations. [fast]  --  Allowed/blocked packages to import. I prefer to do it manually.
+    - goprintffuncname              #| goprintffuncname: Checks that printf-like functions are named with `f` at the end. [fast]  --  Printf-like functions must have -f.
+    - grouper                       #| grouper: Analyze expression groups. [fast]  --  Groupt declarations, I prefer manually.
+    - inamedparam                   #| inamedparam: Reports interfaces with unnamed method parameters. [fast]
+    - interfacebloat                #| interfacebloat: A linter that checks the number of methods inside an interface. [fast]  --  Forces tiny interfaces, very subjective.
+    - maintidx                      #| maintidx: Maintidx measures the maintainability index of each function. [fast]  --  Maintainability index of each function, subjective.
     - misspell                      #| misspell: Finds commonly misspelled English words. [fast, auto-fix]  --  Fix all the misspells, amazing thing.
-    - mirror                        #| mirror: Reports wrong mirror patterns of bytes/strings usage. [auto-fix]  --  Reports wrong mirror patterns of bytes/strings usage.
     - nakedret                      #| nakedret: Checks that functions with naked returns are not longer than a maximum size (can be zero). [fast, auto-fix]  --  Finds naked/bare returns and requires change them.
-    - nilerr                        #| nilerr: Finds the code that returns nil even if it checks that the error is not nil.  --  check if function returns nil although a checked error is not nil
-    - nilnil                        #| nilnil: Checks that there is no simultaneous return of `nil` error and an invalid value.
-    - noctx                         #| noctx: Finds sending http request without context.Context.  --  Finds sending HTTP request without context.Context.
+    - nlreturn                      #| nlreturn: Nlreturn checks for a new line before return and branch statements to increase code clarity. [fast, auto-fix]  --  Forces newlines in some places. -  wsl linter what implements the same checks?
     - nolintlint                    #| nolintlint: Reports ill-formed or insufficient nolint directives. [fast, auto-fix]  --  Forces comment why another check is disabled.-  Better not to have //nolint: at all ;)
+    - nosprintfhostport             #| nosprintfhostport: Checks for misuse of Sprintf to construct a host with port in a URL. [fast]  --  Finds misuse of Sprintf with host:port in a URL. Cool but rare.
     - perfsprint                    #| perfsprint: Checks that fmt.Sprintf can be replaced with a faster alternative. [auto-fix]  --  aiming at usages of fmt.Sprintf which have faster alternatives.
     - prealloc                      #| prealloc: Finds slice declarations that could potentially be pre-allocated. [fast]  --  Finds slices that could potentially be pre-allocated. Small performance win + cleaner code.
     - predeclared                   #| predeclared: Find code that shadows one of Go's predeclared identifiers. [fast]  --  check that definitions (vars, functions, ...) do not use predeclared names like int, string, copy, print, ... - Finds shadowing of Go's predeclared identifiers.
     - promlinter                    #| promlinter: Check Prometheus metrics naming via promlint. [fast]  --  Lint your Prometheus metrics name.
-    - reassign                      #| reassign: Checks that package variables are not reassigned.  --  Checks that package variables are not reassigned. - Super rare case but can catch bad things (like `io.EOF = nil`)
-    - sloglint                      #| sloglint: Ensure consistent code style when using log/slog.  --  Ensure consistent code style when using log/slog.
-    - stylecheck                    #| stylecheck: Stylecheck is a replacement for golint. [auto-fix]  --  Is a replacement for `golint`, similar to `revive`.
-    - tagliatelle                   #| tagliatelle: Checks the struct tags.  --  Check struct tags.
-    - unconvert                     #| unconvert: Remove unnecessary type conversions.  --  Remove unnecessary type conversions, make code cleaner
-    - unparam                       #| unparam: Reports unused function parameters.  --  check (well... it tries) to find unused func params or returns - Might be noisy but better to know what is unused
+    - testableexamples              #| testableexamples: Linter checks if examples are testable (have an expected output). [fast]  --  Test-related checks. - good.
+    - testpackage                   #| testpackage: Linter that makes you use a separate _test package. [fast]  --  Often non-`_test` package is ok.
     - usestdlibvars                 #| usestdlibvars: A linter that detect the possibility to use variables/constants from the Go standard library. [fast, auto-fix]  --  Detect the possibility to use variables/constants from stdlib.
-    - wastedassign                  #| wastedassign: Finds wasted assignment statements.  --  Finds wasted assignment statements.
-    - sqlclosecheck                 #| sqlclosecheck: Checks that sql.Rows, sql.Stmt, sqlx.NamedStmt, pgx.Query are closed.  --  Somewhat similar to `bodyclose` but for `database/sql` package.
-    - rowserrcheck                  #| rowserrcheck: Checks whether Rows.Err of rows is checked successfully.
-    - decorder                      #| decorder: Check declaration order and count of types, constants, variables and functions. [fast]  --  Check declaration order of types, consts, vars and funcs. - order of declarations
-    - depguard                      #| depguard: Go linter that checks if package imports are in a list of acceptable packages. [fast]  --  Checks if package imports are in a list of acceptable packages.
-    - dogsled                       #| dogsled: Checks assignments with too many blank identifiers (e.g. x, _, _, _, := f()). [fast]  --  Checks assignments with too many blank identifiers. Very rare.
-    - goconst                       #| goconst: Finds repeated strings that could be replaced by a constant. [fast]  --  check for multiple used strings with could be replaced by a const
+    - wsl                           #| wsl: Add or remove empty lines. [fast, auto-fix]  -- Forces you to use empty lines. Great if configured correctly.
+
+#, Not explicitly identified as 'fast'
+    - asasalint                     #| asasalint: Check for pass []any as any in variadic func(...any).  --  Check for pass []any as any in variadic func(...any).
+    - bodyclose                     #| bodyclose: Checks whether HTTP response body is closed successfully.  --  Checks whether HTTP response body is closed successfully.  - check for unclosed bodies of http requests (does not work in very complex scenarios)
+    - canonicalheader               #| canonicalheader: Canonicalheader checks whether net/http.Header uses canonical header. [auto-fix]
     - containedctx                  #| containedctx: Containedctx is a linter that detects struct contained context.Context field.  --  Detects struct contained context.Context field. Not a problem.
-    - errchkjson                    #| errchkjson: Checks types passed to the json encoding functions. Reports unsupported types and reports occurrences where the check for the returned error can be omitted.  --  I'm fine to check the error from json.Marshal ¯\_(ツ)_/¯
-    - forbidigo                     #| forbidigo: Forbids identifiers.
-    - exhaustruct                   #| exhaustruct: Checks if all structure fields are initialized.
-    - exhaustive                    #| exhaustive: Check exhaustiveness of enum switch statements.  --  Forces to handle more cases. Cool but noisy.
-    - forcetypeassert               #| forcetypeassert: Finds forced type assertions. [fast]  --  Finds forced type assertions, very good for juniors.
-    - ginkgolinter                  #| ginkgolinter: Enforces standards of using ginkgo and gomega. [auto-fix]  --  I'm not a fan of ginkgo and gomega packages.
-    - gocheckcompilerdirectives     #| gocheckcompilerdirectives: Checks that go compiler directive comments (//go:) are valid. [fast]  --  Checks that compiler directive comments (//go:) are valid. Rare.
+    - contextcheck                  #| contextcheck: Check whether the function uses a non-inherited context.  --  Check whether the function uses a non-inherited context.
+    - durationcheck                 #| durationcheck: Check for two durations multiplied together.  --  Check for two durations multiplied together. - check for 2 durations which are multiplied by accident
     - err113                        #| err113: Go linter to check the errors handling expressions. [auto-fix]  --  Check the error handling expressions. Too noisy.
-    - goheader                      #| goheader: Checks if file header matches to pattern. [fast, auto-fix]  --  I don't use file headers.
-    - gomodguard                    #| gomodguard: Allow and block list linter for direct Go module dependencies. This is different from depguard where there are different block types for example version constraints and module recommendations. [fast]  --  Allowed/blocked packages to import. I prefer to do it manually.
-    - goprintffuncname              #| goprintffuncname: Checks that printf-like functions are named with `f` at the end. [fast]  --  Printf-like functions must have -f.
-    - grouper                       #| grouper: Analyze expression groups. [fast]  --  Groupt declarations, I prefer manually.
+    - errchkjson                    #| errchkjson: Checks types passed to the json encoding functions. Reports unsupported types and reports occurrences where the check for the returned error can be omitted.  --  I'm fine to check the error from json.Marshal ¯\_(ツ)_/¯
+    - errname                       #| errname: Checks that sentinel errors are prefixed with the `Err` and error types are suffixed with the `Error`.  --  Checks `Err-` prefix for var and `-Error` suffix for error type.
+    - errorlint                     #| errorlint: Errorlint is a linter for that can be used to find code that will cause problems with the error wrapping scheme introduced in Go 1.13. [auto-fix]  --  Suggests to use `%w` for error-wrapping.
+    - exhaustive                    #| exhaustive: Check exhaustiveness of enum switch statements.  --  Forces to handle more cases. Cool but noisy.
+    - exhaustruct                   #| exhaustruct: Checks if all structure fields are initialized.
+    - exptostd                      #| exptostd: Detects functions from golang.org/x/exp/ that can be replaced by std functions. [auto-fix]
+    - fatcontext                    #| fatcontext: Detects nested contexts in loops and function literals. [auto-fix]
+    - ginkgolinter                  #| ginkgolinter: Enforces standards of using ginkgo and gomega. [auto-fix]  --  I'm not a fan of ginkgo and gomega packages.
+    - gochecknoglobals              #| gochecknoglobals: Check that no global variables exist.
+    - gochecksumtype                #| gochecksumtype: Run exhaustiveness checks on Go "sum types".
+    - gosec                         #| gosec: Inspects source code for security problems.  --  Powerful security-oriented linter. But requires some time to configure it properly, see https://github.com/securego/gosec#available-rules
+    - gosmopolitan                  #| gosmopolitan: Report certain i18n/l10n anti-patterns in your Go codebase.
+    - iface                         #| iface: Detect the incorrect use of interfaces, helping developers avoid interface pollution. [auto-fix]
     - importas                      #| importas: Enforces consistent import aliases. [auto-fix]  --  Checks imports aliases, rare. - may be useful later, requires configuration
-    - interfacebloat                #| interfacebloat: A linter that checks the number of methods inside an interface. [fast]  --  Forces tiny interfaces, very subjective.
+    - intrange                      #| intrange: Intrange is a linter to find places where for loops could make use of an integer range. [auto-fix]  --  a linter to find places where for loops could make use of an integer range. [auto-fix] - range over int, work after go 1.22
     - ireturn                       #| ireturn: Accept Interfaces, Return Concrete Types.  --  Accept interfaces, return types. Not always.
     - loggercheck                   #| loggercheck: Checks key value pairs for common logger libraries (kitlog,klog,logr,zap).  --  Some log checkers, might be useful.
-    - maintidx                      #| maintidx: Maintidx measures the maintainability index of each function. [fast]  --  Maintainability index of each function, subjective.
     - makezero                      #| makezero: Finds slice declarations with non-zero initial length.  --  Slice declarations with non-zero initial length. Not my case.
+    - mirror                        #| mirror: Reports wrong mirror patterns of bytes/strings usage. [auto-fix]  --  Reports wrong mirror patterns of bytes/strings usage.
     - musttag                       #| musttag: Enforce field tags in (un)marshaled structs.  --  Enforce tags in un/marshaled structs. Cool but not my case.
-    - nlreturn                      #| nlreturn: Nlreturn checks for a new line before return and branch statements to increase code clarity. [fast, auto-fix]  --  Forces newlines in some places. -  wsl linter what implements the same checks?
-    - nosprintfhostport             #| nosprintfhostport: Checks for misuse of Sprintf to construct a host with port in a URL. [fast]  --  Finds misuse of Sprintf with host:port in a URL. Cool but rare.
-    - paralleltest                  #| paralleltest: Detects missing usage of t.Parallel() method in your Go test.  --  I don't use t.Parallel() that much.
-    - testpackage                   #| testpackage: Linter that makes you use a separate _test package. [fast]  --  Often non-`_test` package is ok.
-    - wrapcheck                     #| wrapcheck: Checks that errors returned from external packages are wrapped.  --  Don't find it useful to wrap all errors from external packages.
-    - typecheck
-    - wsl                           #| wsl: Add or remove empty lines. [fast, auto-fix]  -- Forces you to use empty lines. Great if configured correctly.
-    - gochecksumtype                #| gochecksumtype: Run exhaustiveness checks on Go "sum types".
-    - exptostd                      #| exptostd: Detects functions from golang.org/x/exp/ that can be replaced by std functions. [auto-fix]
-    - gosmopolitan                  #| gosmopolitan: Report certain i18n/l10n anti-patterns in your Go codebase.
-    - zerologlint                   #| zerologlint: Detects the wrong usage of `zerolog` that a user forgets to dispatch with `Send` or `Msg`.
-    - canonicalheader               #| canonicalheader: Canonicalheader checks whether net/http.Header uses canonical header. [auto-fix]
-    - iface                         #| iface: Detect the incorrect use of interfaces, helping developers avoid interface pollution. [auto-fix]
-    - inamedparam                   #| inamedparam: Reports interfaces with unnamed method parameters. [fast]
-    - fatcontext                    #| fatcontext: Detects nested contexts in loops and function literals. [auto-fix]
+    - nilerr                        #| nilerr: Finds the code that returns nil even if it checks that the error is not nil.  --  check if function returns nil although a checked error is not nil
     - nilnesserr                    #| nilnesserr: This linter reports that it checks for err != nil, but it returns a different nil value error.
+    - nilnil                        #| nilnil: Checks that there is no simultaneous return of `nil` error and an invalid value.
+    - noctx                         #| noctx: Finds sending http request without context.Context.  --  Finds sending HTTP request without context.Context.
+    - paralleltest                  #| paralleltest: Detects missing usage of t.Parallel() method in your Go test.  --  I don't use t.Parallel() that much.
     - protogetter                   #| protogetter: Reports direct reads from proto message fields when getters should be used. [auto-fix]
+    - reassign                      #| reassign: Checks that package variables are not reassigned.  --  Checks that package variables are not reassigned. - Super rare case but can catch bad things (like `io.EOF = nil`)
     - recvcheck                     #| recvcheck: Checks for receiver type consistency.
+    - rowserrcheck                  #| rowserrcheck: Checks whether Rows.Err of rows is checked successfully.
+    - sloglint                      #| sloglint: Ensure consistent code style when using log/slog.  --  Ensure consistent code style when using log/slog.
     - spancheck                     #| spancheck: Checks for mistakes with OpenTelemetry/Census spans.
+    - sqlclosecheck                 #| sqlclosecheck: Checks that sql.Rows, sql.Stmt, sqlx.NamedStmt, pgx.Query are closed.  --  Somewhat similar to `bodyclose` but for `database/sql` package.
+    - stylecheck                    #| stylecheck: Stylecheck is a replacement for golint. [auto-fix]  --  Is a replacement for `golint`, similar to `revive`.
+    - tagliatelle                   #| tagliatelle: Checks the struct tags.
+    - tenv                          #| tenv: Tenv is analyzer that detects using os.Setenv instead of t.Setenv since Go1.17.  --  Test-related checks. - good.
+    - testifylint                   #| testifylint: Checks usage of github.com/stretchr/testify. [auto-fix]  --  Test-related checks. - good.
+    - thelper                       #| thelper: Thelper detects tests helpers which is not start with t.Helper() method.  --  Test-related checks. - good.
+    - tparallel                     #| tparallel: Tparallel detects inappropriate usage of t.Parallel() method in your Go test codes.  --  Test-related checks. - good.
+    - unconvert                     #| unconvert: Remove unnecessary type conversions.  --  Remove unnecessary type conversions, make code cleaner
+    - unparam                       #| unparam: Reports unused function parameters.  --  check (well... it tries) to find unused func params or returns - Might be noisy but better to know what is unused
     - usetesting                    #| usetesting: Reports uses of functions with replacement inside the testing package. [auto-fix]
-    - gochecknoglobals              #| gochecknoglobals: Check that no global variables exist.
+    - wastedassign                  #| wastedassign: Finds wasted assignment statements.  --  Finds wasted assignment statements.
+    - wrapcheck                     #| wrapcheck: Checks that errors returned from external packages are wrapped.  --  Don't find it useful to wrap all errors from external packages.
+    - zerologlint                   #| zerologlint: Detects the wrong usage of `zerolog` that a user forgets to dispatch with `Send` or `Msg`.
+
+
+
+#% Purely for TESTS - See below [exclude: exclude-rules: - path-except:]
+#. Only run on '*_test.go' files
+    - forbidigo                     #| forbidigo: Forbids identifiers.  --   Eliminate leftover Println debugging - forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
+
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #
@@ -258,7 +262,7 @@ linters:
 #% Deprecated AND Disabled - walk of shame
         - funlen                        #| funlen: Checks for long functions. [fast]  --  disabled in favor of revive - check for too long functions (default: 60 lines or 40 statements) - I might have long but a simple function?
         - cyclop                        #| cyclop: Checks function and package cyclomatic complexity. [fast]  --  disabled in favor of revive - Checks function and package cyclomatic complexity. Prob if I have a long but trivial switch-case?  -- Cyclomatic complexity is a measurement, not a goal. #= (c) Bryan C. Mills / https://github.com/bcmills
-        - gocyclo                       # | gocyclo: Computes and checks the cyclomatic complexity of functions. [fast]  --  disabled in favor of revive
+        - gocyclo                       #| gocyclo: Computes and checks the cyclomatic complexity of functions. [fast]  --  disabled in favor of revive
         - gocognit                      #| gocognit: Computes and checks the cognitive complexity of functions. [fast]  --  disabled in favor of revive - check for functions with too high cognitive complexity - Same as `cyclop` linter (see above)
                                             #    = https://tomasvotruba.com/blog/2018/05/21/is-your-code-readable-by-humans-cognitive-complexity-tells-you/
                                             #    = https://blog.sonarsource.com/cognitive-complexity-because-testability-understandability
@@ -301,11 +305,9 @@ linters:
 #&          Linters Settings/Configuration
 linters-settings:
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-  wsl:
+  wsl: #| wsl: Add or remove empty lines. [fast, auto-fix]  -- Forces you to use empty lines. Great if configured correctly.
       force-case-trailing-whitespace: 1
-
-
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   decorder:
       dec-order:
           - type
@@ -315,17 +317,10 @@ linters-settings:
       disable-dec-order-check: false
       disable-init-func-first-check: false
       disable-dec-num-check: false
-
-  tagalign:
-      align: true
-      sort: true
-      order:
-          - json
-          - validate
-
-  goimports:
-    local-prefixes: github.com/spf13/viper
-
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  goimports: #| goimports: Checks if the code and import statements are formatted according to the 'goimports' command. [fast, auto-fix]
+    local-prefixes: github.com/spf13/viper  # example
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   depguard:         #. depguard - Checks if package imports are in a list of acceptable packages.
     rules:
       main:
@@ -333,70 +328,197 @@ linters-settings:
         files:
           - $all
         allow:
-          - $gostd
-          # - github.com/alingse/nilnesserr
+          - $gostd  # example
+          # - github.com/alingse/nilnesserr  # example
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#& GCI splits all import blocks into different sections, now support six section type:
+#= https://github.com/daixiang0/gci
+# standard: Go official imports, like "fmt"
+# custom: Custom section, use full and the longest match (match full string first, if multiple matches, use the longest one)
+# default: All rest import blocks
+# blank: Put blank imports together in a separate group
+# dot: Put dot imports together in a separate group
+# alias: Put alias imports together in a separate group
+# localmodule: Put imports from local packages in a separate group
+# The priority is standard > default > custom > blank > dot > alias > localmodule, all sections sort alphabetically inside.
+# By default, blank, dot, and alias sections are not used, and the corresponding lines end up in the other groups.
+# All import blocks use one TAB(\t) as Indent.
 
-  gci:
+  gci: #| gci: Checks if code and import statements are formatted, it makes import statements always deterministic. [fast, auto-fix]  --  Imports order.
     sections:
       - standard
       - default
       - localmodule
-#     - prefix(github.com/spf13/viper)
-
-  staticcheck:              #= https://golangci-lint.run/usage/linters/#staticcheck  --  https://staticcheck.dev/docs/checks/
+#     - prefix(github.com/spf13/viper)  # example
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  staticcheck: #, staticcheck: It's a set of rules from staticcheck. It's not the same thing as the staticcheck binary. The author of staticcheck doesn't support or approve the use of staticcheck as a library inside golangci-lint. [auto-fix]  --  I have found that it's not the same as staticcheck binary :\
+               #= https://golangci-lint.run/usage/linters/#staticcheck  --  https://staticcheck.dev/docs/checks/
     checks:
       - all
     #   - '-SA1000' # disable the rule SA1000
     #   - '-SA1004' # disable the rule SA1004
-
-  #= See https://go-critic.com/overview.html
-  gocritic:
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  gocritic: #| gocritic: Provides diagnostics that check for bugs, performance and style issues. [auto-fix]  --  Dislikes 'commentedOutCode' ?
+            #= See https://go-critic.com/overview.html
     enabled-tags:
       - diagnostic
       - experimental
       - opinionated
       - performance
       - style
-    disabled-checks:
+    # disabled-checks:
       #. These 3 will detect many cases, but they do sense if it's performance oriented code
-      - hugeParam
-      - rangeExprCopy
-      - rangeValCopy
-
-  godot:
+    #   - hugeParam
+    #   - rangeExprCopy
+    #   - rangeValCopy
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  godot: #| godot: Check if comments end in a period. [fast, auto-fix] -- comment punctuation, really? And no, comments are not poetry.. ;o)
     scope: all
-
-  errcheck:
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  errcheck: #, errcheck: Errcheck is a program for checking for unchecked errors in Go code. These unchecked errors can be critical bugs in some cases.  --  Forces to not skip error check. - check that all errors are handled
     check-type-assertions: true #. Report `a := b.(MyStruct)` when `a, ok := ...` should be. - Default: false
     check-blank: true           #. Report skipped checks:`num, _ := strconv.Atoi(numStr)`. - Default: false
-    exclude-functions:          #. Functions to skip.
-      - io/ioutil.ReadFile
-      - io.Copy(*bytes.Buffer)
-      - io.Copy(os.Stdout)
+    # exclude-functions:          #. Functions to skip.
+    #   - io/ioutil.ReadFile
+    #   - io.Copy(*bytes.Buffer)
+    #   - io.Copy(os.Stdout)
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ #= https://github.com/alexkohler/nakedret
+  nakedret:             #& aims to catch naked returns on non-trivial functions.
+    max-func-lines: 25   #. Default: 30 - number of lines before insisting returned values are explicit on return line
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  govet: #, govet: Vet examines Go source code and reports suspicious constructs. It is roughly the same as 'go vet' and uses its passes. [auto-fix]  --  check incorrect printf format-argument calls - invoked by the goland internally?
+    disable-all: false # Disable all analyzers. - Default: false
+    # Enable analyzers by name. (in addition to default: appends, asmdecl, assign, atomic, bools, buildtag, cgocall, composites, copylocks, defers, directive, errorsas, framepointer, httpresponse, ifaceassert,
+    #   loopclosure, lostcancel, nilfunc, printf, shift, sigchanyzer, slog, stdmethods, stringintconv, structtag, testinggoroutine, tests, timeformat, unmarshal, unreachable, unsafeptr, unusedresult).
+    # Run `GL_DEBUG=govet golangci-lint run --enable=govet` to see default, all available analyzers, and enabled analyzers. - Default: []
+    enable:
+      - appends                 #. Check for missing values after append.
+      - asmdecl                 #. Report mismatches between assembly files and Go declarations.
+      - assign                  #. Check for useless assignments.
+      - atomic                  #. Check for common mistakes using the sync/atomic package.
+      - atomicalign             #. Check for non-64-bits-aligned arguments to sync/atomic functions.
+      - bools                   #. Check for common mistakes involving boolean operators.
+      - buildtag                #. Check //go:build and // +build directives.
+      - cgocall                 #. Detect some violations of the cgo pointer passing rules.
+      - composites              #. Check for unkeyed composite literals.
+      - copylocks               #. Check for locks erroneously passed by value.
+      - deepequalerrors         #. Check for calls of reflect.DeepEqual on error values.
+      - defers                  #. Report common mistakes in defer statements.
+      - directive               #. Check Go toolchain directives such as //go:debug.
+      - errorsas                #. Report passing non-pointer or non-error values to errors.As.
+      - findcall                #. Find calls to a particular function.
+      - framepointer            #. Report assembly that clobbers the frame pointer before saving it.
+      - httpresponse            #. Check for mistakes using HTTP responses.
+      - ifaceassert             #. Detect impossible interface-to-interface type assertions.
+      - loopclosure             #. Check references to loop variables from within nested functions.
+      - lostcancel              #. Check cancel func returned by context.WithCancel is called.
+      - nilfunc                 #. Check for useless comparisons between functions and nil.
+      - nilness                 #. Check for redundant or impossible nil comparisons.
+      - printf                  #. Check consistency of Printf format strings and arguments.
+      - reflectvaluecompare     #. Check for comparing reflect.Value values with == or reflect.DeepEqual.
+      - shadow                  #. Check for possible unintended shadowing of variables.
+      - shift                   #. Check for shifts that equal or exceed the width of the integer.
+      - sigchanyzer             #. Check for unbuffered channel of os.Signal.
+      - slog                    #. Check for invalid structured logging calls.
+      - sortslice               #. Check the argument type of sort.Slice.
+      - stdmethods              #. Check signature of methods of well-known interfaces.
+      - stdversion              #. Check for uses of too-new standard library symbols.
+      - stringintconv           #. Check for string(int) conversions.
+      - structtag               #. Check that struct field tags conform to reflect.StructTag.Get.
+      - testinggoroutine        #. Report calls to (*testing.T).Fatal from goroutines started by a test.
+      - tests                   #. Check for common mistaken usages of tests and examples.
+      - timeformat              #. Check for calls of (time.Time).Format or time.Parse with 2006-02-01.
+      - unmarshal               #. Report passing non-pointer or non-interface values to unmarshal.
+      - unreachable             #. Check for unreachable code.
+      - unsafeptr               #. Check for invalid conversions of uintptr to unsafe.Pointer.
+      - unusedresult            #. Check for unused results of calls to some functions.
+      - unusedwrite             #. Checks for unused writes.
+      - waitgroup               #. Checks for misuses of sync.WaitGroup.
 
-  govet:
+    enable-all: false # Enable all analyzers. - Default: false
+
+    #& Disable analyzers by name.
+    # (in addition to default: atomicalign, deepequalerrors, fieldalignment, findcall, nilness, reflectvaluecompare, shadow, sortslice, timeformat, unusedwrite).
+    # Run `GL_DEBUG=govet golangci-lint run --enable=govet` to see default, all available analyzers, and enabled analyzers.
+    # Default: []
     disable:
-      - fieldalignment  #. I'm ok to waste some bytes
+      - fieldalignment          #. Find structs that would use less memory if their fields were sorted. - I can waste waste a few bytes?  Whoever wrote this either works on embedded cerebro-cellular space nano-implants or has no friends.. or both.
 
-  nakedret:             #. No naked returns, ever.
-    max-func-lines: 1   #. Default: 30
-
-  tagliatelle:
+    settings: # Settings per analyzer.
+      #, Analyzer name, run `go tool vet help` to see all analyzers.
+      printf:
+        #. Comma-separated list of print function names to check (in addition to default, see `go tool vet help printf`). -  Default: []
+        funcs:
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Infof
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Warnf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Errorf
+          - (github.com/golangci/golangci-lint/pkg/logutils.Log).Fatalf
+      shadow:
+        strict: false #. Whether to be strict about shadowing; can be noisy. - Default: false - Should allow for exceptions when shadowing 'err'?
+    #   unusedresult:
+    #     #. Comma-separated list of functions whose results must be used - Default: []
+    #     # (in addition to default: context.WithCancel, context.WithDeadline, context.WithTimeout, context.WithValue, errors.New, fmt.Errorf, fmt.Sprint, fmt.Sprintf, sort.Reverse).
+    #     funcs:
+    #       - pkg.MyFunc
+    #     stringmethods: # Comma-separated list of names of methods of type func() string whose results must be used (in addition to default Error,String) - Default: []
+    #       - MyMethod
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+  tagalign: #| tagalign: Check that struct tags are well aligned. [fast, auto-fix] - and ordered - see linters-settings  -- check struct tag alignment and order
+      align: true
+      sort: true
+      order:
+          - json
+          - validate
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#= https://github.com/ldez/tagliatelle
+  tagliatelle:  #| tagliatelle: Checks the struct tags name case.
     case:
+      #& Defines the association between tag name and case. - Any struct tag name can be used.
+      #. Supported string cases: camel, pascal, kebab, snake, upperSnake, goCamel, goPascal, goKebab, goSnake, upper, lower, header
       rules:
-        json: snake #. why it's not a `snake` by default?!
-        yaml: snake #. why it's not a `snake` by default?!
-        xml: camel
-        bson: camel
-        avro: snake
+        json: snake # Default: camel
+        yaml: snake # Default: camel
+        xml: camel # Default: camel
+        bson: camel # Default: camel
+        avro: snake # Default: snake
         mapstructure: kebab
+        toml: camel # Default: camel
+        env: upperSnake # Default: upperSnake
+        envconfig: upperSnake # Default: upperSnake
+        whatever: snake # Default: snake
+        header: header # Default: header
 
-#= See also https://gist.github.com/cristaloleg/dc29ca0ef2fb554de28d94c3c6f6dc88
+      #. Important: the `extended-rules` overrides `rules`. (Also Defines the association between tag name and case.) - Default: empty
+    #   extended-rules:
+    #     json:
+    #       case: camel # Required
+        #   extra-initialisms: true # Adds 'AMQP', 'DB', 'GID', 'RTP', 'SIP', 'TS' to initialisms, and removes 'LHS', 'RHS' from initialisms. - Default: false
+        #   initialism-overrides: # Defines initialism additions and overrides. - Default: empty
+        #     DB: true # add a new initialism
+        #     LHS: false # disable a default initialism.
+
+    #   use-field-name: false # Uses the struct field name to check the name of the struct tag. - Default: false
+    #   ignored-fields: # The field names to ignore. - Default: []
+    #     - Bar
+    #     - Foo
+    #   overrides: # Overrides the default/root configuration. - Default: []
+    #     -
+        #   pkg: foo/bar # The package path (uses `/` only as a separator). - Required
+        #   rules: # Default: empty or the same as the default/root configuration.
+        #     json: snake
+        #     xml: pascal
+        #   extended-rules: # Default: empty or the same as the default/root configuration. - same options as the base `extended-rules`.
+        #   use-field-name: false # Default: false (WARNING: it doesn't follow the default/root configuration)
+        #   ignored-fields: # The field names to ignore. - Default: [] or the same as the default/root configuration.
+        #     - Bar
+        #     - Foo
+        #   ignore: false # Ignore the package (takes precedence over all other configurations). - Default: false
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #
 #&          Revive - Linter Settings
-  revive:
+  revive: #| revive: Fast, configurable, extensible, flexible, and beautiful linter for Go. Drop-in replacement of golint. [auto-fix] - HUGE CONFIG BENEATH linters-settings
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
     max-open-files: 2048                #. Maximum number of open files at the same time. - Defaults to unlimited.
@@ -412,7 +534,7 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#add-constant
       - name: add-constant
         severity: warning
-        disabled: true          #* Changed - Wants vars where numbers are the ideal (IMO) ie: Card count
+        disabled: true          #* Changed - Wants vars where numbers are the ideal (IMO) ie: Playing Card count
         arguments:              #* limit test for cards [i <= 52] - I'll rewrite when 52 changes..
           - maxLitCount: "3"
             allowStrs: '""'
@@ -450,7 +572,7 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#cognitive-complexity
       - name: cognitive-complexity
         severity: warning
-        disabled: false           #* Changed
+        disabled: false           #* Changed - I can cognit reel gud
         arguments: [20]      # 20 - was 7
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#comment-spacings
       - name: comment-spacings
@@ -593,7 +715,7 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#line-length-limit
       - name: line-length-limit
         severity: warning
-        disabled: true          #* Changed
+        disabled: true          #* Changed - me gotem big ol picta box
         arguments: [110]       # 80
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#max-public-structs
       - name: max-public-structs
@@ -756,18 +878,11 @@ issues:
         - dupl
         - gosec
 
-    #. Run some linter only for test files by excluding its issues for everything else.
+    #. Exclusive for TESTS: Run some linter only for test files by excluding its issues for everything else.
     - path-except: _test\.go
       linters:
-        - forbidigo
+        - forbidigo     #, Eliminate leftover Println debugging - forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
 
-#* Omitted due to the above:
-#* logging.go:9:3     forbidigo         use of `fmt.Print` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
-#* logging.go:24:3    forbidigo         use of `fmt.Println` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
-#* logging.go:29:6    forbidigo         use of `fmt.Print` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
-#* logging.go:32:6    forbidigo         use of `fmt.Print` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
-#* main.go:8:2        forbidigo         use of `fmt.Printf` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
-#* main.go:15:3       forbidigo         use of `fmt.Println` forbidden by pattern `^(fmt\.Print(|f|ln)|print|println)$`
 
     #. Exclude known linters from partially hard-vendored code, which is impossible to exclude via `nolint` comments.
     #| `/` will be replaced by current OS file path separator to properly work on Windows.
@@ -805,10 +920,6 @@ issues:
   #| "/" will be replaced by current OS file path separator to properly work on Windows.
   # Default: []
 
-# **********************************************************************************************
-# **********************************************************************************************
-# **********************************************************************************************
-
   exclude-files:
     - ".*\\_notes\\.*$"     #. ANY files in _notes dir
     - ".*\\_notes\\.go$"    #. .go files in _notes dir
@@ -816,15 +927,7 @@ issues:
     - ".*\\_.*$"            #. underscore prefixed files in project root
     - lib/bad.go
 
-# **********************************************************************************************
-# **********************************************************************************************
-# **********************************************************************************************
-
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-  #. Mode of the generated files analysis.
+  #, Mode of the generated files analysis.
   #
   # - `strict`: sources are excluded by following strictly the Go generated file convention.
   #    Source files that have lines matching only the following regular expression will be excluded: `^// Code generated .* DO NOT EDIT\.$`
@@ -837,25 +940,20 @@ issues:
   exclude-generated: lax
 
   #. Maximum issues count per one linter. - I SEE ALL!
-  # Set to 0 to disable.
-  # Default: 50
+  # Set to 0 to disable. - Default: 50
   max-issues-per-linter: 0
 
   #. Maximum count of issues with the same text. - I SEE ALL!
-  # Set to 0 to disable.
-  # Default: 3
+  # Set to 0 to disable. - Default: 3
   max-same-issues: 0
 
   #. Make issues output unique by line. - I SEE ALL!
-  # Default: true
-#   uniq-by-line: false -- deprecated
+  # Default: true - uniq-by-line: false -- deprecated
   uniq-by-line: false
 
+  #, Show only new issues: if there are unstaged changes or untracked files, only those changes are analyzed, else only changes in HEAD~ are analyzed.
   #. When set to `true` linter will analyze only new code which are not committed or after some specific revision. This is a cool
   #. feature when you're going to introduce linter into a big project. But I prefer going gradually package by package.
-  #& Show only new issues: if there are unstaged changes or untracked files, only those changes are analyzed, else only changes in HEAD~ are analyzed.
-  # It's a super-useful option for integration of golangci-lint into existing large codebase.
-  # It's not practical to fix all existing issues at the moment of integration: much better don't allow issues in new code.
   # Default: false - scan all code. #. - I SEE ALL!
   new: false
 
@@ -869,9 +967,7 @@ issues:
   #. Show issues in any part of update files (requires new-from-rev or new-from-patch). -- Default: false
 #   whole-files: true
 
-  #& Fix found issues (if it's supported by the linter).
-  #, Even with a recent GPT-4 release I still believe that I know better how to do my job and fix the suggestions.
-  # Default: false
+  #& Fix found issues (if it's supported by the linter). - Default: false  --  Uh, neauoo..
   fix: false
 
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -921,7 +1017,7 @@ issues:
 
   #. The list of ids of default excludes to include or disable.
   #= https://golangci-lint.run/usage/false-positives/#default-exclusions
-#? This INCLUDES ALL 15 EXCLUSIONS negating 'issues.exclude-use-default=true' was se t to true (dirs [third_party$, examples$, Godeps$, builtin$] remain?)
+#? This INCLUDES ALL 15 EXCLUSIONS negating 'issues.exclude-use-default=true' was set to true (dirs [third_party$, examples$, Godeps$, builtin$] remain?)
   # Default: []
   include:
     - EXC0001
@@ -940,24 +1036,15 @@ issues:
     - EXC0014
     - EXC0015
 
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-#&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
-
-
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 #&      Output Configuration Options
-#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 output:
-#+----------------------------------------
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-  #. Print linter name in the end of issue text. - Must have. Easier to understand the output.
-  # Default: true
+  #. Print linter name in the end of issue text. - Must have. Easier to understand the output. - Default: true
   print-linter-name: true
 
-  #. Add a prefix to the output file references. - Flags for post-proc and/or syntax highlighting.
-  # Default: ""
+  #. Add a prefix to the output file references. - Flags for post-proc and/or syntax highlighting. - Default: ""
   path-prefix: ""
 
   #. The formats used to render issues.
@@ -993,31 +1080,10 @@ output:
     # - format: checkstyle
     #   path: report.xml
 
-  #, Order to use when sorting results.
-  # Require `sort-results` to `true`.
-  # Possible values: `file`, `linter`, and `severity`.
-  #
-  # If the severity values are inside the following list, they are ordered in this order:
-  #   1. error
-  #   2. warning
-  #   3. high
-  #   4. medium
-  #   5. low
-  # Either they are sorted alphabetically.
-
-  #? sorts results by: filepath, line and column
-  # Default: ["file"]
-  sort-results: true                    #. Sort results by the order defined in `sort-order`. Default: false
-
-  sort-order:
-    - linter
-    - severity
-    - file # filepath, line, and column.
-
-  #, Print lines of code with issue. (prints the code in question)
-  # Default: true
-  print-issued-lines: true
-
-  #, Show statistics per linter. {# of matches}
-  # Default: false
-  show-stats: false
+  sort-results: true        #, Sort Order for final results. Default: false  --  (diff results in line vs table output..)
+  sort-order:               #| Possible values: `file`, `linter`, and `severity`. -  Default: ["file"]
+    - file                  #. filepath, line, and column.
+    - linter                #. like w/ like
+    - severity              #. If the severity values are inside the following list, they are ordered thusly: 1. error, 2. warning, 3. high, 4. medium, 5. low - then they are sorted alphabetically.
+  print-issued-lines: true  #, Print lines of code with issue. (prints the code in question) - Default: true
+  show-stats: true          #, Show statistics per linter. {# of matches} - Default: false

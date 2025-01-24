@@ -1,8 +1,14 @@
 package main
 
+import (
+	"crypto/rand"
+	"math/big"
+)
+
 //? should player numbers from 0 or 1 ?
 
 func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) ([]card, []player) {
+	// var wg sync.WaitGroup
 	playerNames := []string{"Arthur", "Betty", "Charlie", "Denise", "Eddie", "Fran", "George", "Henrietta"}
 
 	players := []player{} //? players := []player{}  diff?  either works -  BUT?  *** pre-allocate ??
@@ -12,6 +18,7 @@ func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) (
 	var aHand []card
 
 	for i := range numberOfPlayers {
+		// wg.Add
 		shoe, aHand = deal(shoe, cardsPerPlayer)
 
 		p := player{
@@ -28,4 +35,17 @@ func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) (
 	}
 
 	return shoe, players
+}
+
+func getRandomPlayer(playerCount int) int {
+	// generator := rand.New(rand.NewSource(time.Now().UnixNano())) // Create new random generator
+	// theButton := generator.Intn(playerCount)
+	nBig, err := rand.Int(rand.Reader, big.NewInt(int64(playerCount)))
+	if err != nil {
+		panic(err)
+	}
+
+	theButton := nBig.Int64()
+
+	return int(theButton)
 }

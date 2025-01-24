@@ -64,7 +64,7 @@ func checkForSeqs(aHand []card) (seqScore int, highCard int) {
 	isFlush := true
 	seqScore = 5 // default = flush
 
-	rankInSuitMap := make(map[int]int)
+	rankInSuitMap := make(map[int]int, len(aHand))
 
 	var priorCard int
 
@@ -81,7 +81,7 @@ func checkForSeqs(aHand []card) (seqScore int, highCard int) {
 		highCard = rankInSuitMap[0]
 	}
 
-	suitRankMap := make(map[int]int)
+	suitRankMap := make(map[int]int, len(aHand))
 	for cardNum, card := range aHand {
 		suitRankMap[cardNum] = card.suitRank
 	}
@@ -114,7 +114,7 @@ func checkForSets(aHand []card) (int, []card, string) {
 	setScore := 1 // defaults to just the pair..
 	pairCount := 0
 
-	origSetMap := make(map[int]int)
+	origSetMap := make(map[int]int, len(aHand))
 	for _, card := range aHand { // compile k/v pairs reflecting rankInSuit/qty
 		origSetMap[card.rankInSuit]++ // ie: map[7:2 11:1 13:2] = 2 Pairs (Aces & Eights + Queen Kicker)
 	}

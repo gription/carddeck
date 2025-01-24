@@ -1,6 +1,6 @@
 package main
 
-//* Package - Development purposes: Not intended for production release.
+//& Package - Development purposes: Not intended for production release.
 
 import "fmt"
 
@@ -42,4 +42,22 @@ func logDeck(deck []card, format string, yorn bool) int {
 	}
 
 	return 0
+}
+
+func dealFromTheBottom(players []player, pNum int) { //, DEAL FROM THE BOTTOM... (insensitive to deck contents)
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeFlush()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeStraight()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeStraightFlush()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeRoyalFlush()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeHighCard()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeOnePair()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeTwoPair()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeTrips()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeQuads()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeFullHouse()
+	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeTrash()
+
+	//. lucky card (how to address a single player card)
+	fmt.Print("--==< And one lucky card for the dealer:")
+	logCard(players[pNum].hand[getRandCardNum(len(players[pNum].hand))], true)
 }

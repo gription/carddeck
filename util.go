@@ -1,7 +1,7 @@
 package main
 
 func copyHashMapII(originalMap map[int]int) map[int]int {
-	newMap := make(map[int]int)
+	newMap := make(map[int]int, len(originalMap))
 
 	for key, value := range originalMap {
 		newMap[key] = value

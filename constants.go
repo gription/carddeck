@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
 type (
 	card struct {
 		idx        int    // 0..            // Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)
@@ -28,6 +34,8 @@ type (
 		wins           int
 		losses         int
 	}
+
+	util struct{}
 )
 
 const (
@@ -36,6 +44,23 @@ const (
 	rankPips            = "W23456789TJQKA" // W=Wild(Joker)
 	suitPips            = "♣♦♥♠"
 )
+
+func (u *util) logMe(msg string) {
+	logFile, err := os.OpenFile("log/carddeck.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600)
+	if err != nil {
+		log.Println("Error opening application log: ", err)
+		fmt.Println("Error opening application log: ", err)
+	}
+
+	logit := log.New(logFile, "carddeck - ", log.LstdFlags|log.Lmicroseconds)
+	logit.Println(msg)
+
+	if err := logFile.Close(); err != nil {
+		logit.Printf("Error closing log file: %s", err)
+		fmt.Printf("Error closing log file: %s %T\n", err, u) // REVIEW: ref'd 'u' only to alleviate error
+		logit.Fatal(err)
+	}
+}
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
