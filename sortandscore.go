@@ -195,3 +195,13 @@ func extractSets(setMap map[int]int) string {
 
 	return setPips
 }
+
+func copyHashMapII(originalMap map[int]int) map[int]int {
+	newMap := make(map[int]int, len(originalMap))
+
+	for key, value := range originalMap {
+		newMap[key] = value
+	}
+
+	return newMap
+}

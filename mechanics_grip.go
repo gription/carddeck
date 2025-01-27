@@ -6,6 +6,11 @@ import (
 
 //* TESTS: This is repo of hands for testing.
 
+//& FWIW: It appears (might be just my cfg) that the underscore in the name of this file is excluding it from file linting (Problem Reports), while including it in active editor linting
+//& and compile. I suspect it's associated with ignoring _test.go file components, and/or it may be bad Go file naming convention to use underscores - allowing other unintended behavior?
+//& I'm using it as a FEATURE as this allows me to include and leave around inactive test/dev code which are only intermittently implemented without the linter perpetually screechin'.
+// Evidence = rename file removing underscore and all these cheater funcs become an issue for not being implemented.
+
 var grip = []card{
 	{1, "Two of Clubs", "Two", "Clubs", "Club", "2", "♣", "U+2663", 1, 1},
 	{2, "Three of Clubs", "Three", "Clubs", "Club", "3", "♣", "U+2663", 1, 2},

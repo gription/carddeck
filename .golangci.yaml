@@ -543,8 +543,8 @@ linters-settings:
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#argument-limit
       - name: argument-limit
         severity: warning
-        disabled: false
-        arguments: [4]        # 6
+        disabled: false          #* Changed - Not sure of the default, certainly less is more,
+        arguments: [7]      # 6  #* and '2' would probably be an 'ideal'?
       #= https://github.com/mgechev/revive/blob/master/RULES_DESCRIPTIONS.md#atomic
       - name: atomic
         severity: warning

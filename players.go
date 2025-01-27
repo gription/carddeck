@@ -2,6 +2,7 @@ package main
 
 import (
 	"crypto/rand"
+	"fmt"
 	"math/big"
 )
 
@@ -28,6 +29,10 @@ func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) (
 			kickers:        aHand,
 			handScore:      0,
 			tieBreakPipStr: "",
+			accountBalance: startingBalance,
+			currentWager:   0,
+			debtToPot:      0,
+			strategy:       1,
 			wins:           0,
 			losses:         0,
 		}
@@ -48,4 +53,21 @@ func getRandomPlayer(playerCount int) int {
 	theButton := nBig.Int64()
 
 	return int(theButton)
+}
+
+func getNextPlayer(currentPlayer int, activePlayers []player) int {
+	var nextPlayer int
+	if currentPlayer == len(activePlayers)-1 {
+		nextPlayer = 0
+	} else {
+		nextPlayer = currentPlayer + 1
+	}
+
+	return nextPlayer
+}
+
+func logPlayers(players []player) {
+	for i := range players {
+		fmt.Println("Player", i, "-", players[i].name, "[ Balance:", players[i].accountBalance, "] Holding:", descHand(players[i].hand))
+	}
 }

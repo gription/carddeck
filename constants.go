@@ -1,11 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"log"
-	"os"
-)
-
 type (
 	card struct {
 		idx        int    // 0..            // Deuces 1st & Aces 13th per suit - Rank in Deck (Suits: 1-13C, 14-26D, 27-39H, 40-52S)
@@ -31,6 +25,10 @@ type (
 		kickers        []card
 		tieBreakPipStr string
 		handScore      int
+		accountBalance int
+		currentWager   int
+		debtToPot      int
+		strategy       int
 		wins           int
 		losses         int
 	}
@@ -39,27 +37,116 @@ type (
 )
 
 const (
-	numberOfPlayers int = 4
+	numberOfPlayers int = 5
 	cardsPerPlayer  int = 5
+	startingBalance int = 1000
+	betMinimum          = 10
 	rankPips            = "W23456789TJQKA" // W=Wild(Joker)
 	suitPips            = "♣♦♥♠"
 )
 
-func (u *util) logMe(msg string) {
-	logFile, err := os.OpenFile("log/carddeck.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600)
-	if err != nil {
-		log.Println("Error opening application log: ", err)
-		fmt.Println("Error opening application log: ", err)
+func cardStrToCardPip(cardStr string) string { // TODO: Use rankPips more elegantly to resolve? [conv to int, ref pos in rankPips?]
+	var newCardStr string
+
+	if cardStr == "1" {
+		newCardStr = "2"
 	}
 
-	logit := log.New(logFile, "carddeck - ", log.LstdFlags|log.Lmicroseconds)
-	logit.Println(msg)
-
-	if err := logFile.Close(); err != nil {
-		logit.Printf("Error closing log file: %s", err)
-		fmt.Printf("Error closing log file: %s %T\n", err, u) // REVIEW: ref'd 'u' only to alleviate error
-		logit.Fatal(err)
+	if cardStr == "2" {
+		newCardStr = "3"
 	}
+
+	if cardStr == "3" {
+		newCardStr = "4"
+	}
+
+	if cardStr == "4" {
+		newCardStr = "5"
+	}
+
+	if cardStr == "5" {
+		newCardStr = "6"
+	}
+
+	if cardStr == "6" {
+		newCardStr = "7"
+	}
+
+	if cardStr == "7" {
+		newCardStr = "8"
+	}
+
+	if cardStr == "8" {
+		newCardStr = "9"
+	}
+
+	if cardStr == "9" {
+		newCardStr = "T"
+	}
+
+	if cardStr == "10" {
+		newCardStr = "J"
+	}
+
+	if cardStr == "11" {
+		newCardStr = "Q"
+	}
+
+	if cardStr == "12" {
+		newCardStr = "K"
+	}
+
+	if cardStr == "13" {
+		newCardStr = "A"
+	}
+
+	return newCardStr
+}
+
+func getScoreDesc(scoreInt int) string {
+	var scoreDesc string
+
+	if scoreInt == 0 {
+		scoreDesc = "High-Card"
+	}
+
+	if scoreInt == 4 {
+		scoreDesc = "Straight"
+	}
+
+	if scoreInt == 5 {
+		scoreDesc = "Flush"
+	}
+
+	if scoreInt == 8 {
+		scoreDesc = "Straight-Flush"
+	}
+
+	if scoreInt == 9 {
+		scoreDesc = "Royal-Flush"
+	}
+
+	if scoreInt == 1 {
+		scoreDesc = "One-Pair"
+	}
+
+	if scoreInt == 2 {
+		scoreDesc = "Two-Pair"
+	}
+
+	if scoreInt == 3 {
+		scoreDesc = "Trips"
+	}
+
+	if scoreInt == 7 {
+		scoreDesc = "Quads"
+	}
+
+	if scoreInt == 6 {
+		scoreDesc = "Full-House"
+	}
+
+	return scoreDesc
 }
 
 //=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

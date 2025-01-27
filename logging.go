@@ -2,7 +2,12 @@ package main
 
 //& Package - Development purposes: Not intended for production release.
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"os"
+	"time"
+)
 
 func logCard(c card, yorn bool) {
 	if yorn {
@@ -56,8 +61,31 @@ func dealFromTheBottom(players []player, pNum int) { //, DEAL FROM THE BOTTOM...
 	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeQuads()
 	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeFullHouse()
 	// players[pNum].hand, players[pNum].handScore, players[pNum].kickers, players[pNum].tieBreakPipStr = gimmeTrash()
-
 	//. lucky card (how to address a single player card)
 	fmt.Print("--==< And one lucky card for the dealer:")
 	logCard(players[pNum].hand[getRandCardNum(len(players[pNum].hand))], true)
+}
+
+func (u *util) logMe(msg string) {
+	logFile, err := os.OpenFile("log/carddeck.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0o600)
+	if err != nil {
+		log.Println("Error opening application log: ", err)
+		fmt.Println("Error opening application log: ", err)
+	}
+
+	logit := log.New(logFile, "carddeck - ", log.LstdFlags|log.Lmicroseconds)
+	logit.Println(msg)
+
+	if err := logFile.Close(); err != nil {
+		logit.Printf("Error closing log file: %s", err)
+		fmt.Printf("Error closing log file: %s %T\n", err, u) // REVIEW: ref'd 'u' only to alleviate error
+		logit.Fatal(err)
+	}
+}
+
+func timeTrack(startTime time.Time, msgToLog string, u util) {
+	// time.Sleep(2 * time.Second) //, delay
+	combinedMsg := "Timed Event: " + msgToLog + " - Elapsed Time: " + (time.Since(startTime)).String() + " :._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._."
+	fmt.Println(combinedMsg)
+	u.logMe(combinedMsg)
 }
