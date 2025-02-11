@@ -305,6 +305,30 @@ linters:
 #&          Linters Settings/Configuration
 linters-settings:
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+#  ? Unverified settings..
+  gofmt:
+    simplify: true
+  gocyclo:
+    min-complexity: 15
+  dupl:
+    threshold: 100
+  goconst:
+    min-len: 2
+    min-occurrences: 2
+  misspell:
+    locale: US
+  lll:
+    line-length: 160
+    tab-width: 1
+  unparam:
+    check-exported: false
+  prealloc:
+    simple: true
+    range-loops: true
+    for-loops: false
+
+#=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   wsl: #| wsl: Add or remove empty lines. [fast, auto-fix]  -- Forces you to use empty lines. Great if configured correctly.
       force-case-trailing-whitespace: 1
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -371,6 +395,11 @@ linters-settings:
     #   - hugeParam
     #   - rangeExprCopy
     #   - rangeValCopy
+    #   - wrapperFunc
+    #   - dupImport
+    #   - ifElseChain
+    #   - octalLiteral
+
 #=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
   godot: #| godot: Check if comments end in a period. [fast, auto-fix] -- comment punctuation, really? And no, comments are not poetry.. ;o)
     scope: all
@@ -1087,3 +1116,5 @@ output:
     - severity              #. If the severity values are inside the following list, they are ordered thusly: 1. error, 2. warning, 3. high, 4. medium, 5. low - then they are sorted alphabetically.
   print-issued-lines: true  #, Print lines of code with issue. (prints the code in question) - Default: true
   show-stats: true          #, Show statistics per linter. {# of matches} - Default: false
+
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=

@@ -31,6 +31,7 @@ func establishPlayers(theDeck []card, numberOfPlayers int, cardsPerPlayer int) (
 			tieBreakPipStr: "",
 			accountBalance: startingBalance,
 			currentWager:   0,
+			currentInPot:   0,
 			debtToPot:      0,
 			strategy:       1,
 			wins:           0,

@@ -27,6 +27,7 @@ type (
 		handScore      int
 		accountBalance int
 		currentWager   int
+		currentInPot   int
 		debtToPot      int
 		strategy       int
 		wins           int
@@ -148,64 +149,3 @@ func getScoreDesc(scoreInt int) string {
 
 	return scoreDesc
 }
-
-//=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-//& Unicode block: Playing Cards (U+1F0A0-1F0FF)
-// Also, the knight, a specific fool and twenty-one generic trump cards (based on the Bourgeois Tarot) are available but not shown.
-
-//|  ♤      U+2664         White Spade Suit
-//|  ♡      U+2661         White Heart Suit
-//|  ♢      U+2662         White Diamond Suit
-//|  ♧      U+2667         White Club Suit
-
-//   ♠      U+2660         Black Spade Suit
-//   ♥      U+2665         Black Heart Suit
-//   ♦      U+2666         Black Diamond Suit
-//   ♣      U+2663         Black Club Suit
-
-//, Back and Three Jokers (red, black and white)
-//.  🂠       U+1F0A0       Playing Card Back
-//+  🂿       U+1F0BF       Red Joker
-//   🃏︎       U+1F0CF       Black Joker
-//|  🃟       U+1F0DF       White Joker
-
-//. U+1F0A1	        U+1F0B1	        U+1F0C1	            U+1F0D1
-//|   🂡                🂱               🃁                   🃑
-//~ Ace of Spades	Ace of Hearts	Ace of Diamonds	    Ace of Clubs
-//. U+1F0A2	        U+1F0B2	        U+1F0C2	            U+1F0D2
-//|   🂢                🂲               🃂                   🃒
-//~ Two of Spades	Two of Hearts	Two of Diamonds	    Two of Clubs
-//. U+1F0A3	        U+1F0B3	        U+1F0C3	            U+1F0D3
-//|   🂣                🂳               🃃                   🃓
-//~ Three of Spades	Three of Hearts	Three of Diamonds	Three of Clubs
-//. U+1F0A4	        U+1F0B4	        U+1F0C4	            U+1F0D4
-//|   🂤                🂴               🃄                   🃔
-//~ Four of Spades	Four of Hearts	Four of Diamonds	Four of Clubs
-//. U+1F0A5	        U+1F0B5	        U+1F0C5	            U+1F0D5
-//|   🂥                🂵               🃅                   🃕
-//~ Five of Spades	Five of Hearts	Five of Diamonds	Five of Clubs
-//. U+1F0A6	        U+1F0B6	        U+1F0C6	            U+1F0D6
-//|   🂦                🂶               🃆                   🃖
-//~ Six of Spades	Six of Hearts	Six of Diamonds	Six of Clubs
-//. U+1F0A7	        U+1F0B7	        U+1F0C7	            U+1F0D7
-//|   🂧                🂷               🃇                   🃗
-//~ Seven of Spades	Seven of Hearts	Seven of Diamonds	Seven of Clubs
-//. U+1F0A8	        U+1F0B8	        U+1F0C8	            U+1F0D8
-//|   🂨                🂸               🃈                   🃘
-//~ Eight of Spades	Eight of Hearts	Eight of Diamonds	Eight of Clubs
-//. U+1F0A9	        U+1F0B9	        U+1F0C9	            U+1F0D9
-//|   🂩                🂹               🃉                   🃙
-//~ Nine of Spades	Nine of Hearts	Nine of Diamonds	Nine of Clubs
-//. U+1F0AA	        U+1F0BA	        U+1F0CA	            U+1F0DA
-//|   🂪                🂺               🃊                   🃚
-//~ Ten of Spades	Ten of Hearts	Ten of Diamonds	Ten of Clubs
-//. U+1F0AB	        U+1F0BB	        U+1F0CB	            U+1F0DB
-//|   🂫                🂻               🃋                   🃛
-//~ Jack of Spades	Jack of Hearts	Jack of Diamonds	Jack of Clubs
-//. U+1F0AD	        U+1F0BD	        U+1F0CD	            U+1F0DD
-//|   🂭                🂽               🃍                   🃝
-//~ Queen of Spades	Queen of Hearts	Queen of Diamonds	Queen of Clubs
-//. U+1F0AE	        U+1F0BE	        U+1F0CE	            U+1F0DE
-//|   🂮                🂾               🃎                   🃞
-//~ King of Spades	King of Hearts	King of Diamonds	King of Clubs

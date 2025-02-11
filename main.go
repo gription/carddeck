@@ -9,9 +9,6 @@ import (
 	"time"
 )
 
-// * It seems next would be either present cards for discard selection,
-// * create the discard mechanism, or start the wager system, or 'ai' discard/wager process?
-
 func main() {
 	startTime := time.Now()
 
@@ -40,11 +37,14 @@ func main() {
 	whoBetting := getNextPlayer(currentPlayer, players)
 
 	fmt.Println("Player", theButton, "is on 'the button' and the bet's to player", whoBetting)
+	fmt.Println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 
 	var pot int
 
 	players, pot = getWagers(players, whoBetting, pot)
+
 	fmt.Println("Pot Total: $", pot)
+	fmt.Println("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 
 	logPlayers(players)
 
@@ -93,20 +93,22 @@ func goRoundTheTable(players []player, whoBetting int, pot int) ([]player, int) 
 		}
 
 		if foldStatus {
-			// TODO: Remove player from currentPlayers
+			// TODO: Remove player from currentPlayers (fold/lose)
 			proxToButton--
 		}
 
 		betToYou = currentPlayers[playerBetting].currentWager
 		potAccum = potAccum + wager
 
-		fmt.Print("goingRoundTable: >>>>>> ", players[playerBetting].name,
-			" bets: $", players[playerBetting].currentWager,
-			" retaining: $", players[playerBetting].accountBalance,
+		fmt.Print("goingRoundTable: >>>>> ",
+			players[playerBetting].name,
+			" Bal: $", players[playerBetting].accountBalance,
 			" Accumulated POT: $", potAccum,
-			" (Folding? ", foldStatus,
+			" (of which ", players[playerBetting].currentInPot, " is theirs) ",
+			"(Folding? ", foldStatus,
 			") Checking? ", checkStatus,
-			"  --  betToYou:", betToYou, "\n")
+			"\n",
+			"*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*\n")
 
 		proxToButton++
 
@@ -118,18 +120,13 @@ func goRoundTheTable(players []player, whoBetting int, pot int) ([]player, int) 
 
 func interactiveBet(players []player) []player {
 	// var wager int
-	wager := 178
-
-	fmt.Print("PLAYER BETS: You currently have: $ ", players[0].accountBalance, " Whatcha wanna bet?: $ ", wager)
-
+	//+ PLAYER INPUT: Commented out for dev speed
+	wager := 246
 	// if _, err := fmt.Scanln(&wager); err != nil {
-	// 	// TODO: Fold
 	// 	fmt.Println("Invalid input. Please enter an integer:", err)
 	// }
 
-	fmt.Println()
-	// Convert input to integer
-	wager, err := strconv.Atoi(strconv.Itoa(wager))
+	wager, err := strconv.Atoi(strconv.Itoa(wager)) // Convert input to integer
 	// wager, err := strconv.Atoi(strings.TrimSpace(fmt.Sprint(wager)))
 	if err != nil {
 		fmt.Println("Invalid input. Please enter an integer.")
@@ -145,17 +142,12 @@ func interactiveBet(players []player) []player {
 
 	players[0].currentWager = wager
 	players[0].accountBalance = players[0].accountBalance - wager
+	players[0].currentInPot = players[0].currentInPot + wager
+
+	fmt.Print(":::::::::::::::::::::: PLAYER BETS: You currently have: $ ", players[0].accountBalance, " Whatcha wanna bet?: $ ", wager, "\n")
 
 	return players
 }
-
-// hand           []card
-// kickers        []card
-// tieBreakPipStr string
-// handScore      int
-// accountBalance int
-// currentWager   int
-// strategy       int
 
 func playerTurn(currentPlayer player, betToYou int, proxToButton int, numPlayersLeft int, pot int) (modifiedPlayer player, wager int, foldStatus bool, checkStatus bool) {
 	// TODO: for each player determine WAGER & FOLDSTATUS based on hand, betToYou, proxToButton and numPlayersLeft
@@ -179,15 +171,12 @@ func playerTurn(currentPlayer player, betToYou int, proxToButton int, numPlayers
 		avgAmountIn = pot / numPlayersInPot // accuracy sufficient for calc
 	}
 
-	// TODO: determine riskAssessment [ if currentWager < {(avgAmountIn - numPlayersAhead) x strategy} ] im in 5, others in 5 ea - risk = 1.0 -> 2.0  /  im in 5, others in 20 - risk = .25 {}
-
-	if betToYou > maxBet { // REVIEW: IF betToYou exceeds balance and want to stay (~borrow from pot?) - leads to target shooting minigame?
+	if betToYou > maxBet { // REVIEW: IF betToYou exceeds balance and want to stay (~borrow from pot?) - leads to target shooting minigame? ;o)
 		thisPlayer.debtToPot = thisPlayer.debtToPot + (betToYou - maxBet)
 	}
 
 	// REVIEW: strategy needs to be float? range 1.0 to 2.0
 	// TODO: determine foldStatus [if handScore < XXX AND numPlayersLeft > YYY AND wager > % of accountBalance AND currentWager < % accountBalance AND riskAssessment < 5 ???] // THEN WAGER = 0
-	// TODO: eval hand into wager
 
 	wager = confidence * minimumBet
 
@@ -201,8 +190,16 @@ func playerTurn(currentPlayer player, betToYou int, proxToButton int, numPlayers
 
 	thisPlayer.currentWager = wager
 	thisPlayer.accountBalance = thisPlayer.accountBalance - wager
+	thisPlayer.currentInPot = thisPlayer.currentInPot + wager
 
-	fmt.Println("playerTurn++++++++++++", pName, "(btn+", proxToButton, ") Bets:", wager, "[POT STATUS: $", pot, " Players Invested:", numPlayersInPot, "Each For Avg~ $:", avgAmountIn, "] with", numPlayersAhead, "Ahead - BetToYou:", betToYou)
+	fmt.Print("playerTurn +++++++++++ ",
+		pName, " (@btn+", proxToButton,
+		") [POT STATUS: $", pot,
+		" w/ ", numPlayersInPot, " invested",
+		" {Avg~ $: ", avgAmountIn, "", " ea}] ",
+		" with: ", numPlayersAhead, " Ahead ",
+		"- Bets(Min =", betToYou, "): ", wager,
+		"\n")
 
 	return thisPlayer, wager, foldStatus, checkStatus
 }
@@ -214,13 +211,5 @@ func playerTurn(currentPlayer player, betToYou int, proxToButton int, numPlayers
 // 		handScore      int
 // 		accountBalance int
 // 		currentWager   int
+//      currentInPot   int
 // 		strategy       int
-
-// & Error handler
-// func Must[T any](x T, err error) T {
-// 	if err != nil {
-// 		panic(err)
-// 	}
-
-// 	return x
-// }

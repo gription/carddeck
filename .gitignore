@@ -43,6 +43,11 @@ go.work.sum
 
 # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+#. Flame Chart
+*.cpuprofile
+*.heapprofile
+*.heapsnapshot
+
 #= Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode
 
 #& ### VisualStudioCode ###
@@ -58,6 +63,9 @@ go.work.sum
 
 #. Built Visual Studio Code Extensions
 *.vsix
+
+#. Visual Studio Code Extensions Development - File Blacklist
+.vscodeignore
 
 #% ### VisualStudioCode Patch ###
 #. Ignore all local history of files

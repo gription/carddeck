@@ -1,0 +1,666 @@
+=<>===============================<><>================================<><>================================<><>===============================<>=
+||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||
+||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||
+||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||
+=<>===============================<><>================================<><>================================<><>===============================<>=
+&       DECORATION FOR LATER
+,   Poker Hand/Card Nicknames & Colloquialisms
+=<>===============================<><>================================<><>================================<><>===============================<>=
+||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||||\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/||
+||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||||<> <> <> <> <> <> <> <> <> <> <>||
+||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||||/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\||
+=<>===============================<><>================================<><>================================<><>===============================<>=
+
+% Card Nicknames
+A Bullet; Rocket
+K Cowboy
+Q Lady; Girl; Mop Squeezer; Cowgirl; Bitch
+J Johnny; Jackal; Knave; Hook; Fishhook; Valet;
+T Dime
+9 Nina Ross
+8 Snowman; Ocho
+7 Hockey Stick; Walking Stick; Candy Cane; Mullet
+6 Boot
+5 Nickel
+4 Sailboat
+3 Trey; Crab
+2 Deuce; Duck; Quacker
+
+% Pocket Pairs
+AA Pocket Rockets; American Airlines; Bullets; Two Pips
+KK Cowboys; Elvis Presley; King Kong; Ace Magnets; Brokeback
+QQ Cowgirls; Ladies; Siegfried and Roy; Four Tits; Bitches
+JJ Fishhooks; Hooks; Jokers; Kid Dyn-o-mite; Johnnies
+TT Binary; Dimes; TNT, Boxcars, Dynamite
+99 Gretzky; German Virgin
+88 Snowmen; Octopussy; Little Oldsmobile; Infinities; Double Infinity; Doggie Balls
+77 Hockey Sticks; Candy Canes; Walking Sticks
+66 Route 66
+55 Presto, Speed Limit, Nickels
+44 Sailboats; Midlife Crisis; Magnum; Luke Skywalker
+33 Crabs; Hooters
+22 Ducks; Swans; Quack Quack
+
+% flush
+Well-Dressed: A nickname for a ♦ flush
+Decked Out: A nickname for a ♦ flush
+Valentine's Day: A nickname for a ♥ flush
+All My Hearts: A nickname for a ♥ flush
+Heart-breaker: A nickname for a ♥ flush if it loses
+Laborers: A nickname for a ♠ flush
+Digging Deep: A nickname for a ♠ flush
+In The Hole: A nickname for a ♠ flush if it loses
+
+%straight hand with an ace as the highest card is called a Broadway straight. A straight hand with a five as the highest card is called a baby straight, bicycle, or wheel.
+Broadway straight: The highest possible straight, with the cards in descending order from ace to 10. For example, A♣ K♣ Q♦ J♠ 10♠.
+Baby straight: The lowest possible straight, with the cards in descending order from five to ace. For example, 5♠ 4♦ 3♦ 2♠ A♥.
+Wheel: Another name for a baby straight.
+Nut straight: The highest possible straight in a given hand.
+
+% Other Poker Hands - misc
+AK47 Machine Gun (AK-47)
+A2345 Bike; Steel Wheel
+AA88Q Dead Man's Hand
+KKKK The Four Horsemen
+KKK The Alabama Night Riders; The Three Wise Men
+JJ55 Rock and Roll (Jackson Five); Motown
+TTT Thirty Miles of Bad Road
+666 The Devil; Satan; Lucifer; The Beast; Devil's Area Code
+3333 Forest; Four Trees
+222AA Marksman
+
+% Un-Paired - high card
+AK Big Slick; Anna Kournikova; Machine Gun
+AQ Little Slick; Big Chick; Mrs. Slick; Doyle Brunson
+AJ Blackjack; Ajax; Jackass
+AT Johnny Moss
+A8 Dead Man's Hand
+A3 Baskin-Robbins; Friday The 13th
+A2 Acey-Deucey; Drinking Age
+KQ Marriage; Royalty
+KJ Kojak; King John; Bachelor Hand
+K9 Canine; Dog; Fido; Sawmill; Rin Tin Tin
+K3 King Crab; Alaska Hand; Three Kings
+QJ Maverick
+QT Q-Tip: Varkonyi
+Q9 Quinine
+Q8 Kuwait
+Q7 Computer Hand
+Q3 Gay Waiter
+JT Cloutier
+J7 Jack Daniel's
+J6 Railroad Hand
+J5 Motown; Jackson Five
+T2 Doyle Brunson; Texas Dolly
+96 Prom Night
+83 Raquel Welch
+73 Joe Hachem
+54 Jesse James
+
+% HUGE LIST
+= https://en.wikipedia.org/wiki/List_of_poker_playing_card_nicknames
+Card initials	Alternative names
+♣ flush	Golf Bag (set of clubs), Puppy Feet, Puppy Prints (from the design of the club)
+♦ flush	Well-Dressed, Decked Out
+♥ flush	Valentine's Day, All My Hearts, Heart-breaker (if it loses)
+♠ flush	Laborers, Digging Deep, In The Hole (if it loses)
+J4o	Pure Bluff Catcher
+J4s	Bluff Catcher, NOT PURE
+AA235, 2358K	Fibonacci
+A3579, 3579J, 579JK	What Are The Odds
+2357J, 357JK	All The Primes
+2468T, 468TQ, 68TQA	Even Stevens
+AAAAK	Knights of the Round Table, Monty Python and the Holy Grail
+AAAA	Team Rocket, Thunderbirds, Musketeers
+AAAKK	Windsor Castle, The Penthouse, Updown Court, The Pinnacle, Bran Castle (amongst some of the world's largest and/or most expensive buildings and/or mansions)
+AAA	Athos, Porthos and Aramis
+AAKK	Big Slick Did the Trick (a rhyme, if the appropriate two-pair hand is formed from the AK starting hand (aka Big Slick); poker professionals will tend to bet aggressively with this hand)
+AAQQ	Aqua
+AAJJ	Jackasses (play on "Jacks and Aces")
+AA88	Dead Man's Hand
+AKQJT	Broadway (off-suit), Royal Flush (suited)
+A3A6	Austin 3:16 (after WWE wrestler Stone Cold Steve Austin)
+A23	ABC
+AA23	Princess Leia[1]
+A6A8T	Golden Hand (from the Golden Mean)
+AK47	After the AK-47 assault rifle developed by Mikhail Kalashnikov
+KKKK	Four Horsemen, Kings of Leon
+AAAKKK	DUPLEX (Any two cards can be used. Basically two sets of trips. Instead of a 5-card hand called "Full House" you have a 6-card hand which makes a "bigger full house" or Duplex)
+KKKAA	The Nativity (the famous Biblical story in which the Three Wise Men visit Joseph & Mary to witness Jesus Christ's birth)
+KKKQQ	Buckingham Palace
+KKK	Alabama Knight Riders, Three Wise Men, Christmas Special, Ku Klux Klan, Keane
+KKQQ	Mommas and Poppas, ABBA, Double Date, "Aerosmith" (based on the song title, "Kings and Queens"), The Ice Breaker
+KQJT9	Off-Broadway (off-suit), Hail to the King (suited)
+QQQQK	Elvis in Vegas, Queer Eye for the Straight Guy
+QQQQJ	Bachelor's Dream
+QQQQ	Village People, Magnolias, Scrabble Player's Dream, The Joy Luck Club
+QQQ	Six Tits, Daisy Hand
+QAAAK	The Duck
+QQ33	San Francisco waiters (Queens and Treys)
+QJT98	Honeymoon in Vegas (if it wins, based on a scene from the movie of the same name)
+JA55	Jackass, Jazz
+JJJJQ	The Strip Club
+JJJJ8	Riewoldt On A Roll (after AFL Richmond full-forward Jack Riewoldt)
+JJJJ5	Neverland Ranch
+JJJ55	Jackson Five
+JJJ	"Hart, Schaffner and Marx"
+JJ55	Rock 'n' Roll, Motown
+JJ33	Hookers With Crabs
+JT987	Convenience Store Straight, Honeymoon in Vegas (if it loses, based on a scene from the movie of the same name)
+TTTT	Larry (after Larry Fortensky, Elizabeth Taylor's eighth husband), Shotgun
+TTT	Thirty Miles of Bad Road, Elk River, Gilroy, Judge Bean, Judge Duffy, Judge Judy, Judge Wapner, San Jose to Gilroy (approximate distance in miles between the two cities), Dallas to Fort Worth (ditto), Judas (his pay was "thirty pieces of silver")
+TT	Fingers n' Toes (ten of each), Dubs Dimes, Duff McKagan, Top Titties
+TJAAT	Golden String
+TT33	Hot Waitresses (Tens with treys)
+TK42A	Star Wars, Stormtrooper (Why aren't you at your post?)
+T8642	Rizlo, Scotch Straight
+9988	Oldsmobile[1]
+9966	Dinner For Four, Dubs Sixtyniners
+999	Extra Virgin (99 is "German Virgin")
+888	Television Subtitles
+77744	Sailing Rednecks
+777	21, 21 Miles of Rough Road, Jackpot,[2] Slot Machine[3]
+7733	Queens of the Stone Age (after their song 3's and 7's)
+75432 (off-suit)	Kansas City,[4] Sympathy Hand (it is the worst hand possible)
+6667J	Devil's Convenience Store
+666	The Devil, Lucifer, The Beast, Devil's Area Code, Kotch
+65432	Rabbit, The World Trade Center Straight[5]
+555	Washington Monument, Pork Chop Sandwich, Movie Call (All bogus numbers start with "555")
+5432A	First Street, Little Minnie, Little Wheel[citation needed], Pup, Puppy, Spoke[citation needed], Steel Wheel (suited)[citation needed], Steel Wheel Bike (suited)[citation needed], The Bicycle[citation needed]
+4444A	Hole-In-One
+4444	Yacht Club
+444	Grand Jury
+49	Full Cup (Joke from the TV Series Friends, where Chandler and Joey play "Cups")
+36TJK	The Royal Sampler (from a joke on The Simpsons)
+3333T	Teddy, EJ, Mr Football (after AFL/VFL Footscray/Western Bulldogs legend Ted Whitten), 1961 (if it loses)
+3333	Forest, Four Trees, The Magic Numbers
+3322	Socks and Shoes, Mits and Mites, Mites and Lice,[6] Nits and Lice[6]
+3A4A5	Pi
+2222	Mighty Ducks
+222AA	Marksman[7]
+22233	Tent (smallest full house), Mites and Lice,[6] Nits and Lice[6]
+222	Huey, Dewey, and Louie
+Texas hold 'em pocket card nicknames
+The following is a list of nicknames for pairs of two playing cards, usually hole cards, used in poker derivatives such as Texas hold 'em and Omaha hold 'em poker. These nicknames are usually used by the player when announcing their hand or by spectators or commentators who are watching the game.
+
+Ace higher card
+Card initials	Alternative name	Explanation
+AA
+Alan Alda	An alliteration, Alan Alda was the star of the television version of M*A*S*H[8]
+Albert Anastasia	An alliteration, first mob boss killed gangland style in 1957[9]
+American Airlines (A♥ A♠ or A♦ A♣)	So called due to the commercial airline's acronym and logo, AA (the aces are of different colors to mimic the AA logo)[10]
+Apollo 11	So called due to it being the first mission to the moon while ace is considered 1, or because the hand "AA" means "11"
+Banditerna (A♠ A♣)	Swedish for "the Bandits"[8]
+Batteries	AA like a AA battery commonly used in portable electronic devices
+Big Smoke	AA is a strong pre-flop favorite ("smokes") over Big Slick (AK) or any other two-card hand.
+Bullets	Looks like bullets, possibly a reference to the Dead Man's Hand, two pair of aces and eights, suggesting that Wild Bill drew a third bullet in the back, which filled his hand in death[8]
+Eyes	Probably from snake eyes in dice[8]
+Eyes of Texas	From the song, probably an elaboration on dice[8]
+Flying Nazis[11]	Probably because an A looks like a plane, and the Nazis had the most successful flying "aces" in their air force
+Joe Louis (A♠ A♣)	Two black eyes, what you will get in the ring if you fight Joe Louis[12]
+Pocket Rockets	Looks like rockets[8]
+Needles	Looks like needles[8]
+Rocky Mountains	Looks like mountains[8]
+Sharp Tops	Sharp on top, see also A4[8]
+Snake Eyes	From dice[8] snake eyes is the outcome of rolling the dice in a game of craps and getting only one pip on each die
+Squirrel[13]	Probably named because the hand is "the nuts". Possibly also a reference to the phrase "Even a blind squirrel can find a nut once in a while"[14]
+Sticks	Looks like sticks[8]
+Teepees	Looks like teepees[8]
+Two Pips[15]	A pip is a mark indicating the suit or numerical value of a playing card
+Visine (A♥ A♦)	Two red eyes, it gets the red out[16]
+AK	Anna Kournikova	Initials; also looks good, but never wins.[17]
+Annalise Keating	Initials;
+Barry Greenstein(A♦ K♦)	From 5th annual Jack Binion World Poker Open in Tunica MS, as per Hooter Huon[8]
+Big Slick	It is a slippery hand that one can easily lose a fortune over[17]
+Kalashnikov	Due to the name of a gun designed by Mikhail Kalashnikov, AK-47.
+Big Ugly (offsuit)[17]	Imitating Big Slick, but "Ugly" if offsuit
+Exxon Valdez (A♠ K♠)	Since it has a lot of black in it.[18]
+King Arthur[19]	Named after the legendary British leader.
+Korean Airlines[19]	Named after the South Korean Airline
+Mike Haven (A♦ K♦)	Mike played two pre-flops all-in in a row with these cards to win the final table, coming from behind[8]
+Salt Lake Pair[17]	No explanation found. The "pair" refers to the cards being well matched, rather than of equal value.
+Santa Barbara	Due to a big oil spill off Santa Barbara[8]
+Arian Kollen	Named after the Norwegian rapper Arian Kollen. His initials are A K, and he has also won some considerable pots with this hand.
+Walking Back to Houston	Gamblers who played this hand too strongly were often left with no getaway money.[8] Although other sources state its name was derived because the old time poker players would play this hand so well that they'd leave their opponents walking back to Houston[17]
+AQ	Antony & Cleopatra[8]	A for Antony and Cleopatra his queen. Named after the famous lovers and Shakespearian works
+Big Chick	Imitating Big Slick[8](AK)
+Big Slut[20]	Imitating Big Slick (AK). Hands involving Queens are often derogatory, especially if they don't win.
+Doyle Brunson	In his book, Doyle said he would never play AQ, and busted out of the 2008 WSOP Main Event holding AQ offsuit.
+Little Slick[20]	Imitating Big Slick (AK)
+Mrs Slick[21]	Imitating Big Slick (AK)
+Rocket Queen	A song made popular from Guns N'Roses
+AJ	Armani Jeans	AJ is the acronym used by the brand Armani Jeans
+The Unrare	n/a
+Apple Jacks[11]	Backronym of AJ
+Ajax[15]	Named after the foam cleaner due to the phonetic similarity between "Ajax" and "Ace-Jack", or "A-Jacks"
+Blackjack[22]	Named after the card game in which AJ (Or an Ace with a picture card or 10) is the highest possible hand
+Foamy Cleanser	Ajax[8]
+Hijack[23]	As in "High-Jack"
+Jackass[24]	Imitative of "Jack-Ace"
+Trapasso[25]	Likely to be named after the American Football player A.J. Trapasso
+AT	Bookends	2 ends of the highest straight[26]
+Johnny Moss	It's speculated that Johnny Moss is associated with this hand because he began playing poker at the age of 10[27]
+Dick's Last Resort	An all in hand represented by the famous restaurant
+A9	Rounders Hand	From the movie[8]
+McDerment (A♣ 9♣)	A corruption of the last name of Mike McDermott, the character played by Matt Damon in the movie Rounders, whose fortune rode heavily on this hand.[8]
+Jesus (Chris Ferguson)	Chris Ferguson beat T. J. Cloutier at the final hand of the 2000 WSOP Championship event holding A9 against TJ's AQ[27]
+Gimp Hand	Because it's so much weaker than Ace-Ten.
+A8	Dead Man's Hand	See Dead man's hand
+Asterix and Obelix[28]	Inspired by characters from René Goscinny's The Adventures of Asterix. Asterix represents the Ace due to the matching initial with Obelix representing the 8 due to their similar shape.
+A7	Slapshot	Nicknamed Slapshot as a hockey reference as sevens are sometimes called hockey sticks and aces are bullets[19]
+The Sonnert[29]	Named after poker player Bengt Sonnert for his success with it in the World Series of Poker Europe 2008
+A6	Mile High Club	Airplane and sex[26] (Aces are often nicknamed after planes due to their shape, "six" in German is pronounced as sechs similar to "sex")
+Tennessee Ernie Ford	Singer famous for the song Sixteen Tons[3]
+A5	High Five[11]	An Ace is high, combined with a five gives us a high five
+A4	Plane Crash[11]	Aces are synonymous with flying (e.g., 'Flying Nazis', 'Pocket Rockets' and 'American Airlines') probably due to the shape of the 'A', a '4' is like an 'A', but with a missing 'wing', hence Plane Crash
+Stu Ungar	Ungar won the last of his three World Series of Poker Main Event titles in 1997 with this hand, making a straight.
+Fake Aces	Since a 4 looks a bit like an A, the A4 can be called fake aces.
+A3	Ashtray	Imitates Ace-trey[8]
+Baskin-Robbins	Nicknamed Baskin-Robbins because of their 31 different flavors of ice cream.[27]
+Thrace	A portmanteau of "Three" and "Ace", also named after the historical and geographic area in southeast Europe Thrace[30]
+A2	Acey-Deucey	From the game Acey Deucy[31]
+Riewoldt	Playing number of St. Kilda Captain, Nick Riewoldt (12)
+Hunting Season	Aces are known as bullets and twos are known as ducks, hence hunting season[27]
+Little Slick[11]	Imitation of 'Big Slick' (AK)
+Brutus	Imitates "et tu". From William Shakespeare's Julius Caesar.  As Brutus stab Caesar, he exclaims “Et tu, Brute?”.
+Ax
+George Strait	Named after his Ace In The Hole Band and his song "Ace In The Hole"
+King higher card
+Card initials	Alternative name	Explanation
+KK	Ace Magnets	Ace Magnets because the ace is the only card you don't want to see[27]
+Brokeback[7]	Named after the film that depicts the complex romantic and sexual relationship between two cowboys (KK also being called "Cowboys")
+Butchers of Baghdad	Reference to 2003 invasion of Iraq and the most-wanted Iraqi playing cards
+Cowboys[11]	No explanation found. The nickname is probably given for a number of reasons, including the association between cowboys and playing poker, the similarity between the "K" of "King" and the "C" of "Cowboys" and both characters are male. It could also come from a common nickname of the King card - the "Cowboy".
+Elvis Presley[7]	Named after the "King" of Rock and Roll
+Gorillas	From King Kong[8]
+Gorillas in the Mist	From the movie starring Sigourney Weaver,[8] a nickname taken from "King Kong" (Also KK)[32]
+Kangaroos	Kangaroos are used on children's alphabet cards to illustrate a K[8]
+Kevin Keegan[33]	An alliteration
+King Kenny	An alliteration; the nickname of former Liverpool player Kenny Dalglish, who would soon be manager of Liverpool, Blackburn Rovers and Newcastle United
+Knights[33]	An association with the feudal king images on the cards
+King Kong[11]	An alliteration
+Kinkerbells[34]	Courtesy of Vince Van Patten on Celebrity Poker
+Krispy Kreme[11]	An alliteration
+KQ	Tito Hand (suited)	If Tito loses
+Ferdinand and Isabella	A Spanish King and Queen[8]
+Lucy and Ricky	Lucille Ball and Ricky "the King and queen of television"[8]
+Marriage (suited)	If it wins, comes from the game Pinochle[8]
+Mixed marriage (offsuit)	Comes from the game Pinochle[8]
+Othello (offsuit)[11]	This is reference to Othello and Desdemona, the fated couple from William Shakespeare's play Othello. Possibly also a reference to 'Mixed Marriage'
+Royal couple	A King and Queen[8]
+King of Queens	Popular American Sitcom starring Kevin James and Leah Remini.
+Throne	As befits a royal couple.
+Valentine's Day (K♥ Q♥)[27]	A matched couple, both showing their hearts
+KJ	Bachelor's hand (offsuit)	"Jack-King-Off"[8]
+Bill Fillmaff (offsuit)	The "signature hand" of "Bill Fillmaff", a character parodying poker professionals in general and Phil Hellmuth in particular, portrayed by Internet personality Kevin Bowen[35]
+Kalashnikov Jikita	Russian poker player Nikita Kalashnikov won $200 with this hand in an online poker room in 2020.
+Harry Potter	Written by J.K. Rowling[8]
+Jamiroquai	A British band fronted by singer Jay Kay
+Just kidding[11]	Backronym of JK, from the textspeak "j/k" (see below)
+Joking	'Jo' referring to the Jack; in textspeak, "j/k" is a pseudo-emoticon meaning "joking" or "just kidding"
+Jackie Kennedy	Wife of JFK
+The rookie	As said by Daniel Negreanu
+Jordy Kooistra	Initials of Dutch poker player
+King John	KJ[8]
+Kojak	Mimics KJack,[8] thanks to the '70s crime drama starring Telly Savalas, who was himself a poker player and occasional participant in WSOP Main Events[32]
+Ralph Perry	2002 World Series of Poker Main Event finalist berated by Antanas Guoga for overplaying the hand
+Starsky and Hutch[36]	Named after the crime fighting duo from the series of the same name|
+Tucson Monster[11]	No explanation found
+KT	Big Al	A reference to Wisconsin poker player "Big Al" Emerson[27]
+Katie	Imitation of K-T[8]
+Ken[33]	A portmanteau of "King" and "Ten"
+Ike Turner	Beats QT (Tina Turner – see below)
+Woodcutter (offsuit)	Possibly from the legend of King Edward and the Woodcutter[8]
+K9	Bow-wow[11]	From canine
+Canine	"K"-nine[8]
+Dogs	From canine[8]
+Fido	A derivative of canine[8]
+Mongrel (offsuit)	From canine[8]
+Mutt (offsuit)	From canine[8]
+Pedigree (suited)	From canine[8]
+Michael Vick	From canine, in reference to the former NFL QB's dog fighting conviction
+Rin Tin Tin[33]	From Rin Tin Tin K9 cop
+The Doctor Who	K-9, the Robotic Dog from the British Television Series Doctor Who
+Sawmill	Byron 'Cowboy' Wolford says:
+Milton Butts and I were playing poker in Bryan, Texas, where they had a good game going on the weekends. We'd been playing for a couple of days when a hand came up in which I had a K-9. I made a pretty good hand with it, but lost the pot and went broke. As I was driving back home to Houston with Milton, feeling kind of disgusted about going broke with that K-9, we passed by a sawmill where a man was sawing logs in the lumberyard. "As hard as that guy works for his money, I'll bet he would never go broke with a K-9", I told Milton. And that's how K-9 got named "Sawmill." Some of those names are still going around – Doyle Brunson mentioned the sawmill hand in his book, Super/System[37]
+K8	Kate	A portmanteau of "King" and "Eight"[30]
+Feast	What the 'King ate'[8]
+Cheeseburger	What the 'King ate' the King being Elvis Presley
+Kokomo	Imitative[8]
+K7	Columbia River	The Columbia River is famous for its salmon runs. "King Seven" sounds like "King Salmon"[27]
+Kevin	Sounds like Kevin[38]
+K6	Kicks	Nicknamed "Kicks" (if Pig Latin is used) for phonetic reasons[30]
+K5	Knives[33]	A combination of "King" and "Five"
+Seattle Special/The Home Team	The nickname refers to Seattle's NBC affiliate, channel 5 with call letters KING Seattle TV channel 5 based in King County, Washington, United States. Their news team's slogan is "The Home Team"[30]
+K4	Core[33]	A portmanteau of "King" and "Four"
+Fork	4K sounds like "Fork"[27]
+Fork Off (offsuit)[33]	4K sounds like "Fork" plus "Off" for offsuit
+Forking Idiot[33]	From "Fork". Probably a suggestion that you would have to be an idiot to play the hand
+Oppression of the Masses	The answer to the question: "What is a king for?"
+K3	Alaska Hand	From Alaskan King Crab[8]
+Commander Crab	A derivative of King Crab[8]
+Swedish Meatballs	SWEDES[8]
+King Crab	3 looks like a crab[8]
+Mortans Hand	Best hand he played [8]
+Sizzler	The home of all-you-can-eat King Crab[8]
+K2	Big Fritz (suited)	An unconfirmed reference to German poker player Andreas Fritz[30]
+Donald	A reference to Donald Duck,[30] the "King" of ducks (since twos are also known as "ducks")
+The Tracey	Originated by a 1-2 no limit crusher at Parks poker room
+Hand of the Night	A reference created by Chris Hinst during his weekly poker night. Named because he kept getting this same hand.
+King Gnu (offsuit)	A reference to King Gnu.
+Queen higher card
+Card initials	Alternative name	Explanation
+QQ	Lady Gaga	Queen of music & Queen of pop culture.
+Calamity Jane[11]	No explanation found, but the nickname is likely to come from Cowgirls the female equivalent of Cowboys (KK). Calamity Jane was also a friend of Wild Bill Hickok, a gunfighter who died during a poker game.
+P-CO	The last two queens of England
+Canadian Aces	Because Canadians revere the Queen[26]
+Canadian Rockets	Because Canadians revere the Queen[26]
+Four Tits	Vulgar[8]
+Hilton Sisters	Paris and Nicky Hilton[8]
+Anna Kournikova	Very pretty but seldom wins.[8]
+Ladies[3]	Because they're the only female cards. Queens tend to have derogatory names, especially when they lose, so Ladies is more likely to be used when they win.
+Pair of Wire Cutters	Dykes[8]
+Pocket Tubmans (Q♠ Q♣)	Reference to Harriet Tubman[8]
+Quiggities	Reference to Jiggities (see JJ below)
+San Francisco Wedding	A gay reference[8]
+Siegfried & Roy	Two Queens[8]
+Snowshoes[3]	Probably because they're the shape of a traditional snowshoe
+QJ	Quack[3]	Combination of Queen and Jack
+Maverick	From the Maverick TV show theme song, "Livin' on jacks and queens. Maverick is a legend of the west"[8]
+Hawaii	According to the pros if you don't play QJ for a year you'll save enough money to go there.
+Oedipus	an allusion to Sophocles' Oedipus the King, the ancient Greek tragedy in which Oedipus (the "J" in this pairing) unwittingly kills his father and marries his mother, Jocasta (the "Q")[32]
+Pinochle (Q♠ J♦)	The big hand in the game Pinochle[8]
+JQuery	JQuery never loses
+QT	Cutie[39]	For phonetic reasons
+Goolsby	Named for Everett Goolsby, well known Texas gambler. Crony of Doyle Brunson, Cowboy Wolford and Benny Binion[8]
+Tarantino	Quentin Tarantino, a famous movie maker[32]
+Q-Tip[40]	A backronym of QT. A Q-tip is a cotton swab.
+Tina Turner	It always gets beat.[41]
+Quint	Imitative[8]
+Robert Varkonyi	In the 2002 WSOP, Varkonyi knocked out Phil Hellmuth and eventually won the final event with this hand[8]
+Q9	Quinine	"Queen Nine" sounds like "Quinine", an early anti malarial drug,[27] from lowball[8]
+Q8
+Snow and a Ho	8 is a snowman, Q is a ho
+Frigid Bitch	From "Snow and a Ho"
+Face Sitter	A vulgar reference to analingus, what the 'queen ate'[8]
+Bitch Called Hope	Tempting to try for a straight, but rarely succeeds
+Kuwait	Nicknamed "Kuwait" for phonetic reasons[27]
+Q7	Computer Hand (offsuit)	From an apocryphal story that a computer proved that these were the most commonly occurring cards on the Flop.[42]
+There is also a story of an early computer simulation in which Q7 was a break-even hand[8][2] Nickname for the IBM Q7 (AN/FSQ-7) SAGE computer. This type of vacuum tube computer was physically the world's largest computer ever built.
+
+Dike	a lady with a mullet
+Q6	Arnold Palmer's ex-wife	Palmer was nicknamed the King.
+Nesquik	From "quix"
+Quix	Phonetic similarity.
+Sad Ole Bess	A play on Queen Elizabeth I's other nickname, "The Virgin Queen," AKA the Cherry Queen
+Q5	Granny Mae	If both spades, an old-time player, Granny=Queen, Mae=5th Month, some say Q5 spades was her favorite[8]
+Q4	Housework	A joking response to the question, "What's a queen for?"
+Prince Maker	A joking response to the question, "What's a queen for?"
+Shuli	Popularized in the notorious underground "Emergency Poker League" or "EPL", frequented by elite players of the Canadian circuit
+Q3	Gay Waiter	'Queen' with a 'tray'[8]
+San Francisco Busboy	'Queen' with a 'tray'[8]
+Windsor Waiter	'Queen' with a 'tray'[8]
+Q2	Daisy	A reference to Daisy Duck,[30] the "Queen" of ducks (since twos are also known as "ducks"). See also "Donald" – K2
+Queen Liz	A reference to Queen Elizabeth II
+Jack higher card
+Card initials	Alternative name	Explanation
+JJ	Brothers[25]	Two similar looking males, i.e. brothers
+Jiggities	Popularized by YouTuber Brad Owen. Likely a reference to Family Guy's Quagmire's catchphrase.
+Fishhooks	They look like them, and because fish get beat with overpairs[8]
+Jar Jars	Jar Jar Binks is one of the most hated Star Wars characters, just as JJ is for many experienced poker players
+Ice-JJ-Fish	Like the rapper, they rock[8]
+Jaybirds	Starts with J[8]
+Bowers	Named after the Jacks from the card game Euchre where jacks are the highest trumps and are called bowers, in turn from the German Bauer (literally, farmer)
+Jonatan Johansson	An alliteration, former Finnish footballer and Charlton Athletic forward, nicknamed 'JJ' by the fans
+John Juanda[11]	An alliteration, John Juanda is an American professional poker player
+Colostomy Bag	Vulgar, from "Pocket Jacks", 'Jacks' being a UK/Irish slang term for a toilet
+Rentboys	Two young men, similar to pocket queen's "Prostitutes" nickname
+Knaves Aplenty	Literally, a plethora of Jacks, a Knave being an alternative term for a Jack.
+Kid Dy-no-mite	Signature expression of the character JJ from the TV show Good Times[19]
+One Eyed Jacks (J♠ J♥)	Both side views[8]
+JT	Justin Timberlake	Justin Timberlake's initials
+The Two Jakes	The movie sequel to Chinatown starring Jack Nicholson and Harvey Keitel[8]
+Greek Passport	A Greek immigrant won with this to buy an Australian Residency
+John Terry	Named after the England Football Captain.
+T.J. Hooker	After the '80s action drama starring William Shatner[32]
+J9	Braggars	Jacks and nines are wild in the game of braggars[8]
+T. J. Cloutier (J♣ 9♣)	T.J. flopped three straight flushes with this hand in one year[40]
+J8	Jeffrey Dahmer	He 'ate Jack', serial killer who ate his victims[8]
+Jacket	Sounds like jacket[8]
+J7	Jack Daniels[40]	Named after Jack Daniel's Old No. 7 Tennessee whiskey
+J6	Coop Deville	[8] Named after the legend of Houston, TX
+Kevin Cusick	Famous callout of J-6 and predicting a two pair before being dealt
+Insurrection	J6 short hand for January 6 United States Capitol attack.
+J5	Jackson Five	Michael Jackson's childhood group[8]
+Motown	Record label for Jackson Five[8]
+J4	The Robbi	Named after Robbi Jade Lew, who improbably called Garrett Adelstein with this hand on "Hustler Casino Live" to take down a $269,000 pot[43]
+The New Motown	Motown was named for the Jackson Five, but now there's only four
+Austin Squatty	Named after John "Austin Squatty" Jenkins due to his penchant for raising and reraising with this hand[8]
+Flat tire	What's a 'jack for'?[8]
+Kid Grenade	After a poker dealer who when he played was "liable to go off at any moment"[44]
+J3	J Lo	As in "J-lo", "lo" meaning "low card" or perhaps the resemblance the 3 has to a derrière[45]
+Lumberjack	A Tree and a Jack
+Minus Michael and Jermaine	Jackson 5 without two members, preferably clubs to resemble Afros.
+J2	The Prince and the Pauper (suited)	After Mark Twain's novel set in 1547, which tells the story of two young boys who are identical in appearance: Tom Canty, a pauper who lives with his abusive father in Offal Court off Pudding Lane in London, and Prince Edward, son of King Henry VIII. They end up changing places.
+Heckle and Jeckle	Nicknamed Heckle and Jeckle after twin cartoon jaybirds (2 Jays) that first appeared on television in 1946 (Heckle and Jeckle were, in fact, magpies).[30]
+Jack Shit	Popular English phrase referring to "nothing", in this context referring to the fact there is a Jack with the worst possible kicker and also something widely regarded among poker players as a "nothing" hand.
+Ten higher card
+Card Initials	Alternative name	Explanation
+TT	Audi[13]	Named after the famous Audi TT car
+Binary[40]	In Binary, 1010 equals 10 (in decimal notation)
+Bo Derek	Actress from movie 10[19]
+Dimes[30]	A dime is a coin worth ten cents or one tenth of a United States dollar
+Dynamite[46]	Comes from T and T sounding like the explosive TNT
+McDonald's	Named after the ten piece McNugget
+Potatoes	The zero (0) in 10 looks like a potato, and potatoes are sometimes called Taytos. Alliteratively, Pocket Potatoes.
+Tension	Imitative[8]
+TNT[46]	Comes from T and T sounding like the explosive TNT
+Train Tracks	An alliteration
+T9	Mobile Hand	Named after the "Text on 9 Keys" mode on mobile phones
+Countdown	Countdowns usually start at ten, nine...[27]
+T8	Tetris	Imitative[8]
+T7	Bowling Hand	The difficult Seven-ten split[8]
+Daniel Negreanu (10♠ 7♠)	His favorite hand [3]
+Split	A bowling reference, a seven-ten split[8]
+T6	Sweet Sixteen	Six and Ten. Should be mumbled with sarcasm as you fold it[47]
+Filet-O-Fish	This hand looks good but in reality has no value
+T5	Dime Store	From 5 & dime[8]
+Homosexual	A gay reference, as you cannot make a straight with a ten and a five in your hand.
+Five and Dime[48]	From nickname "Dimes" as a dime is a United States coin worth 10 cents. A Five and Dime is a type of variety store.
+Merfs	A draw poker game where tens and fives are wild[30]
+Woolworths	The Five and Dime store chain[8]
+T4	Ex-Girlfriend	Named after a Las Vegas local's highschool girlfriend, because it sounds like the last name "fortin"
+Broderick Crawford	From 50s "Highway Patrol", who said "10-4" into radio[8]
+CB Hand	Ten-four is CB radio language for OK[8]
+Convoy	From the old trucker song, ten-four good buddy[8]
+Good Buddy	Old trucker radio language, ten-four is CB language for OK[8]
+Over and Out	Two-way radio language for end of conversation, ten-four is radio language for OK[8]
+Roger That	Two-way radio language for OK, ten-four is also radio language for OK[8]
+Truckers' Hand	Following the CB radio craze of the '70s, for the same reasons as "Broderick Crawford"[32]
+The Trucker[49]	From CB radio[8]
+T3	Kitchies	The T3 must be offsuit; refer to Dipthrong's kitchen for origin
+Fast Connection	Refers to the T3 telecommunications connection[30]
+Alexisdg8	A famous Canadian player from Quebec won his first tournament with this hand
+Hot Waitress	Ten with a tray (trey)[30]
+T2	Terminator 2	T2 is abbreviation for Terminator II[8]
+Whirlygig	Contemporary[8]
+Doyle Brunson (a.k.a. Texas Dolly)	Doyle "Texas Dolly" Brunson twice won the WSOP in 1976 and 1977 turning these hole cards into full [houses][8]
+Nine higher card
+Card initials	Alternative name	Explanation
+99	Barbara Feldon	Played Agent 99 on Get Smart[8]
+Hitlers	Nein, nein!
+German Virgin	What a German Virgin would say: "Nein, nein!"
+Phil Hellmuth (9♣ 9♠)	He won the 1989 WSOP with this hand[8]
+Red Balloons (9♦ 9♥)	From the 1980s song 99 Red Balloons by Nena
+Popeyes	Look like Popeye's arm muscles[19]
+Pothooks[50]	The 9 looks like a traditional pothook
+Wayne Gretzky	Hockey player's uniform number[8]
+98	Oldsmobile	The Olds 98 car[8]
+97	Persian Carpet Ride	A term Antonio Esfandiari coined for his favorite hand, making joking reference to his Persian heritage. He used the term on Poker After Dark, apparently after his friends teased him about the hand, no further explanation given.[51] However, Esfandiari also used the term on the commentary track of the World Poker Tour Season 2 DVD set, so the term dates back to at least 2004.
+96	The Dirty	69, sexual reference[8]
+Big Lick	69, sexual reference to Big Slick[8]
+Breakfast of Champions	69, sexual reference[8]
+Dinner For Two	69, sexual reference[8]
+Good Lover	69, sexual reference[8]
+Happy Meal	69, sexual reference[8]
+Mighty Meal	69, sexual reference, 96 suited, stronger than a Happy Meal (see above)
+Big Love	69, sexual reference
+Joe Bernstein	A gambler from the 30s, a sharp road gambler. Joe was known as a dapper dresser at the poker table[8]
+Jaka Šubic	Famous Slovenian improv comedian and poker player.
+Percy (offsuit)	69, sexual reference[8]
+Prom Night (suited)	If suited because they wear a tux on prom night, 69 sexual reference[8]
+Burger and a Grape Snow Cone	Reference to Alan Jackson's "Chattahoochee"
+95	Betty Hutton	From a version of stud with nines & fives wild[8]
+Dolly Parton	From the movie 9 to 5[8]
+Hard Working Man	Works 9 to 5[8]
+94	Joe Montana	49ers quarterback, borrowed from 92 Montana Banana; when he was benched, the joke was 49 unsuited[8]
+Lost World Series	Refers to the lost baseball World Series of 1994. Could also refer to the fate of a player who plays these cards incorrectly.[3]
+San Francisco	49 refers to San Francisco's Football team, the 49ers, which in turn refers to men of the 1849 gold rush in the Sierra Nevada mountains east of San Francisco[27]
+93	Jack Benny	For years Jack Benny claimed to be 39 years old[30]
+The Sandy	Sandy Dunlop became 2013 champion of the Black Cat Poker tournament with these hole cards
+92	Montana Banana	It is a widely asserted myth that this nickname originates from the legalization of poker in Montana by Proposition 92. However, poker was legalized in Montana by the Card Games Act, 23-5-311.[52] The nickname is referring to how it is more likely that bananas will grow in chilly Montana than that this hand will make money.[42]
+Other sources suggest it is Joe Montana's quarterback rating[19]
+
+Twiggy	From the 70s model's top measurement of 29[8]
+Eight higher card
+Card initials	Alternative name	Explanation
+88	Dawg Balls/Doggie Balls	Looks like them[8]
+Piano Keys	There are 88 keys on a piano[40]
+Rocket 88	Big car was Olds 98, smaller car called Olds 88[8]
+Racetracks	Goes round and round like a race track[8]
+Snowmen	Looks like two snowmen[8]
+Lindros	Eric Lindros wore Jersey #88
+Dale Jr.	Dale Earnhardt Jr. drove the #88 car in NASCAR
+Two Fat Ladies[53]	Looks like two fat ladies[8] taken from bingo[54]
+Lacey	Looks like shoelaces tied in a bow
+Octopuses/Octopi	An octopus has eight tentacles
+Pretzels	Looks like two pretzels[8]
+Wurlitzer	The number of keys on the Wurlitzer electric piano[8]
+Time Travel	The time travel speed (88 mph) used in the Back to the Future trilogy[8]
+Infinity on the Side	Looks like two infinity symbols on their side
+Ovechkin	A reference to the hockey player Alexander Ovechkin, who wears jersey #8.
+87	RPM	The very first record format was a 10-inch disc that spun 78 revolutions per minute[30]
+Tahoe	From the seven/8 variation of holdem[8]
+Crosby	A reference to the hockey player, #87 Sidney Crosby.
+86	Pooch	Bill Puccio swears these cards win every time
+Jagr	Named after hockey player Jaromír Jágr, who wore number 68 his entire career.
+Rick James	Named after Singer/Celeb Rick James, who died on 8/6.
+Eubie	If you play these, you be broke[8]
+Henry Bowen	A Texas gambler[8]
+Maxwell Smart	From TV show Get Smart, Agent 86, see also 99[8]
+Pacheco Nuts (offsuit)[55]	The California Grand, in Pacheco is right alongside Highway 680.
+85	The Hamilton	This hand is so named after a well known Scottish player. It is of course not a powerful hand but can on occasion make a well disguised straight. Its main function, though, is to tilt other players.[8]
+Chad	Football player Chad Ochocinco wears uniform number 85. Ochocinco, translated literally from Spanish, means "Eight Five."
+84	Big Brother	From George Orwell's book titled 1984[8]
+Boris Backhand	From boris89 winning 217,752.13 on this hand [8]
+Orwell	Author of the book titled 1984[8]
+83	Most Feared Hand in Hold'em[8]	A tongue in cheek reference to it being the third worst hand in poker
+Raquel Welch	Raquel Welch still claims to be 38[27]
+The Octocrab	Looks like a crab, which has 8 legs. Popularized by YouTuber Ben Deach.[56]
+Luigi	The closest hand to the Mario hand
+82	Tadpole	An answer to the statement, "What the duck ate."
+The Ball Buster	This hand is not technically the worst but it is still horrible.
+Mario	A reference to the ball buster
+Seven higher card
+Card initials	Alternative name	Explanation
+77	Axes	Looks like them
+Scythes	A seven looks like a scythe
+Len Goodman	Renowned judge from Strictly Come Dancing, known for his famous catchphrase, "Seven!"
+Candy Canes	Looks like them[40]
+Hockey Sticks	Looks like them[8]
+Mullets	Because of the hair style, flat in front, long in back[8]
+Saturn	Saturn VII rocket[8]
+Sunset Strip	From the title of the television series 77 Sunset Strip[8]
+Walking Sticks[40]	Looks like them
+Lucky Linus Mealey[8]	Named after notorious London poker player.
+76	Trombones	From the song 76 Trombones, from the musical The Music Man and its film adaptation[8]
+Union Oil	Union 76 gas stations[8]
+75	007 (7♠ 5♠)	Reference to James Bond's winning hand in the 2006 movie Casino Royale
+Vietnamese Slick	Year the Vietnam War ended
+Heinz	The H. J. Heinz Company in Pittsburgh, Pennsylvania has 57 varieties of condiments, the most famous being ketchup[27]
+Pickle Man	A reference to Heinz of 57 sauces fame[8]
+The Corrigan	A reference to the one and only Josh Corrigan, an icon of the Newcastle poker community, also coined the “Newcastle Nuts” by Novocastrian locals
+Pistol	A reference to the famous pistol made by Fabrique Nationale the FN Five-seven
+74	Double Down[57]	A Double Down is a player decision in Blackjack, in which you are betting that your hand can be won with one more card. A player may only double down on his first two cards dealt. When a player doubles down, the original bet is automatically doubled (a second chip appears) and the player receives one more card.[58] Since there are more 10 point cards than any other, doubling down is most worthwhile on an 11-point hand, 7-4 being worth 11 points.
+Ghost Dog[25]	Almost undoubtedley from the film Ghost Dog: The Way of the Samurai starring Forest Whitaker, but no explanation found
+Kalashnikov	Most likely refers to the famous AK-47 and AK-74 assault rifles designed by Mikhail Kalashnikov
+73	Dutch Waiter	Sven with a Tray
+Joe Hachem	Joseph Hachem won the 2005 World Series main event holding 7♣ 3♠ when the flop came 4♦ 5♦ 6♥[27]
+Swedish Busboy	Sven with a Tray, see also San Francisco Busboy and Dutch Waiter[8]
+72	Beer Hand (offsuit)	It's called the Beer Hand because it's either time for a beer; or if you win with this you need to get other players a beer; or only a person full of beers would play this hand.[27]
+The beer hand has the worst chance of winning of all possible pocket cards in a full table playing Texas Hold'em. It is slightly better in short-handed games because the fact that it is not possible to make a straight or flush without hitting four appropriate community cards is less important in short-handed games.[59]
+
+Hammer (offsuit)[53]	The Hammer isn't specifically the 72 hand. At least not officially. In poker, the hammer is defined as the last position (the cut-off), particularly when you're heads-up. The 72 offsuit got the nickname as a result of a competition to play "The Hammer" on "The Hammer" and has been adopted into legitimate Oxford Dictionary poker parlance[60]
+W.H.I.P. (offsuit)	Worst Hand In Poker[38]
+Six higher card
+Card initials	Alternative name	Explanation
+66	Boots	Looks like them[8]
+Cherries	Nicknamed because of similarity to the shape of the number 6[30]
+Kicks	Get your kicks on Route 66[8]
+Route 66	The road from Chicago to LA[8]
+65	Bus Pass[13]	UK bus passes are often available to citizens over the age of 65 (although this age varies)[61]
+Ken Warren	Won with this hand at World Series of Poker[8]
+64	Billion Dollar Hand[13]	In reference to The $64,000 Question
+Gilchrist	Named after the Australian cricketer Adam Gilchrist for his ability to always hit 6's and 4's[30]
+Arlo	Royal Arlo if suited, named after Arlo Payne, a long time regular poster to the usenet newsgroup rec.gambling.poker[citation needed]
+63	Blocky	Another nickname of Broomcorn from the story in Doyle Brunson's Super/System. He used to play 63 as an ambush hand[8]
+Jimmy Summerfield (offsuit)	Kevin Larsen says:
+One time while playing with Jimmy, she [the dealer] had noticed that trash cards were hitting the flop quite often especially 6's and 3's, so Jimmy wins a huge pot after she told him to play the 63 off he was holding. Thus was born the "Jimmy Sommerfield".
+Once, while playing down on the coast, a player wins a big pot. He slaps his cards down on the table and announces "I've got a Jimmy Somerfield!". Then Jimmy says "Let me introduce myself", and shows the player his ID.
+I was dealing a four eight game one night to Jimmy, a few other dealers and a bunch of locals. A fairly loose game. The pot is capped six or eight way action. Jimmy announces preflop "I've got my hand !" Nobody believes him when the flop comes 6 6 3 He gets four or five callers to the river. Monster Pot![62]
+Spanish Inquisition	Nickname given to this starting hand by Iron Men of Poker. Refers to the fact that "Nobody Expects the Spanish Inquisition", a reference to the classic Monty Python quote.[63]
+62	Aimsworth	Byron 'Cowboy' Wolford says:
+I was in San Antone playing a big no-limit game with Jack Straus, Sen. Red Berry, and a bunch of the old-time players. Jack was on top of you all the time, but in full ring games, he wasn't as tough as he was shorthanded or heads up. He had two aces and I took the flop with a 6-2. A deuce came on the flop, he made a bet, and I called him. Off came another deuce on the turn, he bet, and I called him. A third deuce came on the river and we got all in. When I showed him that 6-2, he said, "What the hell were you drawing at there, Cowboy?"
+"Oh, I wasn't drawing at nothing", I answered. "Just aiming at another deuce. I guess I'm Aimsworth."[37]
+Five higher card
+Card initials	Alternative name	Explanation
+55	Sammy Hagar	After Hagar's song, "I Can't Drive 55"[8]
+Nickels	Five cents per nickel[8]
+Presto	There is debate as to where this term originated. The most commonly accepted source of the nickname is that many years ago, before Rec.gambling[64] was split into several groups, followers of the group who were blackjack players were fond of saying "Presto!" as they turned up a 21. This became a sign of recognition of fellow travelers. Around this time (circa 1991), the World Rec Gambling Poker Tournament(WRGPT), of which the first few were played slowly over email, came into being. During WRGPT2(92-93), the attribution of pocket fives as the "Presto Hand" was made by the player Howard Simonson, after using pocket fives to knock out several players from the tournament some number of times. [If a copy of the table-talk from WRGPT2 can be found and cited, this can be absolutely confirmed] Consequently, the term stuck among the rec.gambling minions, and has become a common poker term today.[65] There is also suggestion that the hand won more often than it should due to a computer glitch.[19]
+However, there is a counter-argument that there used to be a club in London called the Presto Club. The address was 55 Victoria Street, London. Therefore, whenever someone was dealt 55 in hold'em, they'd say they were dealt "Presto", because of the club's street address. When English players played events worldwide, the word spread, and it caught on everywhere.[66]
+
+Snakes[19]	Looks like two snakes
+Speed Limit	55 MPH,[8] the maximum speed limit in the US in the National Maximum Speed Law era
+54	Colt 45	The gun, and the beer[8]
+Jesse James	Because the outlaw was rumored to have been shot by a .45[8]
+Moneymaker	Winning hand of Chris Moneymaker, 2003 World Series of Poker Main Event champion[27]
+53	Bully Johnson	A poker player that Doyle Brunson described as being "laid back and quiet". He played this hand after being raised preflop and caught a straight on the flop to beat another guy's trip aces[30]
+Juggernaut	Well-known Magic: The Gathering artifact card with power of five and toughness of three.
+52	Bomber	B-52 bomber[27]
+Pick-up	As in 52 card pick up[27]
+Quarter	25 cents[8]
+Two Bits	25 cents[8]
+Ivey	Named for one of the greatest bluffs on High Stakes Poker, when Phil Ivey raised pre-flop with a five-deuce offsuit, was re-raised by Lex Veldhuis with KJ suited, and then went all in causing Lex to fold his hand.
+Four higher card
+Card initials	Alternative name	Explanation
+44
+Sailboats	The fours look like sails on a boat.
+Obama	Barack Obama is the 44th President of the United States
+Dark Force (4♠ 4♣)	Dark Side Of The Fours[27]
+Darth Vader (4♠ 4♣)	The two black fours are the "Dark Side of the Fours"[8]
+Diana Dors	Her top measurement[8]
+The Harley (4♠ 4♣)	Favorite hand of BCP pro Harley Quin after flopping quads with these hole cards: "The Fours are strong with this one..."
+Luke Skywalker	"May the Fours be with you." Usually referenced with one black four, and one red four.[40]
+Princess Leia (4♥ 4♦)	An extension of the Luke Skywalker and Darth Vader reference[8]
+Fourtale	n/a
+Magnum	The .44 cal gun[8]
+Midlife Crisis[67]	Likely to be named after the approximate age of the average midlife crisis (actually given as 46)[68]
+43	Waltz	In music, waltzes are always in 3/4 meter[27]
+Books	"What's a tree for ?"
+42	Jack Bauer[27]	The main character in 24
+Lumberman's Hand	A common piece of lumber is a two by four[27]
+The Principle[27]	Canadian Politician, Steven Hicks Favorite hand. He always said he played it On Principle
+The Answer	In The Hitchhiker's Guide to the Galaxy, the computer decided that the answer to everything in the universe was 42[8]
+Three higher card
+Card initials	Alternative name	Explanation
+33	Crabs	Because a 3 looks like it has pincers[8]
+Lucky Dragon	Favorite Chinese hand that "never loses"
+Treys	"Trey" dates back to the 14th century, and is a name for a card or a die showing three points; originally from Old French treis.[69]
+32	Can of Corn[8]	This nickname likely comes from baseball where a "Can of Corn" is an easily caught fly ball. Supposedly comes from a general store clerk reaching up and dropping a can from a high shelf.[70] Likely to be analogized due to the ease in which 32 is caught since it is the lowest possible non-hand (22 being a pair).
+Little Pete[8]	No explanation found
+The Diaper	"The Dirty Diaper" if offsuit. As made famous by Nick Rigby in the 2021 World Series of Poker Main Event
+Michael Jordan	From his jersey number (23)[32]
+Polish Big Slick	A bad Polish joke mimicking AK Big Slick[8]
+The Nut Low[71]	In this instance 'nut' meaning 'most' rather than 'best', low hand (i.e., the lowest hand)
+Hooter Hand (suited)	Named after famous poker dealer Houth "Hooter" Houn who played this hand as aggressively as AK.
+Crubs (if clubs)	From the card game Hearts[8]

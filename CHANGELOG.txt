@@ -1,6 +1,34 @@
+Semantic Versioning: https://semver.org/
+
 12/31/2024  Started - First project in GoLang.
 1/2/2025    Card design implemented
 1/4/2025    Deck creation & deal added
 1/6/2025    Players added - Git init @ v0.01
 
 Milestones herein - devlog now in 'git log'
+
+2/10/2025   ABANDONED
+    Great experience.  Learned so much, but..
+        - 'Discovered' depth of game mechanics. I wonder if ANYONE has EVER
+            underestimated a programming projects' complexity before?
+        - Mistakenly(?) looked into others efforts and was encouraged to see so
+            many of my ideas were consistent with the approaches of my betters.
+            However, the implementation requirements of those ideas (such as
+            bitwise hand scoring) so exceed any affection I have for the final
+            project completion..
+        - Final straw; I've learned more about how Go passes slices by reference
+            (vs value) & I'm drawn towards refactoring with equal passion as
+            I am towards marching bravely forward with blinders on.
+        - I'd rather leave, excited to start another with newfound knowledge,
+            than turn this whole experience into trench warfare, or allow
+            the unterminated todo to weigh on my conscience as TBD.
+        - Perhaps in consolation, I'm very happy with the progress made in
+            the periphery: IDE config, extensions found, debugging, testing,
+            AI integration (Models/Weights/RAG/TAG/Prompts/Params), logging,
+            git workflow, linting configuration, the Go environment (vars,
+            file structure, modules, documentation, testing ++), etc.
+            KEEP: .golangci.yaml, .gitignore, .gitattributes, and .editorconfig
+        - Lastly, I suspect my future self (assuming I progress at all(?)) will
+            above all be embarassed by my commenting. I leave those comments,
+            well all of this, simply for my ancestors to more easily mock me in
+            their seat of superiority. To you.. I send my warmest regards.

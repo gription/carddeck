@@ -1,0 +1,39 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+&   WORKING.txt
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+* NEXT:
+- Present cards for discard selection & Create discard mechanism
+- Build Wager system (Ante system) - 'Pot'
+- AI assessment/discard/wager stratagem - riskAssessment [ if currentWager < {(avgAmountIn - numPlayersAhead) x riskAversion} ] im in 5, others in 5 ea - risk = 1.0 -> 2.0  /  im in 5, others in 20 - risk = less {}
+
+// TODO: Intro queries for game type, player count, player name, etc..
+// TODO: Store player prefs & history to file
+// TODO: Research stat tables to teach Denise & Eddie how to play...
+// TODO: Strategy: Randomness per player to determine bluff, bet amount, risk adversity, discard/draw gamble, hotstreak mentality, drunken/angry, fish/shark ?
+
+// REVIEW: Glyphs - Add individual cards, uc's, and friendly names to defineGlyphs {IF unicode display of cards provides ANY(?) value to end product.}
+// REVIEW: Glyphs - Potentially incorporate image files. ie: ..\assets\images\club.png - need comparable size rank pip images, or large Font {embed font w/suit glyphs & sufficient points [1/72nd"]}
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+&   DESIGN DECISIONS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% ARBITRARILY DECIDED - per research, practicality & cuz I said so.
+SUIT_TIES = Hands are compared according to pip rank and pot is split/chopped if tied. The suit of a set, sequence or high-card will not be considered.
+JOKERS = Jokers are not used in poker.
+WILDCARD = Wild Cards are not used in poker.
+SHUFFLE = RNG is fair & sufficient; Mimics single deck shoe w/ shuffle after every deal. No counting advantage.
+
+? Pending:
+ACES_HIGH/LOW = When, if ever, should an Ace count as 0/1 (instead of 13) ie: 5-High Straight
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+&   HOUSE RULES
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+% Long term potential wish list or not..
+draw four cards if holding an ace (or wild card)
+burn card first b4 replacements, and/or burn bottom card
+jokers
+wild cards
+Stripped deck variant
+Show % odds

@@ -1,0 +1,109 @@
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+&      SORT & SCORE STRATEGY
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%                             compiledScore
+, seqScore [Sequence Score - Where 5 cards are 'active' & 'kicker' is the highest of those five]
+| 0 = Nothing         0   K       x
+| 1 = Straight        1   K       4
+| 2 = Flush           2   K       5
+| 3 = Straight Flush  3   K       8
+| 4 = Royal Flush     4   K       9
+. V = Hand Indicator
+. K = rankInSuit of highest card in sequence/hand
+, setScore [Set Score - If no Sequences apply tally the sets, and track what's left as the 'kicker' - 2-Pair = Anomaly]
+| 0 = High Card   0   K           0
+| 1 = Pair        1   K           1
+| 2 = Two Pair    2   K           2
+| 3 = Trips       3   K           3
+| 4 = Quads       4   K           7
+| 5 = Full House  5   V           6
+. V =  int - Hand Indicator
+. K =  slice of 'Kickers' (inactive but tiebreakers)
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+% Test for SEQUENCES: 4 Opts
+6. Straight         Sort/concat suitRanks & test if in string "12345678910111213"       ---> YES/NO - FLAG
+5. Flush            Sort/concat suitPips & for/if any suitPip not match another         ---> YES/NO - FLAG
+IF BOTH FLAGS: Straight AND Flush = 2. Straight_Flush
+If Straight-Flush: Test for 1. Royal_Flush: Sort/concat rankPips & TEST if last char = A = YES - OTHERWISE Straight-Flush
+
+% Test for SETS: 5 Opts
+|   3. Four_of_a_Kind           Sort/concat rankPips, getCountPerRankPip {map: pip - int}, test for count=4
+|   |   7. Three_of_a_Kind      Sort/concat rankPips, getCountPerRankPip {map: pip - int}, test for count=3
+|   |   |   9. One_Pair         Sort/concat rankPips, getCountPerRankPip {map: pip - int}, test for count=2  ------------> NO (0) - ZERO SETS
+|   |   |   |--Remove matched
+|   |   |   |___8. Two_Pair     Sort/concat {remaining} rankPips, getCountPerRankPip {map: pip - int}, test for count=2
+|   |   |   |   |
+,  YES YES YES  YES
+,  (4) (3) (2) (2+2)
+|       |
+|       |--Remove matched
+|     __|___4. Full_House       Compare {remaining} rankPips for equal
+|    |      |
+,   NO     YES
+,  (3)    (3+2)
+
+% Otherwise: 1 Opt
+0. High_Card                    Sort rankPips
+
+================================================================================
+
+% Score
+1. Royal_Flush
+2. Straight_Flush
+3. Four_of_a_Kind
+4. Full_House
+5. Flush
+6. Straight
+7. Three_of_a_Kind
+8. Two_Pair
+9. One_Pair
+0. High_Card
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+, The following chart enumerates the (absolute) frequency of each hand, given all combinations of five cards randomly drawn from
+, a full deck of 52 without replacement. Wild cards are not considered. In this chart:
+
+Distinct hands is the number of different ways to draw the hand, not counting different suits. In particular, a set of hands that all tie each other is counted exactly once, not multiply.
+
+Frequency is the number of ways to draw the hand, including the same card values in different suits.
+
+The Probability of drawing a given hand is calculated by dividing the number of ways of drawing the hand (Frequency) by the total number of 5-card hands
+(the sample space;(52/5 =2,598,960). For example, there are 4 different ways to draw a royal flush (one for each suit), so the probability is ⁠4/2,598,960⁠,
+or one in 649,740. One would then expect to draw this hand about once in every 649,740 draws, or nearly 0.000154% of the time.
+
+Cumulative probability refers to the probability of drawing a hand as good as or better than the specified one. For example, the probability of drawing three
+of a kind is approximately 2.11%, while the probability of drawing a hand at least as good as three of a kind is about 2.87%. The cumulative probability is determined by adding one
+hand's probability with the probabilities of all hands above it. The Odds are defined as the ratio of the number of ways not to draw the hand, to the number of ways to draw it.
+
+In statistics, this is called odds against. For instance, with a royal flush, there are 4 ways to draw one, and 2,598,956 ways to draw
+something else, so the odds against drawing a royal flush are 2,598,956 : 4, or 649,739 : 1. The formula for establishing the odds can also be stated
+as (1/p) - 1 : 1, where p is the aforementioned probability. The values given for Probability, Cumulative probability, and Odds are rounded off for
+simplicity; the Distinct hands and Frequency values are exact.
+
+
+& Mathematical expression of absolute frequency
+%                                                 Distinct                             Cumulative       Odds
+% Hand	                                             Hands    Frequency   Probability  Probability     Against             {lvl assures win over any lvl below}
+1. Royal Flush                          nuts            1	    4       	0.000154%	0.000154%	649,739   : 1   - Royal Flush +500 + Suitrank                   [500 - 503]
+2. Straight Flush (exc: nuts)           stfl            9	    36      	0.00139%	0.00154%    72,192.33 : 1   - Straight Flush +400 + Highest FV + SuitRank   [406 - 417]
+3. Four of a Kind                       quad           156	    624     	0.02401%	0.0255%	    4,164     : 1   - Four Kind +300 + FV of Quat                   [302 - 314]
+4. Full House                           hous           156	    3,744	    0.1441%	    0.17%	    693.1667  : 1   - Full House +250 + FV of Tres                  [252 - 264]
+5. Flush (exc: nuts & stfl)             flsh            1,277	5,108	    0.1965%	    0.37%	    507.8019  : 1   - Flush +200 + Highest FV + SuitRank            [206 - 217] {Suitrank(0-3) could never tilt unless tied}
+6. Straight (exc: nuts & stfl)          strt            10	    10,200	    0.3925%	    0.76%	    253.8     : 1   - Straight 150 + Highest FV                     [156 - 164] ** Account for Low Aces as 1 **
+7. Three of a Kind                      trip           858	    54,912	    2.1128%	    2.87%	    46.32955  : 1   - Tres = +80 + FV of Tres Cards                  [86 - 122]
+8. Two Pair                             dblp           858	    123,552	    4.7539%	    7.63%       20.03535  : 1   - 2nd Pair = +50 + FV of High Pair Cards         [64 - 78]  {Ties settled by 2nd Pair b4 Kicker}
+9. One Pair                             pair           2,860	1,098,240	42.2569%	49.9%	    1.366477  : 1   - Pair = +20 + FV of Pair Cards                  [24 - 48]
+0. No Pair / High Card                  hcrd           1,277	1,302,540	50.1177%	100%	    0.9953015 : 1   - Face Value of High Card                         [2 - 14]
+, Total                                                7,462	2,598,960	100%	---	            0         : 1           - Kicker breaks ties, then 2nd kicker..  Suits = last resort
+
+% Prequisites
+    Pair
+    2Pair                   Strt        Flush
+        Tres                    StrtFlush
+    Four    FulHse              RoylFlush
+
+ie: The royal flush is a case of the straight flush. It can be formed 4 ways (one for each suit), giving it a probability of 0.000154% and odds of 649,739 : .
